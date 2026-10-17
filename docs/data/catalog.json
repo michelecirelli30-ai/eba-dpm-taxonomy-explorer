@@ -1,0 +1,387 @@
+{
+  "product": "EBA DPM & Taxonomy Explorer",
+  "curated_as_of": "2026-10-18",
+  "model_import_status": "Not imported — framework metadata and conceptual dictionary only",
+  "releases": [
+    {
+      "id": "4.2",
+      "published": "2025-11-25",
+      "phase": "Final package",
+      "model": "DPM 2.0 transition",
+      "scope": "Reporting modules brought into the new semantic glossary, with exceptions and module-specific dates",
+      "changes": [
+        "Major rollout of DPM 2.0 semantic glossary and modernised reporting data definitions",
+        "Instant payments and FINREP data-point collection covered in the framework package",
+        "DORA transition deferred to 4.3"
+      ],
+      "timing": "Applicable reference dates depend on the relevant module; the original EBA release indicated December 2025 commencement for the package",
+      "source": "S42",
+      "status": "Historical / reference",
+      "banking_focus": true
+    },
+    {
+      "id": "4.2.1",
+      "published": "2026-02-27",
+      "phase": "Technical update",
+      "model": "DPM 2.0",
+      "scope": "DPM database and taxonomy package 4.2.1, including FINREP9DP",
+      "changes": [
+        "DPM database 2.0 and supporting glossary conversion materials updated",
+        "FINREP9DP taxonomy package and sample files published",
+        "Filing Rules v5.8 included in the framework documentation"
+      ],
+      "timing": "Check each module's reference date and remittance instructions",
+      "source": "S421",
+      "status": "Technical reference",
+      "banking_focus": true
+    },
+    {
+      "id": "4.3",
+      "published": "2026-07-09",
+      "phase": "Final technical package",
+      "model": "DPM 2.0",
+      "scope": "Third-country branches reporting and AMLA risk-assessment technical support",
+      "changes": [
+        "New reporting for third-country branches under CRD VI, Article 48l(1)",
+        "AMLA risk-assessment data-collection technical components",
+        "Glossary Usage Exploration file supports data-concept navigation"
+      ],
+      "timing": "Third-country branches: first reference date 31 March 2027. AMLA-specific components have distinct limitations and instructions",
+      "source": "S43",
+      "status": "Final release",
+      "banking_focus": true
+    },
+    {
+      "id": "4.4",
+      "published": "2026-10-12",
+      "phase": "Final technical package · Phase 1",
+      "model": "DPM 2.0",
+      "scope": "IFRS 18 reporting, Pillar 3 ESG disclosures and technical amendments",
+      "changes": [
+        "First phase of the release addresses IFRS 18-compatible reporting and Pillar 3 disclosure implementation",
+        "DPM, validation rules for reporting requirements, and XBRL taxonomy were published",
+        "Second phase for supervisory reporting simplification is planned for early 2027 and is not part of Phase 1"
+      ],
+      "timing": "Do not infer an application date from the package release date; consult the module-specific EBA documentation",
+      "source": "S44",
+      "status": "Latest published package · Phase 1",
+      "banking_focus": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "SMAIN",
+      "authority": "EBA",
+      "title": "Reporting frameworks: overview and validation rules process",
+      "date": "Continuously maintained",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks",
+      "purpose": "Official release directory and EBA methodology for DPM, XBRL taxonomies and validation rules"
+    },
+    {
+      "id": "S42",
+      "authority": "EBA",
+      "title": "Reporting framework 4.2 and DPM 2.0 transition",
+      "date": "2025-11-25",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting-frameworks/reporting-framework-42",
+      "purpose": "Release documentation, data packages, reference dates and filing rules"
+    },
+    {
+      "id": "S421",
+      "authority": "EBA",
+      "title": "Reporting framework 4.2 technical update (4.2.1)",
+      "date": "2026-02-27",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting-frameworks/reporting-framework-42",
+      "purpose": "DPM 4.2.1, FINREP9DP taxonomy and Filing Rules v5.8"
+    },
+    {
+      "id": "S43",
+      "authority": "EBA",
+      "title": "Reporting framework 4.3",
+      "date": "2026-07-09",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/reporting-framework-43",
+      "purpose": "Final taxonomy package, third-country branch reporting and glossary exploration"
+    },
+    {
+      "id": "S44",
+      "authority": "EBA",
+      "title": "Reporting framework 4.4 (Phase 1)",
+      "date": "2026-10-12",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/reporting-framework-4.4",
+      "purpose": "Official DPM, XBRL and validation rules downloads; Phase 1 scope"
+    },
+    {
+      "id": "S44PR",
+      "authority": "EBA",
+      "title": "Release 4.4 final technical package announcement",
+      "date": "2026-10-12",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-releases-final-technical-package-release-44-its-reporting-and-pillar-3-disclosure-framework",
+      "purpose": "Confirm 4.4 Phase 1 content and expected Phase 2"
+    },
+    {
+      "id": "SDPM",
+      "authority": "EBA",
+      "title": "DPM data dictionary",
+      "date": "Maintained by EBA",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/dpm-data-dictionary",
+      "purpose": "Definitions, DPM 2.0 metamodel and model changes"
+    },
+    {
+      "id": "SMM",
+      "authority": "EBA",
+      "title": "DPM metamodel detail (technical PDF)",
+      "date": "Technical reference (historic)",
+      "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2141905/3173de85-57fb-490d-8332-22292b0e3995/The%20DPM%20metamodel%20detail.pdf",
+      "purpose": "Core vocabulary and table-axis-ordinate-variable relationships"
+    },
+    {
+      "id": "SVR",
+      "authority": "EBA",
+      "title": "Quarterly validation-rules update",
+      "date": "2026-09-14",
+      "url": "https://www.eba.europa.eu/publications-and-media/press-releases/eba-publishes-updated-list-validation-rules-part-its-regular-quarterly-reporting-frameworks-update",
+      "purpose": "Document active, deactivated, reactivated rule handling and smaller quarterly updates"
+    },
+    {
+      "id": "SXBRL",
+      "authority": "EBA",
+      "title": "Reporting framework 4.2 — Filing Rules v5.8",
+      "date": "2026-02-27",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting-frameworks/reporting-framework-42",
+      "purpose": "Format, filing indicators and XBRL-CSV submission guidance"
+    },
+    {
+      "id": "SPDF",
+      "authority": "EBA",
+      "title": "DPM database description (historic FINREP example)",
+      "date": "Historic technical reference",
+      "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/359626/d5ddd501-b423-42dd-a843-f1eca4bca6aa/DPM%20-%20Database%20description.pdf",
+      "purpose": "Illustrates dimensional categorisation of a FINREP table cell; not a current-release mapping"
+    }
+  ],
+  "modules": [
+    {
+      "id": "COREP",
+      "label": "COREP — prudential capital",
+      "description": "Own funds, capital requirements, credit risk, market risk and associated supervisory reporting requirements.",
+      "context": "Business reporting family; exact EBA taxonomy module IDs, applicable release and template-cell mappings are not loaded.",
+      "related": [
+        "Metric",
+        "Dimension",
+        "Data point",
+        "Table"
+      ],
+      "source": "SMAIN"
+    },
+    {
+      "id": "FINREP",
+      "label": "FINREP — financial information",
+      "description": "Supervisory financial-reporting templates and data points, with applicable accounting and supervisory reporting requirements.",
+      "context": "Some FINREP collections are differentiated by entity type and reporting basis; release 4.2.1 includes FINREP9DP documentation.",
+      "related": [
+        "Table",
+        "Ordinate",
+        "Data point",
+        "Metric"
+      ],
+      "source": "S421"
+    },
+    {
+      "id": "LIQUIDITY",
+      "label": "Liquidity — LCR / NSFR",
+      "description": "Regulatory liquidity and stable funding reporting governed by applicable technical requirements.",
+      "context": "A reporting family, not a claim that one single entry point covers all modules.",
+      "related": [
+        "Dimension",
+        "Member",
+        "Validation rule"
+      ],
+      "source": "SMAIN"
+    },
+    {
+      "id": "LARGE_EXPOSURES",
+      "label": "Large exposures",
+      "description": "Reporting of concentration and counterparty exposures as specified by the relevant ITS framework.",
+      "context": "Actual tables, dimensions and validations must be obtained from the EBA package for a chosen release.",
+      "related": [
+        "Dimension",
+        "Member",
+        "Data point"
+      ],
+      "source": "SMAIN"
+    },
+    {
+      "id": "IRRBB",
+      "label": "IRRBB",
+      "description": "Interest-rate risk in the banking book regulatory reporting area.",
+      "context": "Module applicability, reference dates and XBRL entry points are release-specific.",
+      "related": [
+        "Metric",
+        "Member",
+        "Table"
+      ],
+      "source": "SMAIN"
+    },
+    {
+      "id": "ESG",
+      "label": "ESG / Pillar 3 disclosures",
+      "description": "Taxonomy and disclosure changes are included in the 4.4 Phase 1 package.",
+      "context": "Disclosure requirements and supervisory reporting validation rules are distinct; 4.4 Phase 1 scope must be checked.",
+      "related": [
+        "Module",
+        "Table",
+        "Validation rule"
+      ],
+      "source": "S44"
+    },
+    {
+      "id": "TCB",
+      "label": "Third-country branches",
+      "description": "New CRD VI third-country-branch reporting included in 4.3, with initial reference date 31 March 2027.",
+      "context": "Do not assume applicability to a domestic Austrian bank without evaluating entity type.",
+      "related": [
+        "Module",
+        "Table",
+        "Framework"
+      ],
+      "source": "S43"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "Framework",
+      "definition": "A reporting framework version groups requirements and technical deliverables for specified reference dates. Version number alone does not determine whether an individual module is applicable.",
+      "depends": [
+        "Module",
+        "Table",
+        "Taxonomy package"
+      ],
+      "source": "SMAIN",
+      "layer": "Regulatory scope"
+    },
+    {
+      "id": "Module",
+      "definition": "A specific reporting collection within the framework. Modules and their versions are linked to taxonomy entry points and reporting sets.",
+      "depends": [
+        "Table",
+        "Taxonomy package"
+      ],
+      "source": "SDPM",
+      "layer": "Collection"
+    },
+    {
+      "id": "Table",
+      "definition": "A structured reporting template represented using axes, ordinates, and combinations of coordinates to derive cell-level data requirements.",
+      "depends": [
+        "Axis",
+        "Ordinate",
+        "Data point"
+      ],
+      "source": "SMM",
+      "layer": "Table structure"
+    },
+    {
+      "id": "Axis",
+      "definition": "The X, Y and where applicable Z structure of a table; the axes contain ordinates such as columns, rows or sheets.",
+      "depends": [
+        "Ordinate",
+        "Member"
+      ],
+      "source": "SMM",
+      "layer": "Table structure"
+    },
+    {
+      "id": "Ordinate",
+      "definition": "An element at a row, column or sheet location, annotated with properties describing data requirements. Coordinates combine to define the semantics of a cell.",
+      "depends": [
+        "Dimension",
+        "Member",
+        "Data point"
+      ],
+      "source": "SMM",
+      "layer": "Table structure"
+    },
+    {
+      "id": "Data point",
+      "definition": "An individually defined reporting fact whose meaning is identified by a combination of dimensional/property characteristics and a metric.",
+      "depends": [
+        "Metric",
+        "Dimension",
+        "Member"
+      ],
+      "source": "SDPM",
+      "layer": "Semantics"
+    },
+    {
+      "id": "Metric",
+      "definition": "A quantitative or other measurement concept associated with a data type; historically described as a special dimension of the DPM vocabulary.",
+      "depends": [
+        "Data point"
+      ],
+      "source": "SMM",
+      "layer": "Semantics"
+    },
+    {
+      "id": "Dimension",
+      "definition": "A property/category used to qualify what a data point represents (for example counterparty sector).",
+      "depends": [
+        "Domain",
+        "Member"
+      ],
+      "source": "SDPM",
+      "layer": "Semantics"
+    },
+    {
+      "id": "Domain",
+      "definition": "The collection of allowed concept values or members that share a semantic nature; some domains are open, while others are restricted.",
+      "depends": [
+        "Member",
+        "Dimension"
+      ],
+      "source": "SMM",
+      "layer": "Semantics"
+    },
+    {
+      "id": "Member",
+      "definition": "A value or item belonging to a domain and used in the categorisation of a variable/data point (for example central banks within a counterparty sector).",
+      "depends": [
+        "Dimension",
+        "Domain",
+        "Hierarchy"
+      ],
+      "source": "SDPM",
+      "layer": "Semantics"
+    },
+    {
+      "id": "Hierarchy",
+      "definition": "A grouping or parent-child organisation of members, used for subsets and sometimes aggregation relationships.",
+      "depends": [
+        "Member",
+        "Domain"
+      ],
+      "source": "SMM",
+      "layer": "Semantics"
+    },
+    {
+      "id": "Validation rule",
+      "definition": "A logical or arithmetic consistency requirement published with the reporting framework. Rule status may change through quarterly EBA packages.",
+      "depends": [
+        "Data point",
+        "Module",
+        "Taxonomy package"
+      ],
+      "source": "SVR",
+      "layer": "Control"
+    },
+    {
+      "id": "Taxonomy package",
+      "definition": "A machine-readable implementation of DPM concepts, constraints and reporting entry points in XBRL / applicable reporting syntax.",
+      "depends": [
+        "Framework",
+        "Module",
+        "Validation rule"
+      ],
+      "source": "SMAIN",
+      "layer": "Technology"
+    }
+  ]
+}
