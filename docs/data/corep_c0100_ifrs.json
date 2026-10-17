@@ -1,0 +1,519 @@
+{
+  "title": "COREP C 01.00 – Own Funds (CA1)",
+  "source_basis": "C 01.00 rows and labels sourced from supervisory reporting annexes, notably Commission Implementing Regulation (EU) 2024/3117. Always verify the applicable template for the target EBA module and reference date.",
+  "model_state": "Actual DPM 2.0 database IDs, precise typed axes/ordinate identifiers, XBRL QNames, taxonomy entry points and official validation-rule IDs have not been imported.",
+  "scope": "15 selected official template rows for guided IFRS-to-prudential mapping; not a full EBA data point extraction or a filing engine.",
+  "row_codes_verified_against": "Regulation (EU) 2024/3117 Annex I and related reporting instructions; version changes, EBA taxonomy releases and reported module dates must be separately checked.",
+  "template": "C 01.00",
+  "family": "COREP OF",
+  "axis": "Amount",
+  "axis_id": null,
+  "release_reference": "Regulation (EU) 2024/3117; technical taxonomy release must be selected after official package ingestion",
+  "sources": [
+    {
+      "id": "ITS",
+      "label": "EU 2024/3117 – EBA Supervisory Reporting ITS",
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/3117/oj/eng"
+    },
+    {
+      "id": "CRR",
+      "label": "CRR (EU) 575/2013 – consolidated (1 Jan 2026)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2013/575/2026-01-01/eng"
+    },
+    {
+      "id": "DPM",
+      "label": "EBA DPM Data Dictionary",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/dpm-data-dictionary"
+    },
+    {
+      "id": "FW44",
+      "label": "EBA reporting framework 4.4",
+      "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/reporting-framework-4.4"
+    },
+    {
+      "id": "EBAOF",
+      "label": "EBA COREP OF consultation module (April 2026)",
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-04/7fce535b-5173-43e7-b2b1-24e8d380e38e/CP%20Module%206%20-%20COREP%20own%20funds.pdf"
+    },
+    {
+      "id": "IAS 32",
+      "label": "IAS 32 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-32-financial-instruments-presentation/"
+    },
+    {
+      "id": "IFRS 3",
+      "label": "IFRS 3 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-3-business-combinations/"
+    },
+    {
+      "id": "IFRS 9",
+      "label": "IFRS 9 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-9-financial-instruments/"
+    },
+    {
+      "id": "IAS 12",
+      "label": "IAS 12 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-12-income-taxes/"
+    },
+    {
+      "id": "IAS 38",
+      "label": "IAS 38 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-38-intangible-assets/"
+    },
+    {
+      "id": "IAS 1",
+      "label": "IAS 1 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/"
+    },
+    {
+      "id": "IAS 10",
+      "label": "IAS 10 – IFRS Foundation",
+      "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-10-events-after-the-reporting-period/"
+    }
+  ],
+  "rows": [
+    {
+      "r": "0010",
+      "code": "1",
+      "label": "OWN FUNDS",
+      "parent": null,
+      "ref": "CRR Art. 72",
+      "definition": "Total eligible Tier 1 plus eligible Tier 2 own funds, after applicable prudential adjustments and deductions.",
+      "ifrs": [
+        "IAS 32"
+      ],
+      "link": "Derived total of eligible prudential capital; not an IFRS balance-sheet caption or individual accounting entry.",
+      "entry": [],
+      "adjust": "Reconcile CET1, AT1 and T2 across prudential consolidation and regulatory eligibility.",
+      "check": "Aggregate formula check against underlying components; not a published EBA VR identifier.",
+      "coordinate": "C 01.00 / r0010 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0015",
+      "code": "1.1",
+      "label": "TIER 1 CAPITAL",
+      "parent": "0010",
+      "ref": "CRR Art. 25",
+      "definition": "Sum of Common Equity Tier 1 and Additional Tier 1 capital after relevant adjustments.",
+      "ifrs": [
+        "IAS 32"
+      ],
+      "link": "CET1 and AT1 eligibility must be analysed separately from instrument classification under IFRS.",
+      "entry": [],
+      "adjust": "Capital adequacy aggregation; may include instruments that are IFRS liabilities if CRR AT1 conditions are met.",
+      "check": "Component reconciliation: CET1 + AT1, after relevant prudential treatments.",
+      "coordinate": "C 01.00 / r0015 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0020",
+      "code": "1.1.1",
+      "label": "COMMON EQUITY TIER 1 CAPITAL",
+      "parent": "0015",
+      "ref": "CRR Arts. 26, 50",
+      "definition": "Eligible CET1 items less mandatory adjustments and deductions according to the CRR.",
+      "ifrs": [
+        "IAS 32",
+        "IAS 12"
+      ],
+      "link": "Accounting equity is the starting point, not CET1: deductions, prudential filters, profit eligibility and consolidation differences matter.",
+      "entry": [],
+      "adjust": "Aggregate eligible CET1 after CRR Articles 32–49 and associated treatments.",
+      "check": "Prudential equity bridge from ledger/FINREP to eligible CET1.",
+      "coordinate": "C 01.00 / r0020 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0030",
+      "code": "1.1.1.1",
+      "label": "Capital instruments eligible as CET1 Capital",
+      "parent": "0020",
+      "ref": "CRR Arts. 26, 28–31, 36, 42",
+      "definition": "CET1-eligible capital instruments and closely related eligible items, less the template's specific deductions.",
+      "ifrs": [
+        "IAS 32"
+      ],
+      "link": "Start from issued equity and related share premium; legal terms and CRR eligibility tests determine inclusion.",
+      "entry": [],
+      "adjust": "Exclude non-eligible instruments; deduct own CET1 holdings and other relevant adjustments.",
+      "check": "Eligible instruments tie-out to approved register, equity ledger and own-holdings adjustments.",
+      "coordinate": "C 01.00 / r0030 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0040",
+      "code": "1.1.1.1.1",
+      "label": "Fully paid up capital instruments",
+      "parent": "0030",
+      "ref": "CRR Arts. 26(1)(a), 28",
+      "definition": "Capital instruments fully paid up and meeting the CET1 conditions.",
+      "ifrs": [
+        "IAS 32"
+      ],
+      "link": "Financial-statement equity share capital account plus issued-instrument register; may require exclusions under CRR.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Cash / bank",
+          "amount": 1000
+        },
+        {
+          "side": "Cr",
+          "account": "Issued share capital",
+          "amount": 1000
+        }
+      ],
+      "adjust": "Verify paid-up status, permanence, distribution rights, loss-absorption and other Article 28 conditions.",
+      "check": "Ledger share capital ≠ automatically eligible CET1; match share register and instrument terms.",
+      "coordinate": "C 01.00 / r0040 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0060",
+      "code": "1.1.1.1.3",
+      "label": "Share premium",
+      "parent": "0030",
+      "ref": "CRR Art. 26(1)(b)",
+      "definition": "Share premium relating to CET1-eligible capital instruments.",
+      "ifrs": [
+        "IAS 32"
+      ],
+      "link": "Additional paid-in capital/share premium under equity, only to the extent related to eligible instruments.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Cash",
+          "amount": 1200
+        },
+        {
+          "side": "Cr",
+          "account": "Issued share capital",
+          "amount": 1000
+        },
+        {
+          "side": "Cr",
+          "account": "Share premium",
+          "amount": 200
+        }
+      ],
+      "adjust": "Exclude share premium associated with instruments that do not meet CET1 conditions.",
+      "check": "Share premium ledger by instrument series → eligible CET1 premium.",
+      "coordinate": "C 01.00 / r0060 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0130",
+      "code": "1.1.1.2",
+      "label": "Retained earnings",
+      "parent": "0020",
+      "ref": "CRR Art. 26(1)(c), (2)",
+      "definition": "Eligible previous years' retained earnings and eligible interim or year-end profits under CRR eligibility conditions.",
+      "ifrs": [
+        "IAS 1",
+        "IAS 10"
+      ],
+      "link": "Retained earnings from equity statement/FINREP can differ from prudential eligible earnings when current profit is not recognised under CRR Art. 26(2).",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Year-end profit clearing",
+          "amount": 100
+        },
+        {
+          "side": "Cr",
+          "account": "Retained earnings",
+          "amount": 100
+        }
+      ],
+      "adjust": "Deduct non-eligible profit or foreseeably distributed amounts where required; avoid counting same profit twice.",
+      "check": "Reconcile prior-year reserves, current eligible profit, expected dividends and supervisory permission.",
+      "coordinate": "C 01.00 / r0130 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0140",
+      "code": "1.1.1.2.1",
+      "label": "Previous years retained earnings",
+      "parent": "0130",
+      "ref": "CRR Art. 26(1)(c)",
+      "definition": "Prior years' accumulated eligible retained profits, distinct from current interim/year-end profit eligibility.",
+      "ifrs": [
+        "IAS 1"
+      ],
+      "link": "Opening retained earnings balance, adjusted for approved appropriations and scope differences.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Profit or loss closing balance",
+          "amount": 80
+        },
+        {
+          "side": "Cr",
+          "account": "Retained earnings",
+          "amount": 80
+        }
+      ],
+      "adjust": "Carry over post-appropriation opening reserve and adjust for any amounts not eligible for CET1.",
+      "check": "Opening reserve rollforward → prior-year accounting equity and FINREP.",
+      "coordinate": "C 01.00 / r0140 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0150",
+      "code": "1.1.1.2.2",
+      "label": "Profit or loss eligible",
+      "parent": "0130",
+      "ref": "CRR Art. 26(2)",
+      "definition": "Current/period profit or loss eligible for prudential capital under the CRR framework.",
+      "ifrs": [
+        "IAS 1",
+        "IAS 10"
+      ],
+      "link": "Based on IFRS recognised profit, after prudential restrictions. A regulatory inclusion is normally not a new journal entry.",
+      "entry": [],
+      "adjust": "Positive interim/year-end profit requires qualifying independent verification, deduction of foreseeable charges/dividends and prior competent-authority permission when applicable.",
+      "check": "IFRS period profit less ineligible amount → prudential eligible profit.",
+      "coordinate": "C 01.00 / r0150 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0170",
+      "code": "1.1.1.2.2.2",
+      "label": "(-) Part of interim or year-end profit not eligible",
+      "parent": "0150",
+      "ref": "CRR Art. 26(2)",
+      "definition": "Portion of an accounting-period profit not eligible for recognition as CET1, including relevant expected dividends/charges.",
+      "ifrs": [
+        "IAS 1",
+        "IAS 10"
+      ],
+      "link": "A purely prudential deduction in the reconciliation, not necessarily a reduction of recognised IFRS profit.",
+      "entry": [],
+      "adjust": "Example: IFRS profit 100; foreseeably distributed dividends 30 → only up to 70 considered, subject to verification and supervisory conditions.",
+      "check": "Accounting profit 100 − ineligible amount 30 = maximum illustrative eligible amount 70.",
+      "coordinate": "C 01.00 / r0170 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0180",
+      "code": "1.1.1.3",
+      "label": "Accumulated other comprehensive income",
+      "parent": "0020",
+      "ref": "CRR Art. 26(1)(d), Art. 33",
+      "definition": "Eligible accounting OCI accumulated in equity, before applicable prudential filters and after relevant tax effects.",
+      "ifrs": [
+        "IFRS 9",
+        "IAS 12"
+      ],
+      "link": "FVOCI reserves and other OCI components are sourced from IFRS accounting, then filtered according to the CRR.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "FVOCI debt securities (asset)",
+          "amount": 25
+        },
+        {
+          "side": "Cr",
+          "account": "OCI – FVOCI reserve (before tax)",
+          "amount": 25
+        }
+      ],
+      "adjust": "Consider net tax effects, own-credit gains/losses and hedging-related prudential filters.",
+      "check": "OCI movement/reserves → prudential filters → eligible CET1 component.",
+      "coordinate": "C 01.00 / r0180 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0200",
+      "code": "1.1.1.4",
+      "label": "Other reserves",
+      "parent": "0020",
+      "ref": "CRR Art. 26(1)(e)",
+      "definition": "Other disclosed accounting reserves not already included in retained earnings or accumulated OCI.",
+      "ifrs": [
+        "IAS 1"
+      ],
+      "link": "Equity reserve accounts and equity-change disclosures, classified without double counting.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Retained earnings",
+          "amount": 40
+        },
+        {
+          "side": "Cr",
+          "account": "Statutory/legal equity reserve",
+          "amount": 40
+        }
+      ],
+      "adjust": "Examine legal and accounting classification and ability of reserves to absorb losses.",
+      "check": "Reserve reclassification does not increase total equity; avoid double counting as retained earnings.",
+      "coordinate": "C 01.00 / r0200 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0250",
+      "code": "1.1.1.9",
+      "label": "Adjustments to CET1 due to prudential filters",
+      "parent": "0020",
+      "ref": "CRR Arts. 32–35",
+      "definition": "Net adjustment required to neutralise specified accounting gains/losses or valuation effects for prudential capital.",
+      "ifrs": [
+        "IFRS 9",
+        "IAS 32"
+      ],
+      "link": "May derive from OCI or profit recognised under IFRS; the regulatory exclusion normally has no separate IFRS journal.",
+      "entry": [],
+      "adjust": "Identify hedge/own-credit/prudent valuation effects according to current CRR articles; record signed regulatory adjustment.",
+      "check": "Trace IFRS carrying value and OCI to signed prudential-filter calculation; avoid treating filter as accounting posting.",
+      "coordinate": "C 01.00 / r0250 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0300",
+      "code": "1.1.1.10",
+      "label": "(-) Goodwill",
+      "parent": "0020",
+      "ref": "CRR Arts. 36(1)(b), 37",
+      "definition": "Goodwill deduction from CET1, including goodwill embedded in relevant significant investments, subject to CRR mechanics.",
+      "ifrs": [
+        "IFRS 3"
+      ],
+      "link": "IFRS 3 goodwill from business combinations; supervisory treatment requires consolidation, scope and deductible net amount adjustments.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Identifiable net assets acquired",
+          "amount": 800
+        },
+        {
+          "side": "Dr",
+          "account": "Goodwill",
+          "amount": 200
+        },
+        {
+          "side": "Cr",
+          "account": "Cash / consideration transferred",
+          "amount": 1000
+        }
+      ],
+      "adjust": "Deduct relevant goodwill net of eligible associated deferred tax liabilities and other CRR-specified factors.",
+      "check": "IFRS goodwill balance + consolidation adjustments − permitted offsets → signed CET1 deduction.",
+      "coordinate": "C 01.00 / r0300 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    },
+    {
+      "r": "0340",
+      "code": "1.1.1.11",
+      "label": "(-) Other intangible assets",
+      "parent": "0020",
+      "ref": "CRR Arts. 36(1)(b), 37",
+      "definition": "Applicable CET1 deduction of intangible assets other than goodwill, allowing only CRR-defined exceptions and adjustments.",
+      "ifrs": [
+        "IAS 38",
+        "IAS 12"
+      ],
+      "link": "Start from capitalised software, licences and other IAS 38 intangible assets, less relevant accounting amounts; prudential value differs.",
+      "entry": [
+        {
+          "side": "Dr",
+          "account": "Software intangible asset",
+          "amount": 60
+        },
+        {
+          "side": "Cr",
+          "account": "Cash / payable",
+          "amount": 60
+        }
+      ],
+      "adjust": "Assess prudently valued software exemption and net deduction of eligible related DTLs; not all intangible balances are fully deducted.",
+      "check": "Asset subledger → IFRS intangible carrying amount → CRR software rules/DTL adjustments → deduction.",
+      "coordinate": "C 01.00 / r0340 / Amount",
+      "dpm_datapoint_id": null,
+      "xbrl_qname": null,
+      "official_validation_rules": [],
+      "coordinate_status": "Template row verified; technical DPM cell metadata not imported"
+    }
+  ],
+  "definitions": [
+    [
+      "Accounting entry",
+      "A double-entry journal posting in an institution's IFRS general ledger (debit and credit), with an accounting date and supported documentation."
+    ],
+    [
+      "IFRS trial balance",
+      "Summarises general-ledger closing balances, including equity, OCI, profit and recognised assets/liabilities. Not a COREP submission by itself."
+    ],
+    [
+      "Regulatory adjustment",
+      "Prudential adjustment or deduction to accounting figures required by the CRR; it may not be an IFRS ledger posting."
+    ],
+    [
+      "FINREP",
+      "Harmonised supervisory financial reporting based broadly on IFRS/GAAP. Useful reconciliation source, but not identical to COREP."
+    ],
+    [
+      "COREP C 01.00",
+      "Own funds template (CA1), which reports eligibility-filtered CET1, AT1, T2 and related deductions."
+    ],
+    [
+      "DPM data point",
+      "Model-defined reporting fact, linked to a metric and dimensional qualifiers in a specific taxonomy release. An identifier cannot be inferred solely from a COREP row number."
+    ],
+    [
+      "Dimension and member",
+      "The business qualifier and its permissible value (e.g. reporting entity or consolidation scope); precise EBA IDs require original package import."
+    ],
+    [
+      "XBRL taxonomy",
+      "Machine-readable implementation of DPM concepts, entry points and relationships for data exchange."
+    ],
+    [
+      "Validation rule",
+      "Formal consistency or calculation condition published for an EBA taxonomy release, with rule ID and status. Conceptual examples below are NOT official rule IDs."
+    ]
+  ]
+}
