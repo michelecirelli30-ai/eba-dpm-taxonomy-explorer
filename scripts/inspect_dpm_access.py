@@ -67,10 +67,28 @@ def main():
    report["schema_inspected"]={}
    for t in selection:
     try:
-     result=run(["mdb-schema",str(db),"sqlite",t],timeout=25)
+     result=run(["mdb-schema","-T",t,str(db),"sqlite"],timeout=25)
      report["schema_inspected"][t]={"exit_status":result["status"],"ddl":result["stdout"][:6500],"stderr":result["stderr"][:300]}
     except Exception as e:report["schema_inspected"][t]={"error":str(e)[:200]}
    report["schema_inspected_count"]=len(selection)
+   # Read bounded samples of actual row records for join-key discovery.
+   # mdb-export output is streamed; do not export full datasets at this stage.
+   preview_names=["Release","Framework","Module","ModuleVersion","Table","TableVersion","TableVersionCell","Cell","Variable","VariableVersion","Concept","Context","ContextComposition","Item","ItemCategory","TableGroup","Header","HeaderVersion","ModuleVersionComposition","TableGroupComposition","KeyComposition","DPMClass","Property","Operation","OperationVersion","Aux_CellMapping"]
+   report["sample_rows"]={}
+   for name in preview_names:
+    if name not in names:continue
+    try:
+     p=subprocess.Popen(["mdb-export",str(db),name],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,errors="replace")
+     lines=[]
+     for _ in range(7):
+      line=p.stdout.readline()
+      if not line:break
+      lines.append(line[:20000].rstrip("\\n"))
+     p.terminate()
+     try:p.communicate(timeout=4)
+     except subprocess.TimeoutExpired:p.kill();p.communicate()
+     report["sample_rows"][name]=lines
+    except Exception as e:report["sample_rows"][name]=["ERROR: "+str(e)[:180]]
    report["status"]="schema_extracted"
  except Exception as e:
   report["status"]="failed"
