@@ -50,13 +50,30 @@ var references=referencedRows(r.expression).filter(function(row){return !!getCel
 var longRule=(r.expression||"").length>320||references.length>8;
 var explanation=window.EbaRuleTranslator?window.EbaRuleTranslator.interpret(r.expression,rows()):null;
 var structured=explanation&&window.EbaRuleTranslator.readableStructure(explanation);
+var rowSet=explanation&&window.EbaRuleTranslator.rowSetStructure(explanation);
 var isSupported=explanation&&explanation.status==="supported";
 var html='<span class="pill">'+esc(r.type)+' · official Access database</span><h2 style="margin-top:14px">'+esc(r.code)+'</h2>'+
 '<p class="fine">OperationID '+esc(r.operation_id)+' · OperationVID '+esc(r.operation_vid)+' · StartReleaseID '+esc(r.start_release_id)+'</p>';
 if(explanation){
   html+='<div class="map-warn" style="margin:14px 0"><b>EBA Rule Translator · '+(isSupported?'Deterministic interpretation':'Requires technical review')+'</b>'+
   '<p class="fine">Explanations use the imported EBA DPM labels. The original EBA expression is the authoritative source.</p></div>';
-  if(isSupported&&structured&&!structured.long&&structured.termCount<=6){
+  if(isSupported&&rowSet){
+    var readableSign=rowSet.operator==="<="?"non-positive (≤ 0)":"non-negative (≥ 0)";
+    html+='<div class="odpm-quick"><h3>Quick formula</h3>'+
+      '<p class="odpm-equation">Each selected reporting cell '+esc(rowSet.operator)+' 0</p>'+
+      '<p class="fine">'+esc(rowSet.count)+' verified COREP '+esc(rowSet.table)+
+      ' cells · column c'+esc(rowSet.column)+' · individual sign constraint ('+esc(readableSign)+')</p></div>'+
+      '<h3>Plain English</h3><p class="lead">'+esc(explanation.plainEnglish)+'</p>'+
+      '<p class="fine">This is NOT a sum: the comparison applies separately to each listed cell.</p>'+
+      '<details class="odpm-fold"><summary>View all '+rowSet.count+' selected EBA rows and CellIDs</summary>'+
+      '<div class="table-scroll"><table><thead><tr><th>Row</th><th>Official description</th><th>CellID</th></tr></thead><tbody>'+
+      rowSet.members.map(function(member){return '<tr><td><button type="button" class="odpm-link" data-row="'+esc(member.row)+
+        '">r'+esc(member.row)+'</button></td><td>'+esc(member.label)+
+        '</td><td>'+esc(member.cellId)+'</td></tr>'}).join("")+
+      '</tbody></table></div></details>'+
+      '<div class="map-warn"><b>Evaluation scope:</b> default: '+esc(rowSet.defaultValue)+
+      ', interval: '+esc(rowSet.interval)+'. This description does not evaluate missing or null facts, or establish a requirement to populate every cell. Verify the applicable EBA rule status separately.</div>';
+  }else if(isSupported&&structured&&!structured.long&&structured.termCount<=6){
     var names={
       "Capital instruments and share premium eligible as CET1 Capital":"CET1-eligible instruments & share premium",
       "Fully paid up capital instruments":"Fully paid-up capital",
@@ -91,7 +108,7 @@ if(explanation){
   }
   html+='<details class="odpm-fold"'+(longRule?'':' open')+'><summary>Technical breakdown</summary>'+
     explanation.technical.map(function(line){return '<p class="fine">'+esc(line)+'</p>'}).join("")+'</details>';
-  if(explanation.references.some(function(item){return item.cellId!==null})){
+  if(!rowSet&&explanation.references.some(function(item){return item.cellId!==null})){
     html+='<details class="odpm-fold"><summary>Verified cell references ('+explanation.references.filter(function(item){return item.cellId!==null}).length+')</summary><div class="odpm-ref-list">'+
     explanation.references.filter(function(item){return item.cellId!==null}).map(function(item){return '<div><button class="odpm-link" type="button" data-row="'+esc(item.row)+'">r'+esc(item.row)+'</button> '+esc(item.label)+' · c'+esc(item.column)+' · CellID '+esc(item.cellId)+' · VariableVID '+esc(item.variableVid)+'</div>'}).join("")+'</div></details>';
   }
