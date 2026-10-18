@@ -47,33 +47,59 @@ var r=filtered.find(function(x){return x.operation_vid===selectedRule})||filtere
 }
 function renderRuleDetail(r){
 var references=referencedRows(r.expression).filter(function(row){return !!getCell(row)});
-el("officialRuleDetail").innerHTML='<span class="pill">'+esc(r.type)+' · official Access database</span><h2 style="margin-top:14px">'+esc(r.code)+'</h2><p class="fine">OperationID '+esc(r.operation_id)+' · OperationVID '+esc(r.operation_vid)+' · StartReleaseID '+esc(r.start_release_id)+'</p><h3>Original expression</h3><pre class="odpm-formula">'+esc(r.expression||"")+'</pre><h3>Description</h3><p class="lead">'+esc(r.description||"—")+'</p><h3>Referenced C 01.00 cells ('+references.length+')</h3><div class="odpm-inline">'+references.map(function(row){return '<button class="odpm-link" data-row="'+esc(row)+'">r'+esc(row)+'</button>'}).join("")+'</div><p class="fine">Current EBA activation/deactivation and severity are NOT determined from this database alone. Verify against the applicable published validation-rule package.</p>';
-if(window.EbaRuleTranslator){
-var interpretation=window.EbaRuleTranslator.interpret(r.expression,rows());
-var supported=interpretation.status==="supported";
-var heading='<div class="map-warn" style="margin-top:17px"><b>EBA Rule Translator · '+(supported?'Deterministic interpretation':'Requires technical review')+'</b><p class="fine">Generated from imported EBA cell metadata, not AI output. The original formula above remains authoritative.</p></div>';
-var structured=supported&&window.EbaRuleTranslator.readableStructure(interpretation);
-var explain;
-if(structured&&structured.long){
-var pieces=structured.terms.map(function(term){return '<tr><td><button type="button" class="odpm-link" data-row="'+esc(term.row)+'">r'+esc(term.row)+'</button></td><td>'+esc(term.label)+'</td><td>'+esc(term.coefficient===1?'+':'−')+'</td></tr>'}).join("");
-explain='<h3>Business summary</h3><p class="lead"><strong>'+esc(structured.shortPlain)+'</strong></p>'+
-'<p class="fine">Target: '+esc(structured.lhs.label)+' · CellID '+esc(structured.lhs.cellId)+'</p>'+
-(structured.caution?'<div class="map-warn">'+esc(structured.caution)+'</div>':'')+
-'<details style="margin:15px 0"><summary style="cursor:pointer;color:var(--wine);font-weight:750">Show all '+structured.termCount+' components with official row labels</summary>'+
-'<div class="table-scroll"><table><thead><tr><th>COREP row</th><th>Official description</th><th>Operator</th></tr></thead><tbody>'+pieces+'</tbody></table></div></details>'+
-'<details style="margin:15px 0"><summary style="cursor:pointer;color:var(--wine);font-weight:750">Show expanded business formula and full Plain English rendering</summary>'+
-'<h3>Business formula</h3><p class="lead">'+esc(interpretation.businessFormula)+'</p>'+
-'<h3>Plain English — full</h3><p class="lead">'+esc(interpretation.plainEnglish)+'</p></details>';
+var longRule=(r.expression||"").length>320||references.length>8;
+var explanation=window.EbaRuleTranslator?window.EbaRuleTranslator.interpret(r.expression,rows()):null;
+var structured=explanation&&window.EbaRuleTranslator.readableStructure(explanation);
+var isSupported=explanation&&explanation.status==="supported";
+var html='<span class="pill">'+esc(r.type)+' · official Access database</span><h2 style="margin-top:14px">'+esc(r.code)+'</h2>'+
+'<p class="fine">OperationID '+esc(r.operation_id)+' · OperationVID '+esc(r.operation_vid)+' · StartReleaseID '+esc(r.start_release_id)+'</p>';
+if(explanation){
+  html+='<div class="map-warn" style="margin:14px 0"><b>EBA Rule Translator · '+(isSupported?'Deterministic interpretation':'Requires technical review')+'</b>'+
+  '<p class="fine">Explanations use the imported EBA DPM labels. The original EBA expression is the authoritative source.</p></div>';
+  if(isSupported&&structured&&structured.long){
+    html+='<h3>Business summary</h3><p class="lead" style="font-weight:650">'+esc(structured.shortPlain)+'</p>'+
+    '<p class="fine">Target: '+esc(structured.lhs.label)+' · r'+esc(structured.lhs.row)+' · CellID '+esc(structured.lhs.cellId)+'</p>';
+    if(structured.caution)html+='<div class="map-warn">'+esc(structured.caution)+'</div>';
+    html+='<details class="odpm-fold"><summary>View '+structured.termCount+' official components and their signs</summary>'+
+    '<div class="table-scroll"><table><thead><tr><th>COREP row</th><th>Official EBA description</th><th>Operator</th></tr></thead><tbody>'+
+    structured.terms.map(function(term){return '<tr><td><button type="button" class="odpm-link" data-row="'+esc(term.row)+'">r'+esc(term.row)+'</button></td><td>'+esc(term.label)+'</td><td>'+esc(term.coefficient===1?'+':'−')+'</td></tr>'}).join("")+
+    '</tbody></table></div></details>';
+    html+='<details class="odpm-fold"><summary>View expanded Business Formula and Plain English</summary>'+
+    '<h3>Business formula</h3><p class="lead">'+esc(explanation.businessFormula)+'</p>'+
+    '<h3>Full Plain English</h3><p class="lead">'+esc(explanation.plainEnglish)+'</p></details>';
+  }else if(isSupported){
+    html+='<h3>Plain English</h3><p class="lead">'+esc(explanation.plainEnglish)+'</p>'+
+    '<h3>Business formula</h3><p class="lead">'+esc(explanation.businessFormula)+'</p>';
+  }else{
+    html+='<h3>Requires technical review</h3><p class="fine">'+esc(explanation.reason.join("; "))+'</p>';
+  }
+  html+='<details class="odpm-fold"'+(longRule?'':' open')+'><summary>Technical breakdown</summary>'+
+    explanation.technical.map(function(line){return '<p class="fine">'+esc(line)+'</p>'}).join("")+'</details>';
+  if(explanation.references.some(function(item){return item.cellId!==null})){
+    html+='<details class="odpm-fold"><summary>Verified cell references ('+explanation.references.filter(function(item){return item.cellId!==null}).length+')</summary><div class="odpm-ref-list">'+
+    explanation.references.filter(function(item){return item.cellId!==null}).map(function(item){return '<div><button class="odpm-link" type="button" data-row="'+esc(item.row)+'">r'+esc(item.row)+'</button> '+esc(item.label)+' · c'+esc(item.column)+' · CellID '+esc(item.cellId)+' · VariableVID '+esc(item.variableVid)+'</div>'}).join("")+'</div></details>';
+  }
 }else{
-explain=supported?'<h3>Plain English</h3><p class="lead">'+esc(interpretation.plainEnglish)+'</p>'+
-'<h3>Business formula</h3><p class="lead">'+esc(interpretation.businessFormula)+'</p>':
-'<h3>Requires technical review</h3><p class="fine">'+esc(interpretation.reason.join("; "))+'</p>';
+  html+='<p class="fine">The rule translator script is unavailable; the unmodified source expression is preserved below.</p>';
 }
-var tech='<h3>Technical breakdown</h3><div class="fine">'+interpretation.technical.map(function(x){return '<p>'+esc(x)+'</p>'}).join("")+'</div>';
-var refs='<h3>Verified cell references</h3><p class="fine">'+interpretation.references.filter(function(x){return x.cellId!==null}).map(function(x){return esc(x.label)+' · r'+esc(x.row)+'/c'+esc(x.column)+' · CellID '+esc(x.cellId)+'<span style="display:block"></span>'}).join("")+'</p>';
-el("officialRuleDetail").insertAdjacentHTML("beforeend",heading+explain+tech+refs);
-}
+html+='<details class="odpm-fold"'+(longRule?'':' open')+'><summary>Original EBA expression (unaltered)</summary>'+
+  '<pre class="odpm-formula">'+esc(r.expression||"")+'</pre></details>'+
+  '<button class="btn outline" style="margin:7px 0 12px" type="button" id="copyEbaExpression">Copy original EBA expression</button>';
+if(r.description)html+='<details class="odpm-fold"'+(longRule?'':' open')+'><summary>Official EBA rule description</summary><p class="lead">'+esc(r.description)+'</p></details>';
+html+='<details class="odpm-fold"'+(longRule?'':' open')+'><summary>Source formula row references ('+references.length+')</summary><div class="odpm-inline">'+
+  references.map(function(row){return '<button class="odpm-link" type="button" data-row="'+esc(row)+'">r'+esc(row)+'</button>'}).join("")+'</div></details>'+
+'<p class="fine" style="margin-top:13px">Current EBA rule activation/deactivation and severity are not determined from this DPM database alone. Verify the applicable official EBA rule-status package.</p>';
+el("officialRuleDetail").innerHTML=html;
 el("officialRuleDetail").querySelectorAll("[data-row]").forEach(function(b){b.onclick=function(){openOfficial(b.dataset.row);el("officialDetail").scrollIntoView({behavior:"smooth",block:"start"})}});
+el("copyEbaExpression").onclick=function(){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(r.expression||"").then(function(){el("copyEbaExpression").textContent="Expression copied";}).catch(function(){el("copyEbaExpression").textContent="Select and copy the original expression";});
+  }else{
+    el("copyEbaExpression").textContent="Select and copy the expression above";
+    var source=el("officialRuleDetail").querySelector(".odpm-formula");
+    if(source){source.parentElement.open=true;}
+  }
+};
 }
 function download(filename,mime,text){var u=URL.createObjectURL(new Blob([text],{type:mime})),a=document.createElement("a");a.href=u;a.download=filename;a.click();setTimeout(function(){URL.revokeObjectURL(u)},1000)}
 el("officialCsv").onclick=function(){if(!db)return;var cols=["CellCode","Row","Column","CellID","VariableVID","TableVID","MetricPropertyID","ContextID","MemberSignatures"];var values=rows().map(function(c){return [c.cell_code,c.row,c.column,c.cell_id,c.variable_vid,c.table_vid,c.variable&&c.variable.property_id,c.variable&&c.variable.context_id,(c.context_dimensions||[]).flatMap(function(d){return (d.item_categories||[]).map(function(x){return x.signature})}).join(";")]});var csv=[cols].concat(values).map(function(line){return line.map(function(x){return '"'+String(x==null?"":x).replace(/"/g,'""')+'"'}).join(",")}).join("\r\n");download("eba_corep_c0100_official.csv","text/csv;charset=utf-8","\ufeff"+csv)};
