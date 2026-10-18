@@ -48,6 +48,18 @@ var r=filtered.find(function(x){return x.operation_vid===selectedRule})||filtere
 function renderRuleDetail(r){
 var references=referencedRows(r.expression).filter(function(row){return !!getCell(row)});
 el("officialRuleDetail").innerHTML='<span class="pill">'+esc(r.type)+' · official Access database</span><h2 style="margin-top:14px">'+esc(r.code)+'</h2><p class="fine">OperationID '+esc(r.operation_id)+' · OperationVID '+esc(r.operation_vid)+' · StartReleaseID '+esc(r.start_release_id)+'</p><h3>Original expression</h3><pre class="odpm-formula">'+esc(r.expression||"")+'</pre><h3>Description</h3><p class="lead">'+esc(r.description||"—")+'</p><h3>Referenced C 01.00 cells ('+references.length+')</h3><div class="odpm-inline">'+references.map(function(row){return '<button class="odpm-link" data-row="'+esc(row)+'">r'+esc(row)+'</button>'}).join("")+'</div><p class="fine">Current EBA activation/deactivation and severity are NOT determined from this database alone. Verify against the applicable published validation-rule package.</p>';
+if(window.EbaRuleTranslator){
+var interpretation=window.EbaRuleTranslator.interpret(r.expression,rows());
+var supported=interpretation.status==="supported";
+var heading='<div class="map-warn" style="margin-top:17px"><b>EBA Rule Translator · '+(supported?'Deterministic interpretation':'Requires technical review')+'</b><p class="fine">Generated from imported EBA cell metadata, not AI output. The original formula above remains authoritative.</p></div>';
+var explain=supported?
+'<h3>Plain English</h3><p class="lead">'+esc(interpretation.plainEnglish)+'</p>'+
+'<h3>Business formula</h3><p class="lead">'+esc(interpretation.businessFormula)+'</p>':
+'<h3>Requires technical review</h3><p class="fine">'+esc(interpretation.reason.join("; "))+'</p>';
+var tech='<h3>Technical breakdown</h3><div class="fine">'+interpretation.technical.map(function(x){return '<p>'+esc(x)+'</p>'}).join("")+'</div>';
+var refs='<h3>Verified cell references</h3><p class="fine">'+interpretation.references.filter(function(x){return x.cellId!==null}).map(function(x){return esc(x.label)+' · r'+esc(x.row)+'/c'+esc(x.column)+' · CellID '+esc(x.cellId)+'<span style="display:block"></span>'}).join("")+'</p>';
+el("officialRuleDetail").insertAdjacentHTML("beforeend",heading+explain+tech+refs);
+}
 el("officialRuleDetail").querySelectorAll("[data-row]").forEach(function(b){b.onclick=function(){openOfficial(b.dataset.row);el("officialDetail").scrollIntoView({behavior:"smooth",block:"start"})}});
 }
 function download(filename,mime,text){var u=URL.createObjectURL(new Blob([text],{type:mime})),a=document.createElement("a");a.href=u;a.download=filename;a.click();setTimeout(function(){URL.revokeObjectURL(u)},1000)}
