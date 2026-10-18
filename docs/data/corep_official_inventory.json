@@ -1,0 +1,1833 @@
+{
+  "generated_at_utc": "2026-10-18T18:43:44.626956+00:00",
+  "provenance": "Official EBA DPM Access 4.3 technical package",
+  "release_code": "4.3",
+  "release_id": 1010000050,
+  "archive_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac",
+  "scope": "active ModuleVersion and linked active TableVersion records",
+  "modules": [
+    {
+      "module_code": "COREP_ALM",
+      "module_name": "Additional Liquidity Monitoring - COREP",
+      "module_vid": 494,
+      "module_version": "3.3.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": "2027-09-29",
+      "table_count": 23,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01",
+          "name": "Maturity Ladder",
+          "table_vid": 5311,
+          "table_id": 1405,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01.a",
+          "name": "Maturity ladder. Total. Overnight and higher maturity",
+          "table_vid": 6755,
+          "table_id": 429,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01.b",
+          "name": "Maturity ladder. Total. Initial stock",
+          "table_vid": 6810,
+          "table_id": 430,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01.c",
+          "name": "Maturity ladder. Total. Behavioural flows",
+          "table_vid": 6828,
+          "table_id": 438,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01.w",
+          "name": "Maturity ladder. Significant currencies. Overnight and higher maturity",
+          "table_vid": 6756,
+          "table_id": 431,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01.x",
+          "name": "Maturity ladder. Significant currencies. Initial stock",
+          "table_vid": 6811,
+          "table_id": 432,
+          "already_imported": false
+        },
+        {
+          "code": "C_66.01.y",
+          "name": "Maturity ladder. Significant currencies. Behavioural flows",
+          "table_vid": 6829,
+          "table_id": 440,
+          "already_imported": false
+        },
+        {
+          "code": "C_67.00",
+          "name": "Concentration of funding by counterparty",
+          "table_vid": 4869,
+          "table_id": 1369,
+          "already_imported": false
+        },
+        {
+          "code": "C_67.00.a",
+          "name": "Concentration of funding by counterparty. Total",
+          "table_vid": 6752,
+          "table_id": 364,
+          "already_imported": false
+        },
+        {
+          "code": "C_67.00.w",
+          "name": "Concentration of funding by counterparty. Significant currencies",
+          "table_vid": 6753,
+          "table_id": 365,
+          "already_imported": false
+        },
+        {
+          "code": "C_68.00",
+          "name": "Concentration of funding by product type",
+          "table_vid": 4870,
+          "table_id": 1370,
+          "already_imported": false
+        },
+        {
+          "code": "C_68.00.a",
+          "name": "Concentration of funding by product type. Total",
+          "table_vid": 6729,
+          "table_id": 366,
+          "already_imported": false
+        },
+        {
+          "code": "C_68.00.w",
+          "name": "Concentration of funding by product type. Significant currencies",
+          "table_vid": 6730,
+          "table_id": 367,
+          "already_imported": false
+        },
+        {
+          "code": "C_69.00",
+          "name": "Prices for various lengths of funding",
+          "table_vid": 4871,
+          "table_id": 1371,
+          "already_imported": false
+        },
+        {
+          "code": "C_69.00.a",
+          "name": "Prices for various lengths of funding. Total",
+          "table_vid": 6727,
+          "table_id": 368,
+          "already_imported": false
+        },
+        {
+          "code": "C_69.00.w",
+          "name": "Prices for various lengths of funding. Significant currencies",
+          "table_vid": 6728,
+          "table_id": 369,
+          "already_imported": false
+        },
+        {
+          "code": "C_70.00",
+          "name": "Roll-over of funding",
+          "table_vid": 4872,
+          "table_id": 1372,
+          "already_imported": false
+        },
+        {
+          "code": "C_70.00.a",
+          "name": "Roll-over of funding. Total",
+          "table_vid": 6725,
+          "table_id": 370,
+          "already_imported": false
+        },
+        {
+          "code": "C_70.00.w",
+          "name": "Roll-over of funding. Significant currencies",
+          "table_vid": 6726,
+          "table_id": 371,
+          "already_imported": false
+        },
+        {
+          "code": "C_71.00",
+          "name": "Concentration of counterbalancing capacity by issuer/counterparty",
+          "table_vid": 4873,
+          "table_id": 1373,
+          "already_imported": false
+        },
+        {
+          "code": "C_71.00.a",
+          "name": "Concentration of counterbalancing capacity by counterparty. Total",
+          "table_vid": 6716,
+          "table_id": 372,
+          "already_imported": false
+        },
+        {
+          "code": "C_71.00.w",
+          "name": "Concentration of counterbalancing capacity by counterparty. Significant currencies",
+          "table_vid": 6721,
+          "table_id": 373,
+          "already_imported": false
+        }
+      ]
+    },
+    {
+      "module_code": "COREP_FRTB",
+      "module_name": "FRTB - COREP",
+      "module_vid": 505,
+      "module_version": "3.4.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": "2026-09-29",
+      "table_count": 3,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_90.00",
+          "name": "Trading book and market risk thresholds (TBT)",
+          "table_vid": 7185,
+          "table_id": 647,
+          "already_imported": false
+        },
+        {
+          "code": "C_91.00",
+          "name": "Alternative Standardised Approach: Summary (MKR ASA SUM)",
+          "table_vid": 7223,
+          "table_id": 2161,
+          "already_imported": false
+        }
+      ]
+    },
+    {
+      "module_code": "COREP_LCR_DA",
+      "module_name": "LCR Delegated Act - COREP",
+      "module_vid": 500,
+      "module_version": "3.3.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": null,
+      "table_count": 19,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_72.00",
+          "name": "(LC(DA) - Liquid Assets) Liquidity Coverage. Liquid assets (Delegated Act)",
+          "table_vid": 4878,
+          "table_id": 1378,
+          "already_imported": false
+        },
+        {
+          "code": "C_72.00.a",
+          "name": "Liquidity Coverage . Liquid assets. Total (DA)",
+          "table_vid": 7056,
+          "table_id": 392,
+          "already_imported": false
+        },
+        {
+          "code": "C_72.00.w",
+          "name": "Liquidity Coverage. Liquid assets. Significant currencies (DA)",
+          "table_vid": 7075,
+          "table_id": 393,
+          "already_imported": false
+        },
+        {
+          "code": "C_73.00",
+          "name": "(LC(DA) - Outflows) Liquidity Coverage. Outflows (Delegated Act)",
+          "table_vid": 5373,
+          "table_id": 1379,
+          "already_imported": false
+        },
+        {
+          "code": "C_73.00.a",
+          "name": "Liquidity Coverage. Outflows. Total (DA)",
+          "table_vid": 7108,
+          "table_id": 394,
+          "already_imported": false
+        },
+        {
+          "code": "C_73.00.w",
+          "name": "Liquidity Coverage. Outflows. Significant currencies (DA)",
+          "table_vid": 7130,
+          "table_id": 395,
+          "already_imported": false
+        },
+        {
+          "code": "C_74.00",
+          "name": "(LC(DA) - Inflows) Liquidity Coverage. Inflows (Delegated Act)",
+          "table_vid": 4880,
+          "table_id": 1380,
+          "already_imported": false
+        },
+        {
+          "code": "C_74.00.a",
+          "name": "Liquidity Coverage. Inflows. Total (DA)",
+          "table_vid": 7109,
+          "table_id": 396,
+          "already_imported": false
+        },
+        {
+          "code": "C_74.00.w",
+          "name": "Liquidity Coverage. Inflows. Significant currencies (DA)",
+          "table_vid": 7129,
+          "table_id": 397,
+          "already_imported": false
+        },
+        {
+          "code": "C_75.01",
+          "name": "(LC(DA) - Collateral swaps) Liquidity Coverage. Collateral swaps (Delegated Act)",
+          "table_vid": 4948,
+          "table_id": 1448,
+          "already_imported": false
+        },
+        {
+          "code": "C_75.01.a",
+          "name": "Liquidity Coverage. Collateral swaps. Total (DA)",
+          "table_vid": 7107,
+          "table_id": 485,
+          "already_imported": false
+        },
+        {
+          "code": "C_75.01.w",
+          "name": "Liquidity Coverage. Collateral swaps. Significant currencies (DA)",
+          "table_vid": 7063,
+          "table_id": 486,
+          "already_imported": false
+        },
+        {
+          "code": "C_76.00",
+          "name": "(LC(DA) - Calculations) Liquidity Coverage. Calculations (Delegated Act)",
+          "table_vid": 4882,
+          "table_id": 1382,
+          "already_imported": false
+        },
+        {
+          "code": "C_76.00.a",
+          "name": "Liquidity Coverage. Calculations. Total (DA) .a",
+          "table_vid": 7062,
+          "table_id": 400,
+          "already_imported": false
+        },
+        {
+          "code": "C_76.00.b",
+          "name": "Liquidity Coverage. Calculations. Total (DA) .b",
+          "table_vid": 7200,
+          "table_id": 2145,
+          "already_imported": false
+        },
+        {
+          "code": "C_76.00.w",
+          "name": "Liquidity Coverage. Calculations. Significant currencies (DA) .w",
+          "table_vid": 7061,
+          "table_id": 401,
+          "already_imported": false
+        },
+        {
+          "code": "C_76.00.y",
+          "name": "Liquidity Coverage. Calculations. Significant currencies (DA) .y",
+          "table_vid": 7201,
+          "table_id": 2146,
+          "already_imported": false
+        },
+        {
+          "code": "C_77.00",
+          "name": "Liquidity coverage - Perimeter of consolidation",
+          "table_vid": 7060,
+          "table_id": 487,
+          "already_imported": false
+        }
+      ]
+    },
+    {
+      "module_code": "COREP_LE",
+      "module_name": "Large Exposures - COREP",
+      "module_vid": 488,
+      "module_version": "3.3.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": null,
+      "table_count": 5,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_26.00",
+          "name": "Large exposures limits",
+          "table_vid": 6586,
+          "table_id": 111,
+          "already_imported": false
+        },
+        {
+          "code": "C_27.00",
+          "name": "Identification of the counterparty",
+          "table_vid": 6587,
+          "table_id": 112,
+          "already_imported": false
+        },
+        {
+          "code": "C_28.00",
+          "name": "Exposures in the non-trading and trading book",
+          "table_vid": 6856,
+          "table_id": 113,
+          "already_imported": false
+        },
+        {
+          "code": "C_29.00",
+          "name": "Detail of the exposures to individual clients within groups of connected clients",
+          "table_vid": 6866,
+          "table_id": 180,
+          "already_imported": false
+        }
+      ]
+    },
+    {
+      "module_code": "COREP_LR",
+      "module_name": "Leverage Ratio - COREP",
+      "module_vid": 458,
+      "module_version": "4.1.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": null,
+      "table_count": 12,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_40.00",
+          "name": "(LR1) Alternative treatment of the Exposure Measure",
+          "table_vid": 4596,
+          "table_id": 1096,
+          "already_imported": false
+        },
+        {
+          "code": "C_40.00.a",
+          "name": "Alternative treatment of the Exposure Measure (I)",
+          "table_vid": 6681,
+          "table_id": 656,
+          "already_imported": false
+        },
+        {
+          "code": "C_40.00.b",
+          "name": "Alternative treatment of the Exposure Measure (II)",
+          "table_vid": 6690,
+          "table_id": 655,
+          "already_imported": false
+        },
+        {
+          "code": "C_43.00",
+          "name": "(LR4) Breakdown of leverage ratio exposure measure components",
+          "table_vid": 4599,
+          "table_id": 1099,
+          "already_imported": false
+        },
+        {
+          "code": "C_43.00.a",
+          "name": "Breakdown of leverage ratio exposure measure components: Off-balance sheet items, derivatives, SFTs and trading book",
+          "table_vid": 6758,
+          "table_id": 306,
+          "already_imported": false
+        },
+        {
+          "code": "C_43.00.b",
+          "name": "Breakdown of leverage ratio exposure measure components: Other non-trading book exposures (SA)",
+          "table_vid": 6441,
+          "table_id": 307,
+          "already_imported": false
+        },
+        {
+          "code": "C_43.00.c",
+          "name": "Breakdown of leverage ratio exposure measure components: Other non-trading book exposures (IRB)",
+          "table_vid": 6443,
+          "table_id": 308,
+          "already_imported": false
+        },
+        {
+          "code": "C_44.00",
+          "name": "General Information",
+          "table_vid": 6440,
+          "table_id": 120,
+          "already_imported": false
+        },
+        {
+          "code": "C_47.00",
+          "name": "Leverage ratio calculation",
+          "table_vid": 6750,
+          "table_id": 391,
+          "already_imported": false
+        },
+        {
+          "code": "C_48.01",
+          "name": "Leverage ratio volatility: mean value for the reporting period (LR6.1)",
+          "table_vid": 6439,
+          "table_id": 657,
+          "already_imported": false
+        },
+        {
+          "code": "C_48.02",
+          "name": "Leverage ratio volatility: daily values for the reporting period (LR6.2)",
+          "table_vid": 6438,
+          "table_id": 658,
+          "already_imported": false
+        }
+      ]
+    },
+    {
+      "module_code": "COREP_NSFR",
+      "module_name": "Stable Funding - COREP",
+      "module_vid": 502,
+      "module_version": "3.2.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": null,
+      "table_count": 40,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00",
+          "name": "NSFR - Required stable funding",
+          "table_vid": 5058,
+          "table_id": 1558,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00.a",
+          "name": "NSFR - Required stable funding (I). Total",
+          "table_vid": 7076,
+          "table_id": 672,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00.b",
+          "name": "NSFR - Required stable funding (II). Total",
+          "table_vid": 7090,
+          "table_id": 678,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00.c",
+          "name": "NSFR - Required stable funding (III). Total",
+          "table_vid": 7091,
+          "table_id": 762,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00.w",
+          "name": "NSFR - Required stable funding (I). Significant currencies",
+          "table_vid": 7146,
+          "table_id": 679,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00.x",
+          "name": "NSFR - Required stable funding (III). Significant currencies",
+          "table_vid": 7147,
+          "table_id": 763,
+          "already_imported": false
+        },
+        {
+          "code": "C_80.00.y",
+          "name": "NSFR - Required stable funding (II). Significant currencies",
+          "table_vid": 7148,
+          "table_id": 681,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00",
+          "name": "NSFR - Available stable funding",
+          "table_vid": 5059,
+          "table_id": 1559,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00.a",
+          "name": "NSFR - Available stable funding (I). Total",
+          "table_vid": 7125,
+          "table_id": 673,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00.b",
+          "name": "NSFR - Available stable funding (II). Total",
+          "table_vid": 7126,
+          "table_id": 682,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00.c",
+          "name": "NSFR - Available stable funding (III). Total",
+          "table_vid": 7127,
+          "table_id": 764,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00.w",
+          "name": "NSFR - Available stable funding (I). Significant currencies",
+          "table_vid": 7149,
+          "table_id": 683,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00.x",
+          "name": "NSFR - Available stable funding (III). Significant currencies",
+          "table_vid": 7150,
+          "table_id": 765,
+          "already_imported": false
+        },
+        {
+          "code": "C_81.00.y",
+          "name": "NSFR - Available stable funding (II). Significant currencies",
+          "table_vid": 7151,
+          "table_id": 684,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00",
+          "name": "NSFR - Simplified required stable funding",
+          "table_vid": 5060,
+          "table_id": 1560,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00.a",
+          "name": "NSFR - Simplified required stable funding (I). Total",
+          "table_vid": 7128,
+          "table_id": 674,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00.b",
+          "name": "NSFR - Simplified required stable funding (II). Total",
+          "table_vid": 7135,
+          "table_id": 690,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00.c",
+          "name": "NSFR - Simplified required stable funding (III). Total",
+          "table_vid": 7136,
+          "table_id": 766,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00.w",
+          "name": "NSFR - Simplified required stable funding (I). Significant currencies",
+          "table_vid": 7152,
+          "table_id": 686,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00.x",
+          "name": "NSFR - Simplified required stable funding (III). Significant currencies",
+          "table_vid": 7153,
+          "table_id": 767,
+          "already_imported": false
+        },
+        {
+          "code": "C_82.00.y",
+          "name": "NSFR - Simplified required stable funding (II). Significant currencies",
+          "table_vid": 7154,
+          "table_id": 691,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00",
+          "name": "NSFR - Simplified available stable funding",
+          "table_vid": 5061,
+          "table_id": 1561,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00.a",
+          "name": "NSFR - Simplified available stable funding (I). Total",
+          "table_vid": 7137,
+          "table_id": 675,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00.b",
+          "name": "NSFR - Simplified available stable funding (III). Total",
+          "table_vid": 7138,
+          "table_id": 771,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00.c",
+          "name": "NSFR - Simplified available stable funding (II). Total",
+          "table_vid": 7139,
+          "table_id": 770,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00.w",
+          "name": "NSFR - Simplified available stable funding. Significant currencies",
+          "table_vid": 7155,
+          "table_id": 688,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00.x",
+          "name": "NSFR - Simplified available stable funding (II). Significant currencies",
+          "table_vid": 7156,
+          "table_id": 772,
+          "already_imported": false
+        },
+        {
+          "code": "C_83.00.y",
+          "name": "NSFR - Simplified available stable funding (III). Significant currencies",
+          "table_vid": 7157,
+          "table_id": 773,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00",
+          "name": "NSFR - Summary",
+          "table_vid": 5062,
+          "table_id": 1562,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.a",
+          "name": "NSFR - Summary.Total (I)",
+          "table_vid": 7140,
+          "table_id": 676,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.b",
+          "name": "NSFR - Summary.Total (II)",
+          "table_vid": 7141,
+          "table_id": 693,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.c",
+          "name": "NSFR - Summary.Total (III)",
+          "table_vid": 7142,
+          "table_id": 774,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.d",
+          "name": "NSFR - Summary.Total (IV)",
+          "table_vid": 7143,
+          "table_id": 775,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.e",
+          "name": "NSFR - Summary.Total (V)",
+          "table_vid": 7144,
+          "table_id": 778,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.v",
+          "name": "NSFR - Summary.Significant currencies (V)",
+          "table_vid": 7158,
+          "table_id": 779,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.w",
+          "name": "NSFR - Summary.Significant currencies (I)",
+          "table_vid": 7159,
+          "table_id": 689,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.x",
+          "name": "NSFR - Summary.Significant currencies (III)",
+          "table_vid": 7160,
+          "table_id": 776,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.y",
+          "name": "NSFR - Summary.Significant currencies (II)",
+          "table_vid": 7161,
+          "table_id": 694,
+          "already_imported": false
+        },
+        {
+          "code": "C_84.00.z",
+          "name": "NSFR - Summary.Significant currencies (IV)",
+          "table_vid": 7162,
+          "table_id": 777,
+          "already_imported": false
+        }
+      ]
+    },
+    {
+      "module_code": "COREP_OF",
+      "module_name": "Own Funds - COREP",
+      "module_vid": 499,
+      "module_version": "4.1.0",
+      "from_reference_date": "2026-03-31",
+      "to_reference_date": "2027-12-30",
+      "table_count": 95,
+      "tables": [
+        {
+          "code": "C_00.01",
+          "name": "Nature of Report (COREP)",
+          "table_vid": 6867,
+          "table_id": 304,
+          "already_imported": false
+        },
+        {
+          "code": "C_01.00",
+          "name": "Capital Adequacy - Own funds definition",
+          "table_vid": 6871,
+          "table_id": 74,
+          "already_imported": true
+        },
+        {
+          "code": "C_02.00",
+          "name": "Capital Adequacy - Risk Exposure Amounts",
+          "table_vid": 5950,
+          "table_id": 1815,
+          "already_imported": false
+        },
+        {
+          "code": "C_02.00.a",
+          "name": "Capital Adequacy - Risk Exposure Amounts",
+          "table_vid": 6874,
+          "table_id": 75,
+          "already_imported": true
+        },
+        {
+          "code": "C_02.00.b",
+          "name": "OWN FUNDS REQUIREMENTS",
+          "table_vid": 7177,
+          "table_id": 1831,
+          "already_imported": true
+        },
+        {
+          "code": "C_03.00",
+          "name": "Capital Adequacy - Ratios",
+          "table_vid": 6881,
+          "table_id": 76,
+          "already_imported": true
+        },
+        {
+          "code": "C_04.00",
+          "name": "Capital Adequacy - Memorandum Items",
+          "table_vid": 6886,
+          "table_id": 77,
+          "already_imported": true
+        },
+        {
+          "code": "C_05.01",
+          "name": "Capital Adequacy - Transitional provisions: Summary",
+          "table_vid": 6891,
+          "table_id": 78,
+          "already_imported": false
+        },
+        {
+          "code": "C_05.02",
+          "name": "Capital Adequacy - Transitional provisions: Grandfathered instruments not constituting State aid",
+          "table_vid": 6892,
+          "table_id": 79,
+          "already_imported": false
+        },
+        {
+          "code": "C_06.01",
+          "name": "Group Solvency - Total",
+          "table_vid": 6918,
+          "table_id": 389,
+          "already_imported": false
+        },
+        {
+          "code": "C_06.02",
+          "name": "Group Solvency",
+          "table_vid": 6924,
+          "table_id": 390,
+          "already_imported": false
+        },
+        {
+          "code": "C_07.00",
+          "name": "(CR SA) Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements",
+          "table_vid": 6072,
+          "table_id": 1847,
+          "already_imported": false
+        },
+        {
+          "code": "C_07.00.a",
+          "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements",
+          "table_vid": 6927,
+          "table_id": 1843,
+          "already_imported": false
+        },
+        {
+          "code": "C_07.00.b",
+          "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Of which: Arising from Counterparty Credit Risk",
+          "table_vid": 6929,
+          "table_id": 1844,
+          "already_imported": false
+        },
+        {
+          "code": "C_07.00.c",
+          "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Memorandum items - Secured on Property",
+          "table_vid": 6930,
+          "table_id": 1845,
+          "already_imported": false
+        },
+        {
+          "code": "C_07.00.d",
+          "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Memorandum items - in default",
+          "table_vid": 6931,
+          "table_id": 1846,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.01",
+          "name": "(CR IRB 1) Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL",
+          "table_vid": 4568,
+          "table_id": 1068,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.01.a",
+          "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL",
+          "table_vid": 6933,
+          "table_id": 1832,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.01.b",
+          "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL - Of which arising from counterparty credit risk and off balance sheet",
+          "table_vid": 6940,
+          "table_id": 1833,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.01.c",
+          "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL - Of which arising from counterparty credit risk and off balance sheet",
+          "table_vid": 6941,
+          "table_id": 1839,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.02",
+          "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - Breakdown of exposures assigned to obligor grades or pools by obligor grades",
+          "table_vid": 6962,
+          "table_id": 1834,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.03",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: breakdown by PD ranges  (CR IRB 3)",
+          "table_vid": 6963,
+          "table_id": 1835,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.04",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: RWEA flow statements (CR IRB 4)",
+          "table_vid": 6964,
+          "table_id": 650,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.05",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD (CR IRB 5)",
+          "table_vid": 6965,
+          "table_id": 651,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.05.1",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD according to point (f) of article 180(1) (CR IRB 5)",
+          "table_vid": 5400,
+          "table_id": 1541,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.05.1.a",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD in accordance with Article 180(1), point (f) of Regulation (EU) No 575/2013 (CR IRB 5B) (I)",
+          "table_vid": 6966,
+          "table_id": 652,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.05.1.b",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD in accordance with Article 180(1), point (f) of Regulation (EU) No 575/2013 (CR IRB 5B (II)",
+          "table_vid": 6967,
+          "table_id": 692,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.06",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: specialised lending slotting approach (CR IRB 6)",
+          "table_vid": 6968,
+          "table_id": 653,
+          "already_imported": false
+        },
+        {
+          "code": "C_08.07",
+          "name": "Credit risk and free deliveries: IRB approach to capital requirements: scope of use of IRB and SA approaches (CR IRB 7)",
+          "table_vid": 6969,
+          "table_id": 654,
+          "already_imported": false
+        },
+        {
+          "code": "C_09.01",
+          "name": "(CR GB 1) Geographical breakdown of exposures by residence of the obligor (SA exposures)",
+          "table_vid": 5900,
+          "table_id": 1070,
+          "already_imported": false
+        },
+        {
+          "code": "C_09.01.a",
+          "name": "Geographical breakdown of exposures by residence of the obligor (SA exposures)",
+          "table_vid": 6970,
+          "table_id": 88,
+          "already_imported": false
+        },
+        {
+          "code": "C_09.01.b",
+          "name": "Geographical breakdown of exposures by residence of the obligor (SA exposures) - Exposures in default",
+          "table_vid": 6971,
+          "table_id": 89,
+          "already_imported": false
+        },
+        {
+          "code": "C_09.02",
+          "name": "Geographical breakdown of exposures by residence of the obligor (IRB exposures)",
+          "table_vid": 6972,
+          "table_id": 90,
+          "already_imported": false
+        },
+        {
+          "code": "C_09.04",
+          "name": "Breakdown of credit exposures relevant for the calculation of the countercyclical buffer by country and institution-specific countercyclical buffer rate",
+          "table_vid": 6973,
+          "table_id": 402,
+          "already_imported": false
+        },
+        {
+          "code": "C_10.00",
+          "name": "CREDIT AND COUNTERPARTY CREDIT RISKS AND FREE DELIVERIES: IRB EXPOSURES SUBJECT TO OUTPUT FLOOR",
+          "table_vid": 7045,
+          "table_id": 1808,
+          "already_imported": false
+        },
+        {
+          "code": "C_10.01",
+          "name": "Credit risk: Equity - IRB approaches to capital requirements - TOTAL",
+          "table_vid": 7048,
+          "table_id": 92,
+          "already_imported": false
+        },
+        {
+          "code": "C_10.02",
+          "name": "Credit risk: Equity - IRB approaches to capital requirements - Breakdown of total exposures under the PD/LGD Approach by obligor grades",
+          "table_vid": 7051,
+          "table_id": 93,
+          "already_imported": false
+        },
+        {
+          "code": "C_11.00",
+          "name": "Settlement/Delivery risk",
+          "table_vid": 6974,
+          "table_id": 94,
+          "already_imported": false
+        },
+        {
+          "code": "C_13.01",
+          "name": "(CR SEC) Credit risk: Securitisations",
+          "table_vid": 7052,
+          "table_id": 484,
+          "already_imported": false
+        },
+        {
+          "code": "C_14.00",
+          "name": "Detailed information on securitisations",
+          "table_vid": 7066,
+          "table_id": 97,
+          "already_imported": false
+        },
+        {
+          "code": "C_14.01",
+          "name": "(CR SEC Details) Detailed information on securitisations by approach",
+          "table_vid": 7065,
+          "table_id": 481,
+          "already_imported": false
+        },
+        {
+          "code": "C_15.00",
+          "name": "Exposures and losses from lending collateralised immovable property",
+          "table_vid": 7064,
+          "table_id": 98,
+          "already_imported": false
+        },
+        {
+          "code": "C_16.01",
+          "name": " OPERATIONAL RISK - OWN Funds Requirements (OPR OF)",
+          "table_vid": 5938,
+          "table_id": 1804,
+          "already_imported": false
+        },
+        {
+          "code": "C_16.01.a",
+          "name": "OPERATIONAL RISK - Own Funds Requirements (OPR OF)",
+          "table_vid": 7029,
+          "table_id": 1802,
+          "already_imported": false
+        },
+        {
+          "code": "C_16.01.b",
+          "name": " OPERATIONAL RISK - OWN Funds Requirements (OPR OF) (cont.)",
+          "table_vid": 7198,
+          "table_id": 1803,
+          "already_imported": false
+        },
+        {
+          "code": "C_16.02",
+          "name": "OPERATIONAL RISK - Business Indicator Component (OPR BIC)",
+          "table_vid": 7191,
+          "table_id": 2143,
+          "already_imported": false
+        },
+        {
+          "code": "C_16.03",
+          "name": "OPERATIONAL RISK BREAKDOWN - Losses, expenses, provisions and other financial impacts resulting from operational risk events (OPR BD)",
+          "table_vid": 6915,
+          "table_id": 2117,
+          "already_imported": false
+        },
+        {
+          "code": "C_16.04",
+          "name": "OPERATIONAL RISK - Information on subsidiaries subject to Article 314(3) CRR (OPR ILDC)",
+          "table_vid": 6914,
+          "table_id": 2116,
+          "already_imported": false
+        },
+        {
+          "code": "C_17.01",
+          "name": "(OPR Details) Operational risks: Details",
+          "table_vid": 4910,
+          "table_id": 1410,
+          "already_imported": false
+        },
+        {
+          "code": "C_17.01.a",
+          "name": "OPERATIONAL RISK - Losses and recoveries by business lines and event types in the last year (OPR Details 1)",
+          "table_vid": 7027,
+          "table_id": 441,
+          "already_imported": false
+        },
+        {
+          "code": "C_17.01.b",
+          "name": "OPERATIONAL RISK - Thresholds applied in data collections (OPR Details 1)",
+          "table_vid": 7026,
+          "table_id": 442,
+          "already_imported": false
+        },
+        {
+          "code": "C_17.02",
+          "name": "OPERATIONAL RISK - Large loss events (OPR Details 2)",
+          "table_vid": 7024,
+          "table_id": 428,
+          "already_imported": false
+        },
+        {
+          "code": "C_18.00",
+          "name": "Market risk: Standardised Approach for traded debt instruments",
+          "table_vid": 7020,
+          "table_id": 103,
+          "already_imported": false
+        },
+        {
+          "code": "C_19.00",
+          "name": "Market risk: Standardised Approach for specific risk in securitisations",
+          "table_vid": 7017,
+          "table_id": 104,
+          "already_imported": false
+        },
+        {
+          "code": "C_20.00",
+          "name": "Market risk: Standardised Approach for specific risk in the correlation trading portfolio",
+          "table_vid": 7013,
+          "table_id": 105,
+          "already_imported": false
+        },
+        {
+          "code": "C_21.00",
+          "name": "Market risk: Standardised Approach for position risk in equities",
+          "table_vid": 7012,
+          "table_id": 106,
+          "already_imported": false
+        },
+        {
+          "code": "C_22.00",
+          "name": "Market risk: Standardised Approaches for foreign exchange risk",
+          "table_vid": 7011,
+          "table_id": 107,
+          "already_imported": false
+        },
+        {
+          "code": "C_23.00",
+          "name": "Market risk: Standardised Approach for position risk in commodities",
+          "table_vid": 7007,
+          "table_id": 108,
+          "already_imported": false
+        },
+        {
+          "code": "C_24.00",
+          "name": "Market risk: Internal models - Total",
+          "table_vid": 7006,
+          "table_id": 109,
+          "already_imported": false
+        },
+        {
+          "code": "C_25.01",
+          "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)",
+          "table_vid": 6015,
+          "table_id": 1822,
+          "already_imported": false
+        },
+        {
+          "code": "C_25.01.a",
+          "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)",
+          "table_vid": 6999,
+          "table_id": 1818,
+          "already_imported": false
+        },
+        {
+          "code": "C_25.01.b",
+          "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)",
+          "table_vid": 6998,
+          "table_id": 1821,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.01",
+          "name": "Prudent valuation. Fair-Valued assets and liabilities",
+          "table_vid": 6997,
+          "table_id": 445,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.02",
+          "name": "Prudent valuation. Core approach",
+          "table_vid": 4912,
+          "table_id": 1412,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.02.a",
+          "name": "Prudent valuation: Core approach – Pre and post diversification",
+          "table_vid": 6996,
+          "table_id": 446,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.02.b",
+          "name": "Prudent valuation: Core approach - AVAs assessed to have zero value",
+          "table_vid": 6994,
+          "table_id": 449,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.02.c",
+          "name": "Prudent valuation: Core approach – Other",
+          "table_vid": 6993,
+          "table_id": 450,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.03",
+          "name": "Prudent valuation. Model risk AVA",
+          "table_vid": 6991,
+          "table_id": 447,
+          "already_imported": false
+        },
+        {
+          "code": "C_32.04",
+          "name": "Prudent valuation. Concentrated positions AVA",
+          "table_vid": 6990,
+          "table_id": 448,
+          "already_imported": false
+        },
+        {
+          "code": "C_33.00",
+          "name": "General Governments exposures by country of the counterparty (GOV)",
+          "table_vid": 4902,
+          "table_id": 1402,
+          "already_imported": false
+        },
+        {
+          "code": "C_33.00.a",
+          "name": "General governments exposures by country of the counterparty and regulatory approach (Gov)",
+          "table_vid": 6989,
+          "table_id": 423,
+          "already_imported": false
+        },
+        {
+          "code": "C_33.00.b",
+          "name": "General governments exposures by country of the counterparty and regulatory approach (Gov)",
+          "table_vid": 6987,
+          "table_id": 425,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.01",
+          "name": "Size of the derivative business (CCR 1)",
+          "table_vid": 6986,
+          "table_id": 1547,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.01.a",
+          "name": "Size of the derivative business (CCR 1) (I)",
+          "table_vid": 6985,
+          "table_id": 659,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.01.b",
+          "name": "Size of the derivative business (CCR 1) (II)",
+          "table_vid": 6984,
+          "table_id": 660,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.02",
+          "name": "CCR exposures by approach (CCR 2)",
+          "table_vid": 7057,
+          "table_id": 2127,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.02.a",
+          "name": "CCR exposures by approach (CCR 2) .a",
+          "table_vid": 7163,
+          "table_id": 661,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.02.b",
+          "name": "CCR exposures by approach (CCR 2) .b",
+          "table_vid": 7059,
+          "table_id": 2129,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.03",
+          "name": "CCR exposures treated with standardised approaches: SA-CCR or simplified SA-CCR (CCR 3)",
+          "table_vid": 6981,
+          "table_id": 662,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.04",
+          "name": "CCR exposures treated with the original exposure method (OEM) (CCR 4)",
+          "table_vid": 6980,
+          "table_id": 663,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.05",
+          "name": "CCR exposures treated with the internal model method (IMM) (CCR 5)",
+          "table_vid": 6954,
+          "table_id": 664,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.06",
+          "name": "Top twenty counterparties  (CCR 6)",
+          "table_vid": 6947,
+          "table_id": 665,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.07",
+          "name": "IRB approach – CCR exposures by exposure class and PD scale  (CCR 7)",
+          "table_vid": 6946,
+          "table_id": 1836,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.08",
+          "name": "Composition of collateral for CCR exposures (CCR 8)",
+          "table_vid": 6945,
+          "table_id": 1554,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.08.a",
+          "name": "Composition of collateral for CCR exposures (CCR 8) (I)",
+          "table_vid": 6944,
+          "table_id": 667,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.08.b",
+          "name": "Composition of collateral for CCR exposures (CCR 8) (II)",
+          "table_vid": 6938,
+          "table_id": 668,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.09",
+          "name": "Credit derivatives exposures  (CCR 9)",
+          "table_vid": 6937,
+          "table_id": 669,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.10",
+          "name": "Exposures to CCPs  (CCR 10)",
+          "table_vid": 6935,
+          "table_id": 670,
+          "already_imported": false
+        },
+        {
+          "code": "C_34.11",
+          "name": "RWEA flow statements of CCR exposures under the IMM (CCR 11)",
+          "table_vid": 6932,
+          "table_id": 671,
+          "already_imported": false
+        },
+        {
+          "code": "C_35.01",
+          "name": "NPE loss coverage: Calculation of deductions for non-performing exposures (NPE LC1)",
+          "table_vid": 6922,
+          "table_id": 644,
+          "already_imported": false
+        },
+        {
+          "code": "C_35.02",
+          "name": "NPE loss coverage: Minimum coverage requirements and exposure values of non-performing exposure excluding forborne exposures that fall under article 47c (6) CRR (NPE LC2)",
+          "table_vid": 6913,
+          "table_id": 645,
+          "already_imported": false
+        },
+        {
+          "code": "C_35.03",
+          "name": "NPE loss coverage: Minimum coverage requirements and exposure values of non-performing forborne exposures that fall under article 47c (6) CRR (NPE LC3)",
+          "table_vid": 6883,
+          "table_id": 646,
+          "already_imported": false
+        },
+        {
+          "code": "C_36.00",
+          "name": "EXPOSURES TO CRYPTO-ASSETS",
+          "table_vid": 6884,
+          "table_id": 1840,
+          "already_imported": false
+        },
+        {
+          "code": "C_36.00.a",
+          "name": "EXPOSURES TO CRYPTO-ASSETS",
+          "table_vid": 5983,
+          "table_id": 1819,
+          "already_imported": false
+        },
+        {
+          "code": "C_36.00.b",
+          "name": "EXPOSURES TO CRYPTO-ASSETS",
+          "table_vid": 6061,
+          "table_id": 1841,
+          "already_imported": false
+        }
+      ]
+    }
+  ],
+  "corep_of_summary": {
+    "table_count": 95,
+    "imported_table_versions": 5,
+    "missing_table_versions": 90,
+    "missing_tables": [
+      {
+        "code": "C_00.01",
+        "name": "Nature of Report (COREP)"
+      },
+      {
+        "code": "C_02.00",
+        "name": "Capital Adequacy - Risk Exposure Amounts"
+      },
+      {
+        "code": "C_05.01",
+        "name": "Capital Adequacy - Transitional provisions: Summary"
+      },
+      {
+        "code": "C_05.02",
+        "name": "Capital Adequacy - Transitional provisions: Grandfathered instruments not constituting State aid"
+      },
+      {
+        "code": "C_06.01",
+        "name": "Group Solvency - Total"
+      },
+      {
+        "code": "C_06.02",
+        "name": "Group Solvency"
+      },
+      {
+        "code": "C_07.00",
+        "name": "(CR SA) Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements"
+      },
+      {
+        "code": "C_07.00.a",
+        "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements"
+      },
+      {
+        "code": "C_07.00.b",
+        "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Of which: Arising from Counterparty Credit Risk"
+      },
+      {
+        "code": "C_07.00.c",
+        "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Memorandum items - Secured on Property"
+      },
+      {
+        "code": "C_07.00.d",
+        "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Memorandum items - in default"
+      },
+      {
+        "code": "C_08.01",
+        "name": "(CR IRB 1) Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL"
+      },
+      {
+        "code": "C_08.01.a",
+        "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL"
+      },
+      {
+        "code": "C_08.01.b",
+        "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL - Of which arising from counterparty credit risk and off balance sheet"
+      },
+      {
+        "code": "C_08.01.c",
+        "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL - Of which arising from counterparty credit risk and off balance sheet"
+      },
+      {
+        "code": "C_08.02",
+        "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - Breakdown of exposures assigned to obligor grades or pools by obligor grades"
+      },
+      {
+        "code": "C_08.03",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: breakdown by PD ranges  (CR IRB 3)"
+      },
+      {
+        "code": "C_08.04",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: RWEA flow statements (CR IRB 4)"
+      },
+      {
+        "code": "C_08.05",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD (CR IRB 5)"
+      },
+      {
+        "code": "C_08.05.1",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD according to point (f) of article 180(1) (CR IRB 5)"
+      },
+      {
+        "code": "C_08.05.1.a",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD in accordance with Article 180(1), point (f) of Regulation (EU) No 575/2013 (CR IRB 5B) (I)"
+      },
+      {
+        "code": "C_08.05.1.b",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD in accordance with Article 180(1), point (f) of Regulation (EU) No 575/2013 (CR IRB 5B (II)"
+      },
+      {
+        "code": "C_08.06",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: specialised lending slotting approach (CR IRB 6)"
+      },
+      {
+        "code": "C_08.07",
+        "name": "Credit risk and free deliveries: IRB approach to capital requirements: scope of use of IRB and SA approaches (CR IRB 7)"
+      },
+      {
+        "code": "C_09.01",
+        "name": "(CR GB 1) Geographical breakdown of exposures by residence of the obligor (SA exposures)"
+      },
+      {
+        "code": "C_09.01.a",
+        "name": "Geographical breakdown of exposures by residence of the obligor (SA exposures)"
+      },
+      {
+        "code": "C_09.01.b",
+        "name": "Geographical breakdown of exposures by residence of the obligor (SA exposures) - Exposures in default"
+      },
+      {
+        "code": "C_09.02",
+        "name": "Geographical breakdown of exposures by residence of the obligor (IRB exposures)"
+      },
+      {
+        "code": "C_09.04",
+        "name": "Breakdown of credit exposures relevant for the calculation of the countercyclical buffer by country and institution-specific countercyclical buffer rate"
+      },
+      {
+        "code": "C_10.00",
+        "name": "CREDIT AND COUNTERPARTY CREDIT RISKS AND FREE DELIVERIES: IRB EXPOSURES SUBJECT TO OUTPUT FLOOR"
+      },
+      {
+        "code": "C_10.01",
+        "name": "Credit risk: Equity - IRB approaches to capital requirements - TOTAL"
+      },
+      {
+        "code": "C_10.02",
+        "name": "Credit risk: Equity - IRB approaches to capital requirements - Breakdown of total exposures under the PD/LGD Approach by obligor grades"
+      },
+      {
+        "code": "C_11.00",
+        "name": "Settlement/Delivery risk"
+      },
+      {
+        "code": "C_13.01",
+        "name": "(CR SEC) Credit risk: Securitisations"
+      },
+      {
+        "code": "C_14.00",
+        "name": "Detailed information on securitisations"
+      },
+      {
+        "code": "C_14.01",
+        "name": "(CR SEC Details) Detailed information on securitisations by approach"
+      },
+      {
+        "code": "C_15.00",
+        "name": "Exposures and losses from lending collateralised immovable property"
+      },
+      {
+        "code": "C_16.01",
+        "name": " OPERATIONAL RISK - OWN Funds Requirements (OPR OF)"
+      },
+      {
+        "code": "C_16.01.a",
+        "name": "OPERATIONAL RISK - Own Funds Requirements (OPR OF)"
+      },
+      {
+        "code": "C_16.01.b",
+        "name": " OPERATIONAL RISK - OWN Funds Requirements (OPR OF) (cont.)"
+      },
+      {
+        "code": "C_16.02",
+        "name": "OPERATIONAL RISK - Business Indicator Component (OPR BIC)"
+      },
+      {
+        "code": "C_16.03",
+        "name": "OPERATIONAL RISK BREAKDOWN - Losses, expenses, provisions and other financial impacts resulting from operational risk events (OPR BD)"
+      },
+      {
+        "code": "C_16.04",
+        "name": "OPERATIONAL RISK - Information on subsidiaries subject to Article 314(3) CRR (OPR ILDC)"
+      },
+      {
+        "code": "C_17.01",
+        "name": "(OPR Details) Operational risks: Details"
+      },
+      {
+        "code": "C_17.01.a",
+        "name": "OPERATIONAL RISK - Losses and recoveries by business lines and event types in the last year (OPR Details 1)"
+      },
+      {
+        "code": "C_17.01.b",
+        "name": "OPERATIONAL RISK - Thresholds applied in data collections (OPR Details 1)"
+      },
+      {
+        "code": "C_17.02",
+        "name": "OPERATIONAL RISK - Large loss events (OPR Details 2)"
+      },
+      {
+        "code": "C_18.00",
+        "name": "Market risk: Standardised Approach for traded debt instruments"
+      },
+      {
+        "code": "C_19.00",
+        "name": "Market risk: Standardised Approach for specific risk in securitisations"
+      },
+      {
+        "code": "C_20.00",
+        "name": "Market risk: Standardised Approach for specific risk in the correlation trading portfolio"
+      },
+      {
+        "code": "C_21.00",
+        "name": "Market risk: Standardised Approach for position risk in equities"
+      },
+      {
+        "code": "C_22.00",
+        "name": "Market risk: Standardised Approaches for foreign exchange risk"
+      },
+      {
+        "code": "C_23.00",
+        "name": "Market risk: Standardised Approach for position risk in commodities"
+      },
+      {
+        "code": "C_24.00",
+        "name": "Market risk: Internal models - Total"
+      },
+      {
+        "code": "C_25.01",
+        "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)"
+      },
+      {
+        "code": "C_25.01.a",
+        "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)"
+      },
+      {
+        "code": "C_25.01.b",
+        "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)"
+      },
+      {
+        "code": "C_32.01",
+        "name": "Prudent valuation. Fair-Valued assets and liabilities"
+      },
+      {
+        "code": "C_32.02",
+        "name": "Prudent valuation. Core approach"
+      },
+      {
+        "code": "C_32.02.a",
+        "name": "Prudent valuation: Core approach – Pre and post diversification"
+      },
+      {
+        "code": "C_32.02.b",
+        "name": "Prudent valuation: Core approach - AVAs assessed to have zero value"
+      },
+      {
+        "code": "C_32.02.c",
+        "name": "Prudent valuation: Core approach – Other"
+      },
+      {
+        "code": "C_32.03",
+        "name": "Prudent valuation. Model risk AVA"
+      },
+      {
+        "code": "C_32.04",
+        "name": "Prudent valuation. Concentrated positions AVA"
+      },
+      {
+        "code": "C_33.00",
+        "name": "General Governments exposures by country of the counterparty (GOV)"
+      },
+      {
+        "code": "C_33.00.a",
+        "name": "General governments exposures by country of the counterparty and regulatory approach (Gov)"
+      },
+      {
+        "code": "C_33.00.b",
+        "name": "General governments exposures by country of the counterparty and regulatory approach (Gov)"
+      },
+      {
+        "code": "C_34.01",
+        "name": "Size of the derivative business (CCR 1)"
+      },
+      {
+        "code": "C_34.01.a",
+        "name": "Size of the derivative business (CCR 1) (I)"
+      },
+      {
+        "code": "C_34.01.b",
+        "name": "Size of the derivative business (CCR 1) (II)"
+      },
+      {
+        "code": "C_34.02",
+        "name": "CCR exposures by approach (CCR 2)"
+      },
+      {
+        "code": "C_34.02.a",
+        "name": "CCR exposures by approach (CCR 2) .a"
+      },
+      {
+        "code": "C_34.02.b",
+        "name": "CCR exposures by approach (CCR 2) .b"
+      },
+      {
+        "code": "C_34.03",
+        "name": "CCR exposures treated with standardised approaches: SA-CCR or simplified SA-CCR (CCR 3)"
+      },
+      {
+        "code": "C_34.04",
+        "name": "CCR exposures treated with the original exposure method (OEM) (CCR 4)"
+      },
+      {
+        "code": "C_34.05",
+        "name": "CCR exposures treated with the internal model method (IMM) (CCR 5)"
+      },
+      {
+        "code": "C_34.06",
+        "name": "Top twenty counterparties  (CCR 6)"
+      },
+      {
+        "code": "C_34.07",
+        "name": "IRB approach – CCR exposures by exposure class and PD scale  (CCR 7)"
+      },
+      {
+        "code": "C_34.08",
+        "name": "Composition of collateral for CCR exposures (CCR 8)"
+      },
+      {
+        "code": "C_34.08.a",
+        "name": "Composition of collateral for CCR exposures (CCR 8) (I)"
+      },
+      {
+        "code": "C_34.08.b",
+        "name": "Composition of collateral for CCR exposures (CCR 8) (II)"
+      },
+      {
+        "code": "C_34.09",
+        "name": "Credit derivatives exposures  (CCR 9)"
+      },
+      {
+        "code": "C_34.10",
+        "name": "Exposures to CCPs  (CCR 10)"
+      },
+      {
+        "code": "C_34.11",
+        "name": "RWEA flow statements of CCR exposures under the IMM (CCR 11)"
+      },
+      {
+        "code": "C_35.01",
+        "name": "NPE loss coverage: Calculation of deductions for non-performing exposures (NPE LC1)"
+      },
+      {
+        "code": "C_35.02",
+        "name": "NPE loss coverage: Minimum coverage requirements and exposure values of non-performing exposure excluding forborne exposures that fall under article 47c (6) CRR (NPE LC2)"
+      },
+      {
+        "code": "C_35.03",
+        "name": "NPE loss coverage: Minimum coverage requirements and exposure values of non-performing forborne exposures that fall under article 47c (6) CRR (NPE LC3)"
+      },
+      {
+        "code": "C_36.00",
+        "name": "EXPOSURES TO CRYPTO-ASSETS"
+      },
+      {
+        "code": "C_36.00.a",
+        "name": "EXPOSURES TO CRYPTO-ASSETS"
+      },
+      {
+        "code": "C_36.00.b",
+        "name": "EXPOSURES TO CRYPTO-ASSETS"
+      }
+    ]
+  }
+}
