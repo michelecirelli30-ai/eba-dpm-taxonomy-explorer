@@ -62,6 +62,22 @@ function parse(source){
     const t=next();
     if(t.type==="number")return {type:"number",value:t.value};
     if(t.type==="ref"){
+      // DPM row-set selector: {(r0040, r0045, ...)}.
+      // Only explicit row IDs are expanded. Ranges, nested selectors,
+      // column groups and partial syntax remain unsupported.
+      const raw=t.value.trim();
+      if(raw.startsWith("(")){
+        if(!/^\(\s*r\d{3,4}(?:\s*,\s*r\d{3,4})+\s*\)$/i.test(raw))
+          fail("Unsupported row-set selector syntax: "+t.original.slice(0,110));
+        const rows=raw.slice(1,-1).split(",").map(x=>x.trim().slice(1).padStart(4,"0"));
+        if(new Set(rows).size!==rows.length)fail("Duplicate row within a row-set selector");
+        if(!scope||!scope.table||!scope.column)
+          fail("Row-set selector needs an explicit template and column in the with-scope");
+        return {type:"row_set",original:t.original,
+          members:rows.map(row=>({type:"ref",raw:"r"+row,table:scope.table,row,
+            column:scope.column,defaultValue:scope.defaultValue,
+            interval:scope.interval,unknown:[],original:"r"+row+" (row-set member)"}))};
+      }
       const ref=reference(t.value,scope);
       if(ref.unknown.length)fail("Unsupported cell reference selector(s): "+ref.unknown.join(", "));
       if(!ref.row)fail("Cell reference lacks a single explicit row: "+t.original);
@@ -100,6 +116,7 @@ function parse(source){
 function refsOf(ast){
   if(!ast)return [];
   if(ast.type==="ref")return [ast];
+  if(ast.type==="row_set")return ast.members;
   if(ast.type==="binary")return [...refsOf(ast.left),...refsOf(ast.right)];
   if(ast.type==="unary")return refsOf(ast.value);
   if(ast.type==="call")return ast.args.flatMap(refsOf);
@@ -123,6 +140,7 @@ function labelOf(c){
 }
 function pretty(ast,mode){
   if(ast.type==="number")return ast.value;
+  if(ast.type==="row_set")return "each of "+ast.members.length+" selected cells";
   if(ast.type==="ref"){
     const raw=ast.label||ast.original;
     if(mode==="plain"&&ast.label){
@@ -183,11 +201,39 @@ function interpret(expression,cells){
     result.technical.push(refs.length+" cell reference(s), "+result.references.length+" distinct reference(s).");
     result.technical.push("Scope options 'default' and 'interval' are preserved from EBA syntax; this explanation does not itself execute EBA filing/interval semantics.");
     result.technical.push("Cell labels and DPM IDs come from imported official C_01.00 metadata; original EBA formula is authoritative.");
-    if(result.reason.length===0){
+    // Expanded row sets are supported only for element-wise >= 0 or <= 0
+    // comparisons. We do not transform group references into sums or treat
+    // default:null as a requirement for the bank to submit a numeric fact.
+    const group=parsed.ast.type==="binary"&&parsed.ast.left.type==="row_set"?
+      parsed.ast.left:null;
+    if(group){
+      const valid=["<=",">="].includes(parsed.ast.op)&&
+        parsed.ast.right.type==="number"&&parsed.ast.right.value==="0"&&
+        refs.length===group.members.length;
+      if(!valid)result.reason.push("Row-set semantics supported only for a direct >= 0 or <= 0 comparison");
+      if(parsed.scope?.defaultValue!=="null"||parsed.scope?.interval!=="false")
+        result.reason.push("Row-set comparison requires verified default: null and interval: false scope");
+      if(!result.reason.length){
+        result.status="supported";
+        const direction=parsed.ast.op==="<="?"less than or equal to":"greater than or equal to";
+        const scopeName=group.members[0].table, col=group.members[0].column;
+        result.plainEnglish="For each of the "+group.members.length+
+          " selected reporting cells in "+scopeName+", column c"+col+
+          ", the reported value must be "+direction+
+          " zero when the EBA rule is applicable.";
+        result.businessFormula="Each of "+group.members.length+" selected "+scopeName+
+          " cells (c"+col+") "+parsed.ast.op+" 0; evaluated per selected cell, not as a sum.";
+        result.technical.push("Row-set: "+group.members.length+" explicit, individually referenced rows. No aggregation or cross-row total is implied.");
+        result.technical.push("default: null does not itself require reporting a numeric value. The official EBA engine determines how missing facts are handled.");
+      }
+    }else if(refs.some(r=>r.type==="ref")&&JSON.stringify(parsed.ast).includes('"type":"row_set"')){
+      result.reason.push("Row-set selector is unsupported inside arithmetic, functions, or compound conditions");
+    }else if(result.reason.length===0){
       result.status="supported";
       result.businessFormula=pretty(parsed.ast,"business");
       result.plainEnglish=sentence(pretty(parsed.ast,"plain"));
-    }else result.reason=[...new Set(result.reason)];
+    }
+    if(result.reason.length)result.reason=[...new Set(result.reason)];
   }catch(err){result.reason.push(err.message)}
   return result;
 }
@@ -272,6 +318,28 @@ function simpleFormula(interpretation){
     note:"Cell amounts use the original EBA arithmetic signs. Rows marked (-) are not automatically subtracted again."};
 }
 
+/**
+ * Safe presentation model for scoped DPM row-set comparisons.
+ * Element-wise sign constraints only; not an executable regulatory validator.
+ */
+function rowSetStructure(interpretation){
+  if(!interpretation||interpretation.status!=="supported")return null;
+  const ast=interpretation.ast;
+  if(!ast||ast.type!=="binary"||ast.left?.type!=="row_set"||
+    !["<=",">="].includes(ast.op)||ast.right?.type!=="number"||ast.right.value!=="0")
+    return null;
+  const members=ast.left.members;
+  if(!members.length||members.some(r=>r.cellId==null||!r.label||r.table!=="C_01.00"))
+    return null;
+  const scopes=[...new Set(members.map(r=>r.table+"|"+r.column))];
+  if(scopes.length!==1)return null;
+  return {kind:"row_set_comparison",operator:ast.op,threshold:0,
+    count:members.length,table:members[0].table,column:members[0].column,
+    defaultValue:members[0].defaultValue,interval:members[0].interval,
+    members:members.map(r=>({row:r.row,column:r.column,label:r.label,
+      cellId:r.cellId,variableVid:r.variableVid,table:r.table}))};
+}
+
 function summary(expressions,cells){
   const result={supported:0,requires_review:0,total:0,review_codes:[]};
   (expressions||[]).filter(r=>r.type==="validation").forEach(r=>{
@@ -280,7 +348,7 @@ function summary(expressions,cells){
   });
   return result;
 }
-const api={tokenize,parse,interpret,summary,refsOf,readableStructure,simpleFormula,version:"1.2.0"};
+const api={tokenize,parse,interpret,summary,refsOf,readableStructure,rowSetStructure,simpleFormula,version:"1.3.0"};
 if(typeof module==="object"&&module.exports)module.exports=api;
 if(root)root.EbaRuleTranslator=api;
 })(typeof window!=="undefined"?window:null);
