@@ -14,9 +14,20 @@ assert.ok(a.references.some(r=>r.row==='0130'&&r.column==='0010'&&r.cellId===18)
 assert.equal(a.references.length,3);
 assert.ok(a.technical.some(x=>x.includes('default: 0')));
 assert.ok(a.technical.some(x=>x.includes('interval: true')));
+const compact=T.readableStructure(a);
+assert.equal(compact.termCount,2);
+assert.equal(compact.long,false);
 const b=T.interpret(find('v0172_m').expression,db.cells);
 assert.equal(b.status,'supported',JSON.stringify(b.reason));
 assert.ok(b.references.length>=10);
+const expanded=T.readableStructure(b);
+assert.equal(expanded.long,true);
+assert.equal(expanded.termCount,31);
+assert.equal(expanded.lhs.row,'0020');
+assert.equal(expanded.terms[0].row,'0030');
+assert.ok(expanded.signedMarkedCount>0);
+assert.match(expanded.caution,/reported value with its algebraic sign/i);
+
 const bad=T.interpret('with {tC_01.00, c0010}: {r0130} ??? {r0140}',db.cells);
 assert.equal(bad.status,'requires_review');
 const incomplete=T.interpret('with {tC_01.00, c0010}: {r9999} = {r0130}',db.cells);
