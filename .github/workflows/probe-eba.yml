@@ -1,0 +1,29 @@
+name: Probe EBA official download links
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/probe_eba_download.py'
+      - '.github/workflows/probe-eba.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test official EBA release page
+        run: python scripts/probe_eba_download.py
+      - name: Commit source access diagnostic
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/eba_4_3_download_probe.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: EBA official package access diagnostic"
+            git push
+          fi
