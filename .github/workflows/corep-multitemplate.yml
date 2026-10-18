@@ -1,0 +1,34 @@
+name: Extract COREP OF C01–C04 official DPM data
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/extract_corep_of_multitemplate.py'
+      - '.github/workflows/corep-multitemplate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Microsoft Access reader
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mdbtools
+      - name: Extract linked C01–C04 COREP_OF data from EBA 4.3 Access
+        run: python scripts/extract_corep_of_multitemplate.py
+      - name: Commit verified official COREP template data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/corep_of_multitemplate.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: publish COREP OF C01–C04 official DPM table extract"
+            git push
+          fi
