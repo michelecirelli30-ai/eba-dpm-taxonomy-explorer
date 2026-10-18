@@ -39,3 +39,16 @@ Open `docs/index.html` in your browser. It embeds an offline catalog, so the exp
 ## Rights & disclosure
 
 © 2026 Michele Cirelli. Original editorial/site materials; all rights reserved unless separately licensed. Official EBA documents, trademarks, datasets and metadata remain subject to the rights and reuse terms of their original publisher. No affiliation, approval or endorsement by EBA or any financial institution. AI assistance was used during prototype development. Not legal or supervisory reporting advice.
+
+## Deterministic EBA Validation Rule Translator (P1, in progress)
+
+A syntax-aware JavaScript parser is available at `docs/data/eba_rule_translator.js` and is integrated into the **Official COREP DPM Data** rule panel. It produces:
+
+- Plain-English and business-formula interpretations using imported official DPM row labels, when all references and grammar can be resolved.
+- A technical breakdown of source `with` scope and original default/interval settings, without claiming to execute full DPM interval or missing-value semantics.
+- An explicit **Requires technical review** result for unsupported grammar, references to other templates or unknown cell labels.
+- Original expressions and source metadata remain available without modification.
+
+Run `node tests/test_rule_translator.cjs` to test known fixtures and assess the 52-rule corpus. CI: `.github/workflows/test-rule-translator.yml`.
+
+**Limitations:** This is a deterministic *explanation aid*, not a full EBA validation execution engine. Cross-template formulas are not falsely translated against missing DPM modules; true current rule status must be verified from the official status package. Scope defaults and interval handling are described, not simulated. Technical parser coverage must be checked from the CI output before claiming broader support. Track completion in [Issue #1](../../issues/1).
