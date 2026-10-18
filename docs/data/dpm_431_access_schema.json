@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-10-18T00:32:17.033990+00:00",
+  "checked_utc": "2026-10-18T00:37:44.081381+00:00",
   "source": "Official EBA DPM 4.3.1 Access archive",
   "source_url": "https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/DPM2%20Database_v%204_3.zip",
   "status": "schema_extracted",
@@ -120,150 +120,386 @@
   ],
   "schema_inspected": {
     "Aux_CellMapping": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Aux_CellMapping`\n (\n\t`NewCellID`\t\t\tINTEGER, \n\t`NewTableVID`\t\t\tINTEGER, \n\t`OldCellID`\t\t\tINTEGER, \n\t`OldTableVID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "Aux_CellStatus": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Aux_CellStatus`\n (\n\t`TableVID`\t\t\tINTEGER, \n\t`CellID`\t\t\tINTEGER, \n\t`IsNewCell`\t\t\tINTEGER, \n\t`Status`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "Cell": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Cell`\n (\n\t`TableID`\t\t\tINTEGER, \n\t`ColumnID`\t\t\tINTEGER, \n\t`RowID`\t\t\tINTEGER, \n\t`SheetID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`CellID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "CompoundItemContext": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `CompoundItemContext`\n (\n\t`ItemID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`ContextID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "DocumentVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `DocumentVersion`\n (\n\t`DocumentID`\t\t\tINTEGER, \n\t`PublicationDate`\t\t\tvarchar, \n\t`RowGUID`\t\t\tINTEGER, \n\t`DocumentVID`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Version`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "Framework": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Framework`\n (\n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`FrameworkID`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Name`\t\t\tvarchar, \n\t`Description`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "HeaderVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `HeaderVersion`\n (\n\t`HeaderID`\t\t\tINTEGER, \n\t`Code`\t\t\tTEXT, \n\t`Label`\t\t\tTEXT, \n\t`PropertyID`\t\t\tINTEGER, \n\t`ContextID`\t\t\tINTEGER, \n\t`SubCategoryVID`\t\t\tINTEGER, \n\t`KeyVariableVID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`HeaderVID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "Item": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Item`\n (\n\t`Name`\t\t\tTEXT, \n\t`Description`\t\t\tTEXT, \n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`ItemID`\t\t\tINTEGER, \n\t`IsProperty`\t\t\tINTEGER, \n\t`IsActive`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "ItemCategory": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `ItemCategory`\n (\n\t`ItemID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`CategoryID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`IsDefaultItem`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Signature`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "Module": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Module`\n (\n\t`FrameworkID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`ModuleID`\t\t\tINTEGER, \n\t`isDocumentModule`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "ModuleParameters": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `ModuleParameters`\n (\n\t`ModuleVID`\t\t\tINTEGER, \n\t`VariableVID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "ModuleVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `ModuleVersion`\n (\n\t`ModuleID`\t\t\tINTEGER, \n\t`GlobalKeyID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`FromReferenceDate`\t\t\tvarchar, \n\t`ToReferenceDate`\t\t\tvarchar, \n\t`RowGUID`\t\t\tINTEGER, \n\t`ModuleVID`\t\t\tINTEGER, \n\t`IsReported`\t\t\tINTEGER, \n\t`IsCalculated`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Name`\t\t\tvarchar, \n\t`Description`\t\t\tvarchar, \n\t`VersionNumber`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "ModuleVersionComposition": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `ModuleVersionComposition`\n (\n\t`ModuleVID`\t\t\tINTEGER, \n\t`TableID`\t\t\tINTEGER, \n\t`TableVID`\t\t\tINTEGER, \n\t`Order`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "Release": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Release`\n (\n\t`Date`\t\t\tvarchar, \n\t`RowGUID`\t\t\tINTEGER, \n\t`ErrorDate`\t\t\tDateTime, \n\t`OwnerID`\t\t\tINTEGER, \n\t`ReleaseID`\t\t\tINTEGER, \n\t`IsCurrent`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Description`\t\t\tvarchar, \n\t`Status`\t\t\tvarchar, \n\t`Type`\t\t\tvarchar, \n\t`Error`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "SubCategoryItem": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `SubCategoryItem`\n (\n\t`ItemID`\t\t\tINTEGER, \n\t`SubCategoryVID`\t\t\tINTEGER, \n\t`Order`\t\t\tINTEGER, \n\t`ParentItemID`\t\t\tINTEGER, \n\t`ComparisonOperatorID`\t\t\tINTEGER, \n\t`ArithmeticOperatorID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`Label`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "SubCategoryVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `SubCategoryVersion`\n (\n\t`SubCategoryID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`SubCategoryVID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "Table": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Table`\n (\n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`TableID`\t\t\tINTEGER, \n\t`IsAbstract`\t\t\tINTEGER, \n\t`HasOpenColumns`\t\t\tINTEGER, \n\t`HasOpenRows`\t\t\tINTEGER, \n\t`HasOpenSheets`\t\t\tINTEGER, \n\t`IsNormalised`\t\t\tINTEGER, \n\t`IsFlat`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "TableAssociation": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `TableAssociation`\n (\n\t`ChildTableVID`\t\t\tINTEGER, \n\t`ParentTableVID`\t\t\tINTEGER, \n\t`SubtypeDiscriminator`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`AssociationID`\t\t\tINTEGER, \n\t`IsIdentifying`\t\t\tINTEGER, \n\t`IsSubtype`\t\t\tINTEGER, \n\t`Name`\t\t\tvarchar, \n\t`Description`\t\t\tvarchar, \n\t`ParentCardinalityAndOptionality`\t\t\tvarchar, \n\t`ChildCardinalityAndOptionality`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "TableGroup": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `TableGroup`\n (\n\t`RowGUID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`ParentTableGroupID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`TableGroupID`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Name`\t\t\tvarchar, \n\t`Description`\t\t\tvarchar, \n\t`Type`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "TableGroupComposition": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `TableGroupComposition`\n (\n\t`TableGroupID`\t\t\tINTEGER, \n\t`TableID`\t\t\tINTEGER, \n\t`Order`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "TableVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `TableVersion`\n (\n\t`TableID`\t\t\tINTEGER, \n\t`AbstractTableID`\t\t\tINTEGER, \n\t`KeyID`\t\t\tINTEGER, \n\t`PropertyID`\t\t\tINTEGER, \n\t`ContextID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`TableVID`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Name`\t\t\tvarchar, \n\t`Description`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "TableVersionCell": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `TableVersionCell`\n (\n\t`TableVID`\t\t\tINTEGER, \n\t`CellID`\t\t\tINTEGER, \n\t`VariableVID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`IsNullable`\t\t\tINTEGER, \n\t`IsExcluded`\t\t\tINTEGER, \n\t`IsVoid`\t\t\tINTEGER, \n\t`CellCode`\t\t\tvarchar, \n\t`Sign`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "TableVersionHeader": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `TableVersionHeader`\n (\n\t`TableVID`\t\t\tINTEGER, \n\t`HeaderID`\t\t\tINTEGER, \n\t`HeaderVID`\t\t\tINTEGER, \n\t`ParentHeaderID`\t\t\tINTEGER, \n\t`Order`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`ParentFirst`\t\t\tINTEGER, \n\t`IsAbstract`\t\t\tINTEGER, \n\t`IsUnique`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "Variable": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `Variable`\n (\n\t`RowGUID`\t\t\tINTEGER, \n\t`OwnerID`\t\t\tINTEGER, \n\t`VariableID`\t\t\tINTEGER, \n\t`Type`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "VariableCalculation": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `VariableCalculation`\n (\n\t`ModuleID`\t\t\tINTEGER, \n\t`VariableID`\t\t\tINTEGER, \n\t`OperationVID`\t\t\tINTEGER, \n\t`FromReferenceDate`\t\t\tvarchar, \n\t`ToReferenceDate`\t\t\tvarchar, \n\t`RowGUID`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "VariableGeneration": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `VariableGeneration`\n (\n\t`StartDate`\t\t\tDateTime, \n\t`EndDate`\t\t\tDateTime, \n\t`ReleaseID`\t\t\tINTEGER, \n\t`VariableGenerationID`\t\t\tINTEGER, \n\t`Status`\t\t\tvarchar, \n\t`Error`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "VariableVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `VariableVersion`\n (\n\t`VariableID`\t\t\tINTEGER, \n\t`PropertyID`\t\t\tINTEGER, \n\t`SubCategoryVID`\t\t\tINTEGER, \n\t`ContextID`\t\t\tINTEGER, \n\t`KeyID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`RowGUID`\t\t\tINTEGER, \n\t`VariableVID`\t\t\tINTEGER, \n\t`IsMultiValued`\t\t\tINTEGER, \n\t`Code`\t\t\tvarchar, \n\t`Name`\t\t\tvarchar\n);\n\n\n",
+      "stderr": ""
     },
     "OperationVersionData": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `OperationVersionData`\n (\n\t`OperationVID`\t\t\tINTEGER, \n\t`Error`\t\t\tTEXT, \n\t`ErrorCode`\t\t\tTEXT, \n\t`ProposingStatus`\t\t\tTEXT, \n\t`IsApplying`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     },
     "OperationVersion": {
-      "exit_status": 1,
-      "ddl": "",
-      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+      "exit_status": 0,
+      "ddl": "-- ----------------------------------------------------------\n-- MDB Tools - A library for reading MS Access database files\n-- Copyright (C) 2000-2011 Brian Bruns and others.\n-- Files in libmdb are licensed under LGPL and the utilities under\n-- the GPL, see COPYING.LIB and COPYING files respectively.\n-- Check out http://mdbtools.sourceforge.net\n-- ----------------------------------------------------------\n\n-- That file uses encoding UTF-8\n\nCREATE TABLE `OperationVersion`\n (\n\t`OperationVID`\t\t\tINTEGER, \n\t`OperationID`\t\t\tINTEGER, \n\t`PreconditionOperationVID`\t\t\tINTEGER, \n\t`SeverityOperationVID`\t\t\tINTEGER, \n\t`StartReleaseID`\t\t\tINTEGER, \n\t`EndReleaseID`\t\t\tINTEGER, \n\t`Expression`\t\t\tTEXT, \n\t`Description`\t\t\tTEXT, \n\t`RowGUID`\t\t\tINTEGER, \n\t`Endorsement`\t\t\tTEXT, \n\t`IsVariantApproved`\t\t\tINTEGER\n);\n\n\n",
+      "stderr": ""
     }
   },
-  "schema_inspected_count": 29
+  "schema_inspected_count": 29,
+  "sample_rows": {
+    "Release": [
+      "Date,RowGUID,ErrorDate,OwnerID,ReleaseID,IsCurrent,Code,Description,Status,Type,Error\n",
+      "\"2024-02-06\",\"{083F7C98-D0CF-4D87-A2E19DC464712242}\",,1012,1,0,\"3.4\",,\"released\",\"module\",\n",
+      "\"2024-07-11\",\"{DBA8F305-B0AF-0944-A5F34C569B8AFDB2}\",,1012,2,0,\"3.5\",,\"released\",\"module\",\n",
+      "\"2024-12-19\",\"{2BE567DC-879C-4356-9976D51B810F355F}\",,1012,3,0,\"4.0\",,\"released\",\"module\",\n",
+      "\"2025-04-28\",\"{BD3C7DD0-DBEF-7C43-8CF1322E18634BFD}\",,1012,4,0,\"4.1\",\"Changes to Supervisory Benchmarking (MR-RM)\n",
+      "\n",
+      "New EBA Guidelines MiCAR supervisory reporting requirements\n"
+    ],
+    "Framework": [
+      "RowGUID,OwnerID,FrameworkID,Code,Name,Description\n",
+      "\"{275A63DE-9336-4015-B37000A8E1B3EF86}\",1012,1,\"FINREP\",\"Financial Reporting\",\n",
+      "\"{F55471CA-1117-4F99-BDD0DA24EE86DF25}\",1012,2,\"COREP\",\"Common Reporting\",\n",
+      "\"{9A0B313D-B1FD-4DB8-86993D52E7644277}\",1012,3,\"AE\",\"Asset Encumbrance\",\n",
+      "\"{CA738DFE-5D14-4DC5-B24A90B218664834}\",1012,4,\"FP\",\"Funding Plans\",\n",
+      "\"{313B58A2-8476-451D-BEA71A88B5AA131D}\",1012,5,\"SBP\",\"Supervisory Benchmarking Portfolios\",\n",
+      "\"{63E09DD8-B408-4699-B9B7BDB84C0DDF1D}\",1012,6,\"REM\",\"Remuneration\",\n"
+    ],
+    "Module": [
+      "FrameworkID,RowGUID,OwnerID,ModuleID,isDocumentModule\n",
+      "2,\"{E5C07CDA-4BBB-4401-8FAC4B7347892B8E}\",1012,3,0\n",
+      "2,\"{EAD8F510-59EF-420E-82F7DD4E6790142C}\",1012,4,0\n",
+      "3,\"{0DBB623E-DA9B-488D-A124AD6F1B34E73B}\",1012,6,0\n",
+      "4,\"{74131076-EB10-4EA4-BA503FD47BB8DE8F}\",1012,7,0\n",
+      "5,\"{69D5C15B-6746-41F9-97DEEED24F00C7CA}\",1012,9,0\n",
+      "2,\"{CADFC7DE-9F22-41B4-BD82F8DC7B341D3C}\",1012,10,0\n"
+    ],
+    "ModuleVersion": [
+      "ModuleID,GlobalKeyID,StartReleaseID,EndReleaseID,FromReferenceDate,ToReferenceDate,RowGUID,ModuleVID,IsReported,IsCalculated,Code,Name,Description,VersionNumber\n",
+      "6,,1,3,\"2023-06-30\",\"2026-03-30\",\"{AC3FF064-C246-4F08-8740505E2830B07E}\",337,1,0,\"AE\",\"Asset Encumbrance\",,\"1.2.0\"\n",
+      "10,,1,3,\"2023-06-30\",\"2026-03-30\",\"{33096D7B-1D13-4419-B19FBE92EF352845}\",338,1,0,\"COREP_ALM\",\"Additional Liquidity Monitoring - COREP\",,\"3.1.0\"\n",
+      "3,,1,3,\"2022-12-31\",\"2026-03-30\",\"{590961A0-8990-4F26-BC8F769AB2DA7BC4}\",341,1,0,\"COREP_LE\",\"Large Exposures - COREP\",,\"3.1.0\"\n",
+      "4,,1,5,\"2022-12-31\",\"2026-03-30\",\"{1DF4642E-7A3A-4E95-9BEC20123AD9CA9E}\",343,1,0,\"COREP_NSFR\",\"Stable Funding - COREP\",,\"3.1.0\"\n",
+      "14,,1,3,\"2023-06-30\",\"2025-03-30\",\"{9F3E0D15-2859-4988-AC13407D64E03552}\",344,1,0,\"COREP_OF\",\"Own Funds - COREP\",,\"3.1.0\"\n",
+      "24,,1,3,\"2023-06-30\",\"2026-03-30\",\"{4C9E1375-F0C4-43D7-9F85B2E1DEC38785}\",345,1,0,\"GSII\",\"GSII\",,\"1.1.0\"\n"
+    ],
+    "Table": [
+      "RowGUID,OwnerID,TableID,IsAbstract,HasOpenColumns,HasOpenRows,HasOpenSheets,IsNormalised,IsFlat\n",
+      "\"{3B20E04A-4F57-497A-974196CBBDF92E02}\",1012,1,0,0,0,0,0,0\n",
+      "\"{FB123445-1AF1-4D4B-93DCCFF059D8BF9D}\",1012,2,0,0,0,0,0,0\n",
+      "\"{0CC8C2FF-BBD1-4D4A-A1142FCCA5B95DE4}\",1012,3,0,0,0,0,0,0\n",
+      "\"{6E43A8B3-00EE-499F-8F187F1BD1119399}\",1012,4,0,0,0,0,0,0\n",
+      "\"{21313198-494D-4D76-BB7AF2CB5DDFE23A}\",1012,5,0,0,0,0,0,0\n",
+      "\"{5829D0B4-030D-4E17-88101A05A6758033}\",1012,10,0,0,0,0,0,0\n"
+    ],
+    "TableVersion": [
+      "TableID,AbstractTableID,KeyID,PropertyID,ContextID,StartReleaseID,EndReleaseID,RowGUID,TableVID,Code,Name,Description\n",
+      "327,,,,,1,5,\"{4B5B3029-ABE7-4067-9EA53C244ED910BE}\",984,\"P_00.01\",\"Nature of Report (FP)\",\"Nature of Report (FP)\"\n",
+      "466,,95,,,1,3,\"{95851920-3E3B-4868-9E6DDB3BA5ED74DB}\",1426,\"Z_10.01\",\"Critical Information Systems (general information) (CIS 1)\",\"Critical Information Systems (general information) (CIS 1)\"\n",
+      "485,1448,,,,1,3,\"{9DF2293D-3EED-4EB2-B8EDECE3F604A692}\",1476,\"C_75.01.a\",\"Liquidity Coverage. Collateral swaps. Total (DA)\",\"Liquidity Coverage. Collateral swaps. Total (DA)\"\n",
+      "478,,40,,,1,3,\"{31463B8D-A690-4420-876B2C43FBC45087}\",1558,\"T_08.00\",\"Secured finance, excluding intragroup\",\"Secured finance, excluding intragroup\"\n",
+      "539,,9,,,1,3,\"{ED8C1221-3B61-45A2-B27DAC046245C740}\",1560,\"T_12.00\",\"Major counterparties (derivatives, commitments received)\",\"Major counterparties (derivatives, commitments received)\"\n",
+      "455,,7,,,1,3,\"{65ECD57A-F558-4799-BC5854C369A97A48}\",1581,\"Z_05.01\",\"Major liability counterparties (MCP 1)\",\"Major liability counterparties (MCP 1)\"\n"
+    ],
+    "TableVersionCell": [
+      "TableVID,CellID,VariableVID,RowGUID,IsNullable,IsExcluded,IsVoid,CellCode,Sign\n",
+      "984,162063,31870,\"{BF825978-5AD8-4410-BBF1EB87D4DB6BEC}\",1,0,0,\"{P_00.01, r010, c010}\",\n",
+      "1277,50850,236375,\"{0144311D-5AAE-44EB-80F3DBE2D61D25F9}\",1,0,0,\"{C_17.01.b, r0020, c0090}\",\"positive\"\n",
+      "1277,50856,236374,\"{4AB95ADF-6C38-428A-B1605B171C78E715}\",1,0,0,\"{C_17.01.b, r0320, c0090}\",\"positive\"\n",
+      "1277,50860,236377,\"{F25F3779-6EA9-4A94-AEC3E1B383ECB2F6}\",1,0,0,\"{C_17.01.b, r0520, c0090}\",\"positive\"\n",
+      "1277,50862,236372,\"{3B65650D-7694-4FC1-AB00A222ECFB7F9F}\",1,0,0,\"{C_17.01.b, r0620, c0090}\",\"positive\"\n",
+      "1277,50866,236376,\"{B43602A3-EE46-4F31-B452601D7C1A7143}\",1,0,0,\"{C_17.01.b, r0820, c0090}\",\"positive\"\n"
+    ],
+    "Cell": [
+      "TableID,ColumnID,RowID,SheetID,RowGUID,OwnerID,CellID\n",
+      "325,1,2,,\"{6A4B6555-3825-4A93-A98403C7FAA6CD55}\",1012,1\n",
+      "325,1,3,,\"{1F0CBC26-5C86-4058-AEC810E7704B40E9}\",1012,2\n",
+      "304,4,5,,\"{724A3991-0CAE-4E3A-8938FB615D1F72E6}\",1012,3\n",
+      "304,4,6,,\"{46ACD7E7-8D18-443E-9E46A9F8C04DB51E}\",1012,4\n",
+      "74,7,8,,\"{6005A09C-AC71-4C8C-BCE2AA1416C083D8}\",1012,5\n",
+      "74,7,9,,\"{73758A81-1268-4B96-BBEC11A4862C7962}\",1012,6\n"
+    ],
+    "Variable": [
+      "RowGUID,OwnerID,VariableID,Type\n",
+      "\"{43A2661F-6FB7-48DD-BF862826C31F22BC}\",1012,10002,\"fact\"\n",
+      "\"{FAF09F95-C009-41A2-8F8F1A7E299C1EC6}\",1012,10004,\"fact\"\n",
+      "\"{D2FC57EF-9A17-4C1D-BE9FFBA59E264EE2}\",1012,10005,\"fact\"\n",
+      "\"{3FDBCCAF-574C-46F8-A347B6BED9073BFC}\",1012,10006,\"fact\"\n",
+      "\"{D50DF143-8BBF-4B82-A98CDF654F3E6E10}\",1012,10007,\"fact\"\n",
+      "\"{52F9147E-92A6-4686-9A8F10DF3E63574E}\",1012,10008,\"fact\"\n"
+    ],
+    "VariableVersion": [
+      "VariableID,PropertyID,SubCategoryVID,ContextID,KeyID,StartReleaseID,EndReleaseID,RowGUID,VariableVID,IsMultiValued,Code,Name\n",
+      "487515,1012400548,,,,3,,,487515,0,,\n",
+      "487516,1012402384,,,,3,,,487516,0,,\n",
+      "487517,1012403255,,,,3,,,487517,0,,\n",
+      "487518,1012404344,,,,3,,,487518,0,,\n",
+      "487519,1012404746,,,,3,,,487519,0,,\n",
+      "487520,1012404857,,,,3,,,487520,0,,\n"
+    ],
+    "Concept": [
+      "ConceptGUID,ClassID,OwnerID\n",
+      "\"{2728A0B3-00FE-7345-908900000AD5BF2F}\",20,1012\n",
+      "\"{14ADEFBE-3117-A44A-9DEF00001CBA3163}\",14,1012\n",
+      "\"{0EBA10DF-99A7-4E5C-A5F100002E13CFDB}\",17,1012\n",
+      "\"{F6A80F2B-9567-4D76-94DD0000336DA2CE}\",17,1012\n",
+      "\"{310E55A2-17D2-4E89-A43200003745DE9E}\",15,1012\n",
+      "\"{21171451-8C77-47F8-8F5400003F4D3583}\",13,1012\n"
+    ],
+    "Context": [
+      "Signature,RowGUID,OwnerID,ContextID\n",
+      "\"1012400110_1506#1012400120_2059#1012400180_2563#1012400655_1799#\",\"{B77A5628-0011-481B-9FC16811E931D705}\",1012,2\n",
+      "\"1012400110_1506#1012400120_1931#1012400160_1631#1012400180_2560#1012400655_1800#\",\"{75D75DD6-38A3-4B17-809F093F13E3FAE5}\",1012,3\n",
+      "\"1012400110_1506#1012400120_2205#1012400160_1631#1012400180_2560#1012400655_1800#\",\"{A6BEC79B-4FB4-489D-A82BE1884B141AD8}\",1012,4\n",
+      "\"1012400110_1506#1012400120_1931#1012400160_1640#1012400180_2560#1012400655_1800#\",\"{886A50EB-2113-4D34-8F6A8F76A48434E6}\",1012,5\n",
+      "\"1012400110_1506#1012400120_2205#1012400160_1640#1012400180_2560#1012400655_1800#\",\"{8677A6C6-469E-490F-8076E7224468C9F1}\",1012,6\n",
+      "\"1012400110_1506#1012400120_1931#1012400160_1649#1012400180_2560#1012400655_1800#\",\"{922F74E2-3280-405A-8356DDD59ECD5F36}\",1012,7\n"
+    ],
+    "ContextComposition": [
+      "ContextID,PropertyID,ItemID,RowGUID\n",
+      "2,1012400110,1506,\"{8C398C8D-418F-469C-B1EE0742E44B18E5}\"\n",
+      "2,1012400120,2059,\"{EC20B08E-3AE1-461C-83B830D92087F816}\"\n",
+      "2,1012400180,2563,\"{92AB0441-F020-4EEC-9048E6AF470016F0}\"\n",
+      "2,1012400655,1799,\"{586D9F45-B6CC-4C6C-BD23615715AF112F}\"\n",
+      "3,1012400110,1506,\"{F6444196-105C-4F34-B76477509E50DF49}\"\n",
+      "3,1012400120,1931,\"{C7108B4C-7A3F-47DE-92445A6E3296DCF6}\"\n"
+    ],
+    "Item": [
+      "Name,Description,RowGUID,OwnerID,ItemID,IsProperty,IsActive\n",
+      "\"1250% for positions not subject to any method\",,\"{0E6D9F07-BF7C-4330-854FB4856D1415BD}\",1012,1000,0,1\n",
+      "\"Advanced Measurement Approach\",,\"{F95E9242-3E21-47CD-B2544F9743A04BDB}\",1012,1006,0,1\n",
+      "\"Advanced method\",,\"{E1F0838D-619B-40AC-A422AE4191B5599B}\",1012,1007,0,1\n",
+      "\"Alternative Standardised Approach\",,\"{4EE0039D-EA3B-4AB9-86EFB17CDDE7DC59}\",1012,1008,0,1\n",
+      "\"Approach for general risk for equities\",,\"{B5B411E2-36C6-467C-908E7BC735369AE1}\",1012,1009,0,1\n",
+      "\"Approach for specific risk for correlation trading portfolio\",,\"{0B482747-6A25-42EF-8DA39C4ECBC553F7}\",1012,1010,0,1\n"
+    ],
+    "ItemCategory": [
+      "ItemID,StartReleaseID,CategoryID,EndReleaseID,RowGUID,IsDefaultItem,Code,Signature\n",
+      "1006,1,130,,\"{BF66C8E1-B63C-49BA-82F2A8E6AB1E7444}\",0,\"x2\",\"eba_AP:x2\"\n",
+      "1008,1,130,,\"{A9A9DE32-C400-4897-A87FED57CF234E8A}\",0,\"x4\",\"eba_AP:x4\"\n",
+      "1009,1,130,,\"{783938AB-35C7-4318-B495A71B9BA16145}\",0,\"x5\",\"eba_AP:x5\"\n",
+      "1010,1,130,,\"{F5B77ADC-8230-4278-BBAB40CB06C9B083}\",0,\"x6\",\"eba_AP:x6\"\n",
+      "1011,1,130,,\"{A5185BB7-0037-4B1A-9701401552B1D577}\",0,\"x7\",\"eba_AP:x7\"\n",
+      "1012,1,130,,\"{3C2A766A-3614-49F3-8664961739326EA2}\",0,\"x8\",\"eba_AP:x8\"\n"
+    ],
+    "TableGroup": [
+      "RowGUID,StartReleaseID,EndReleaseID,ParentTableGroupID,OwnerID,TableGroupID,Code,Name,Description,Type\n",
+      "\"{6207CF93-D6BC-403E-925A3369373E3814}\",1,,,1012,821,\"Backstop\",\"Backstop\",,\"templateGroup\"\n",
+      "\"{A3985D81-5F6D-48E4-8D51E208EE2EB0FC}\",1,,,1012,822,\"Capital_Adequacy\",\"Capital Adequacy\",,\"templateGroup\"\n",
+      "\"{01F7C4A6-B437-4D15-959D2E6482A84798}\",1,,,1012,824,\"Counterparty_Credit_Risk\",\"Counterparty Credit Risk\",,\"templateGroup\"\n",
+      "\"{47CAC4C1-28F3-4AE7-A4FCEDC062182C50}\",1,,,1012,825,\"Credit_Risk\",\"Credit Risk\",,\"templateGroup\"\n",
+      "\"{7612DDC5-1CF2-448B-B80A31E6E9EFB93C}\",1,2,,1012,826,\"FRTB\",\"FRTB\",,\"templateGroup\"\n",
+      "\"{CE7332E3-0A09-4C02-9D59C1AADDC3B02C}\",1,,,1012,829,\"Leverage_Ratio\",\"Leverage Ratio\",,\"templateGroup\"\n"
+    ],
+    "Header": [
+      "TableID,RowGUID,OwnerID,HeaderID,IsKey,IsAttribute,Direction\n",
+      "325,\"{D42E9C05-AF15-4BF1-835F3D1EA833A3D3}\",1012,1,0,0,\"X\"\n",
+      "325,\"{700BAC09-F302-460B-909064DBE8591D10}\",1012,2,0,0,\"Y\"\n",
+      "325,\"{F5D7363A-1231-42D2-A6F622864EF6EEBF}\",1012,3,0,0,\"Y\"\n",
+      "304,\"{BDA87F98-39B8-4A2A-81C32F5CB2F742A8}\",1012,4,0,0,\"X\"\n",
+      "304,\"{7DE9669B-9654-4D0A-9C2FC2B7A945355A}\",1012,5,0,0,\"Y\"\n",
+      "304,\"{669723E1-1C69-4118-A0B06D52ECAE7D7B}\",1012,6,0,0,\"Y\"\n"
+    ],
+    "HeaderVersion": [
+      "HeaderID,Code,Label,PropertyID,ContextID,SubCategoryVID,KeyVariableVID,StartReleaseID,EndReleaseID,RowGUID,HeaderVID\n",
+      "14116,\"010\",\"Nature of Report\",,,,,1,,\"{B4CB9F2D-C912-4C0D-BF84ABA6F6D51567}\",37289\n",
+      "14117,\"010\",\"Accounting framework\",1089,16105,10400,,1,5,\"{036D52EA-7398-4F72-B6E7527CEDFE071A}\",37290\n",
+      "14118,\"020\",\"Reporting Level\",1399,16105,12656,,1,5,\"{407811F2-24D7-4F89-93DD9350AA8298A9}\",37291\n",
+      "2014,\"0090\",\"LOWEST\",1436,734676,,,1,3,\"{47AFF671-23C4-4054-863C9B5F065289C3}\",48773\n",
+      "2015,\"0100\",\"HIGHEST\",1435,734676,,,1,3,\"{E7701D87-5577-4301-A217E489709BACD5}\",48774\n",
+      "2016,\"0009\",\"CORPORATE FINANCE [CF]\",,,,,1,,\"{9EC6DA1C-2E5F-4462-A67227BF3C405148}\",48775\n"
+    ],
+    "ModuleVersionComposition": [
+      "ModuleVID,TableID,TableVID,Order,RowGUID\n",
+      "337,142,2170,2,\"{D6BC33F8-F621-48A7-BCF98D0E36F1A00C}\"\n",
+      "337,143,2179,4,\"{E967E1C3-02AA-400C-B8C47E5F5869229C}\"\n",
+      "337,144,2180,5,\"{48AF0C87-6BF9-423F-B52274500F561512}\"\n",
+      "337,145,2171,7,\"{415E0878-0F5C-4E83-84AF904745AC9EA3}\"\n",
+      "337,146,2172,8,\"{17E87815-F187-445C-9F7332632E11B028}\"\n",
+      "337,147,2173,10,\"{E43D53E2-1A0F-469C-B2E9B012BAB5CF86}\"\n"
+    ],
+    "TableGroupComposition": [
+      "TableGroupID,TableID,Order,StartReleaseID,EndReleaseID,RowGUID\n",
+      "820,364,2,1,,\"{408947E8-87FA-4453-96F6418D849626BB}\"\n",
+      "820,365,2,1,,\"{8A56D064-895B-4F46-91470D51D168881E}\"\n",
+      "820,366,3,1,,\"{72BA090B-EA6C-4A7C-846A13D55DD56EA5}\"\n",
+      "820,367,3,1,,\"{81B9382E-A902-4AE3-B0896879AC0467C7}\"\n",
+      "820,368,4,1,,\"{E3C545BF-B7E1-4D73-A408917D5A407C09}\"\n",
+      "820,369,4,1,,\"{5CDBD0AC-2D41-468F-BB32E607D331DE6F}\"\n"
+    ],
+    "KeyComposition": [
+      "KeyID,VariableVID,RowGUID\n",
+      "1010000001,1010000006,\n",
+      "1010000002,1010000007,\n",
+      "1010000002,1010000008,\n",
+      "1010000003,1010000008,\n",
+      "1010000004,1010000009,\n",
+      "1010000005,1010000010,\n"
+    ],
+    "DPMClass": [
+      "OwnerClassID,ClassID,HasReferences,Name,Type\n",
+      ",1,1,\"Organisation\",\n",
+      ",2,1,\"Category\",\n",
+      ",3,1,\"SubCategory\",\n",
+      ",4,1,\"Property\",\n",
+      ",5,1,\"Item\",\n",
+      ",6,1,\"Framework\",\n"
+    ],
+    "Property": [
+      "PropertyID,DataTypeID,ValueLength,RowGUID,OwnerID,IsComposite,IsMetric,PeriodType\n",
+      "1084,9,,\"{A1A4CBEF-1C43-442C-853BDDDC37237019}\",1012,0,1,\"stock\"\n",
+      "1088,3,,\"{2DBAE9BC-82FF-46DD-BBBDA2D85DC2A1CB}\",1012,0,0,\"stock\"\n",
+      "1089,8,,\"{C316AEC5-E063-416F-8DB657206B226CEC}\",1012,0,0,\"stock\"\n",
+      "1090,8,,\"{3469CEF9-4E43-4D8B-AA44F09804B91E25}\",1012,0,0,\"stock\"\n",
+      "1091,9,,\"{704F8ED7-484B-4531-9E4150604693D008}\",1012,0,1,\"stock\"\n",
+      "1092,9,,\"{92077015-07D5-490C-A95DF798B2ACE679}\",1012,0,1,\"stock\"\n"
+    ],
+    "Operation": [
+      "GroupOperID,RowGUID,OwnerID,OperationID,Code,Type,Source\n",
+      ",\"{0FA20D8D-E32D-4564-81697B3021C6D547}\",1012,1,\"v0172_m\",\"validation\",\"user_defined\"\n",
+      ",\"{C7A341AF-CCF9-4CA6-8D74B5E41D959666}\",1012,3,\"v0174_m\",\"validation\",\"user_defined\"\n",
+      ",\"{1C1DA2F6-1A6F-480C-9223C53446FFDDC7}\",1012,4,\"v0175_m\",\"validation\",\"user_defined\"\n",
+      ",\"{15663B26-A13C-42E3-B2FCCE69C1623207}\",1012,5,\"v0176_m\",\"validation\",\"user_defined\"\n",
+      ",\"{577D1A00-83F1-4840-8C2F41C4720575D8}\",1012,7,\"v0178_m\",\"validation\",\"user_defined\"\n",
+      ",\"{74D6E562-3E9B-4550-ABED51BDBAF72DE2}\",1012,9,\"v0180_m\",\"validation\",\"user_defined\"\n"
+    ],
+    "OperationVersion": [
+      "OperationVID,OperationID,PreconditionOperationVID,SeverityOperationVID,StartReleaseID,EndReleaseID,Expression,Description,RowGUID,Endorsement,IsVariantApproved\n",
+      "15255,1,7789,,5,,\"with {tC_01.00, c0010, default: 0, interval: true}: {r0020} = {r0030} + {r0130} + {r0180} + {r0200} + {r0210} + {r0220} + {r0230} + {r0240} + {r0250} + {r0300} + {r0340} + {r0370} + {r0380} + {r0390} + {r0430} + {r0440} + {r0450} + {r0460} + {r0470} + {r0471} + {r0472} + {r0480} + {r0490} + {r0500} + {r0510} + {r0513} + {r0514} + {r0515} + {r0520} + {r0524} + {r0529}\",\"{r0020} = {r0030} + {r0130} + {r0180} + {r0200} + {r0210} + {r0220} + {r0230} + {r0240} + {r0250} + {r0300} + {r0340} + {r0370} + {r0380} + {r0390} + {r0430} + {r0440} + {r0450} + {r0460} + {r0470} + {r0471} + {r0472} + {r0480} + {r0490} + {r0500} + {r0510} + {r0513} + {r0514} + {r0515} + {r0520} + {r0524} + {r0529}\",\"{2186C803-16FF-2F41-830465C7DD8B2168}\",,0\n",
+      "1,1,7789,,1,5,\"with {tC_01.00, c0010, default: 0, interval: true}: {r0020} = {r0030} + {r0130} + {r0180} + {r0200} + {r0210} + {r0220} + {r0230} + {r0240} + {r0250} + {r0300} + {r0340} + {r0370} + {r0380} + {r0390} + {r0430} + {r0440} + {r0450} + {r0460} + {r0470} + {r0471} + {r0472} + {r0480} + {r0490} + {r0500} + {r0510} + {r0513} + {r0514} + {r0515} + {r0520} + {r0524} + {r0529}\",\"{r0020} = {r0030} + {r0130} + {r0180} + {r0200} + {r0210} + {r0220} + {r0230} + {r0240} + {r0250} + {r0300} + {r0340} + {r0370} + {r0380} + {r0390} + {r0430} + {r0440} + {r0450} + {r0460} + {r0470} + {r0471} + {r0472} + {r0480} + {r0490} + {r0500} + {r0510} + {r0513} + {r0514} + {r0515} + {r0520} + {r0524} + {r0529}\",\"{1EEBF847-2F7A-4F45-88DFA2494BE775F9}\",,0\n",
+      "15256,2,7789,,5,,\"with {tC_01.00, c0010, default: 0, interval: true}: {r0030} = {r0040} + {r0060} + {r0070} + {r0092}\",\"{r0030, c0010} = {r0040, c0010} + {r0060, c0010} + {r0070, c0010} + {r0092, c0010}\",\"{93C5FF5C-820E-5946-BCD13115E661725A}\",,0\n",
+      "2,2,7789,,1,5,\"with {tC_01.00, c0010, default: 0, interval: true}: {r0030} = {r0040} + {r0060} + {r0070} + {r0092}\",\"{r0030, c0010} = {r0040, c0010} + {r0060, c0010} + {r0070, c0010} + {r0092, c0010}\",\"{3A21529A-0A36-4409-BEF8A422D4C87233}\",,0\n",
+      "15257,3,7789,,5,,\"with {tC_01.00, c0010, default: 0, interval: true}: {r0070} = {r0080} + {r0090} + {r0091}\",\"{r0070, c0010} = {r0080, c0010} + {r0090, c0010} + {r0091, c0010}\",\"{D14DA6B7-D8DA-1E4A-9347B7857F2FB3A3}\",,0\n",
+      "3,3,7789,,1,5,\"with {tC_01.00, c0010, default: 0, interval: true}: {r0070} = {r0080} + {r0090} + {r0091}\",\"{r0070, c0010} = {r0080, c0010} + {r0090, c0010} + {r0091, c0010}\",\"{485A7040-4F0C-4DB8-AD46D7921803F3C7}\",,0\n"
+    ],
+    "Aux_CellMapping": [
+      "NewCellID,NewTableVID,OldCellID,OldTableVID\n",
+      "360828,7059,69012,5441\n",
+      "360831,7059,69581,5441\n",
+      "360833,7059,69117,5441\n",
+      "360834,7059,227567,5441\n",
+      "360836,7059,69592,5441\n",
+      "360837,7059,227301,5441\n"
+    ]
+  }
 }
