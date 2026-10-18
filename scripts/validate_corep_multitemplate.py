@@ -18,8 +18,10 @@ table_vids={t["table_vid"]:t["code"] for t in tables}
 if not cells:raise SystemExit("No official cells")
 if any(c.get("table_code")!=table_vids.get(c.get("table_vid")) for c in cells):
  raise SystemExit("Mismatch between cell table and TableVID")
-if any(c.get("cell_id") is None or c.get("variable_vid") is None for c in cells):
- raise SystemExit("An extracted cell lacks its source CellID/VariableVID")
+if any(c.get("cell_id") is None for c in cells):
+ raise SystemExit("An extracted cell lacks its source CellID")
+if any(c.get("variable_vid") is None and c.get("is_excluded")!=1 for c in cells):
+ raise SystemExit("Unexpected missing VariableVID on non-excluded cell")
 grouped=collections.Counter(c["table_code"] for c in cells)
 missing_coords=collections.Counter(c["table_code"] for c in cells if not c.get("row") or not c.get("column"))
 unique_ids=len({(c["table_vid"],c["cell_id"]) for c in cells})
@@ -32,6 +34,8 @@ manifest={
  "byte_size":source.stat().st_size,
  "number_of_template_variants":len(tables),
  "total_cells":len(cells),
+ "excluded_cells_without_variable":sum(c.get("variable_vid") is None for c in cells),
+ "reportable_cells_with_variable":sum(c.get("variable_vid") is not None for c in cells),
  "validation_expressions":len(data.get("validation_rules",[])),
  "cells_missing_row_or_column":dict(missing_coords),
  "table_versions":[{"code":t["code"],"name":t.get("name"),"table_vid":t["table_vid"],"cell_count":grouped[t["code"]]} for t in tables],
