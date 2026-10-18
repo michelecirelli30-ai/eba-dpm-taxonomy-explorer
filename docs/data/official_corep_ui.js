@@ -52,10 +52,23 @@ if(window.EbaRuleTranslator){
 var interpretation=window.EbaRuleTranslator.interpret(r.expression,rows());
 var supported=interpretation.status==="supported";
 var heading='<div class="map-warn" style="margin-top:17px"><b>EBA Rule Translator · '+(supported?'Deterministic interpretation':'Requires technical review')+'</b><p class="fine">Generated from imported EBA cell metadata, not AI output. The original formula above remains authoritative.</p></div>';
-var explain=supported?
-'<h3>Plain English</h3><p class="lead">'+esc(interpretation.plainEnglish)+'</p>'+
+var structured=supported&&window.EbaRuleTranslator.readableStructure(interpretation);
+var explain;
+if(structured&&structured.long){
+var pieces=structured.terms.map(function(term){return '<tr><td><button type="button" class="odpm-link" data-row="'+esc(term.row)+'">r'+esc(term.row)+'</button></td><td>'+esc(term.label)+'</td><td>'+esc(term.coefficient===1?'+':'−')+'</td></tr>'}).join("");
+explain='<h3>Business summary</h3><p class="lead"><strong>'+esc(structured.shortPlain)+'</strong></p>'+
+'<p class="fine">Target: '+esc(structured.lhs.label)+' · CellID '+esc(structured.lhs.cellId)+'</p>'+
+(structured.caution?'<div class="map-warn">'+esc(structured.caution)+'</div>':'')+
+'<details style="margin:15px 0"><summary style="cursor:pointer;color:var(--wine);font-weight:750">Show all '+structured.termCount+' components with official row labels</summary>'+
+'<div class="table-scroll"><table><thead><tr><th>COREP row</th><th>Official description</th><th>Operator</th></tr></thead><tbody>'+pieces+'</tbody></table></div></details>'+
+'<details style="margin:15px 0"><summary style="cursor:pointer;color:var(--wine);font-weight:750">Show expanded business formula and full Plain English rendering</summary>'+
+'<h3>Business formula</h3><p class="lead">'+esc(interpretation.businessFormula)+'</p>'+
+'<h3>Plain English — full</h3><p class="lead">'+esc(interpretation.plainEnglish)+'</p></details>';
+}else{
+explain=supported?'<h3>Plain English</h3><p class="lead">'+esc(interpretation.plainEnglish)+'</p>'+
 '<h3>Business formula</h3><p class="lead">'+esc(interpretation.businessFormula)+'</p>':
 '<h3>Requires technical review</h3><p class="fine">'+esc(interpretation.reason.join("; "))+'</p>';
+}
 var tech='<h3>Technical breakdown</h3><div class="fine">'+interpretation.technical.map(function(x){return '<p>'+esc(x)+'</p>'}).join("")+'</div>';
 var refs='<h3>Verified cell references</h3><p class="fine">'+interpretation.references.filter(function(x){return x.cellId!==null}).map(function(x){return esc(x.label)+' · r'+esc(x.row)+'/c'+esc(x.column)+' · CellID '+esc(x.cellId)+'<span style="display:block"></span>'}).join("")+'</p>';
 el("officialRuleDetail").insertAdjacentHTML("beforeend",heading+explain+tech+refs);
