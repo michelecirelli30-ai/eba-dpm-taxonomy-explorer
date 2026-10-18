@@ -1,0 +1,81 @@
+{
+  "checked_utc": "2026-10-18T00:23:54.789767+00:00",
+  "source": "EBA Reporting framework 4.3 > 3.A DPM 4.3.1",
+  "archive_content_not_committed": true,
+  "packages": {
+    "dpm_database_2_0": {
+      "url": "https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/DPM2%20Database_v%204_3.zip",
+      "state": "downloaded_and_readable",
+      "http_status": 200,
+      "content_type": "application/x-zip-compressed",
+      "download_bytes": 199891835,
+      "sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac",
+      "entries_count": 1,
+      "uncompressed_bytes": 681115648,
+      "extensions": {
+        ".accdb": 1
+      },
+      "sample_entries": [
+        {
+          "path": "DPM2 Database_v 4_3_20260622.accdb",
+          "bytes": 681115648
+        }
+      ],
+      "candidate_database_files": [
+        {
+          "path": "DPM2 Database_v 4_3_20260622.accdb",
+          "bytes": 681115648
+        }
+      ]
+    },
+    "dpm_table_layouts": {
+      "url": "https://www.eba.europa.eu/sites/default/files/2026-07/71f710c3-111a-4976-9731-bc9bdaa2036c/c.%20DPM%20Table%20Layouts%20and%20data%20point%20categorisation.zip",
+      "state": "downloaded_and_readable",
+      "http_status": 200,
+      "content_type": "application/zip",
+      "download_bytes": 644281,
+      "sha256": "97bec445820efa56579d6e340ec8825ac4b8355747b5308bb07fb41f3d3dd3ed",
+      "entries_count": 4,
+      "uncompressed_bytes": 750762,
+      "extensions": {
+        ".xlsx": 4
+      },
+      "sample_entries": [
+        {
+          "path": "20260623 Annotated Table Layout  TCB 4.3 TCB_CORETCB 4.3.xlsx",
+          "bytes": 379819
+        },
+        {
+          "path": "20260623 Annotated Table Layout  TCB 4.3 TCB_HUTCB 4.3.xlsx",
+          "bytes": 91159
+        },
+        {
+          "path": "20260623 Annotated Table Layout  TCB 4.3 TCB_LIQUIDITYTCB 4.3.xlsx",
+          "bytes": 65052
+        },
+        {
+          "path": "20260623 Annotated Table Layout  AMLA 4.3 AML_RAAMLA 4.3.xlsx",
+          "bytes": 214732
+        }
+      ],
+      "candidate_database_files": [
+        {
+          "path": "20260623 Annotated Table Layout  TCB 4.3 TCB_CORETCB 4.3.xlsx",
+          "bytes": 379819
+        },
+        {
+          "path": "20260623 Annotated Table Layout  TCB 4.3 TCB_HUTCB 4.3.xlsx",
+          "bytes": 91159
+        },
+        {
+          "path": "20260623 Annotated Table Layout  TCB 4.3 TCB_LIQUIDITYTCB 4.3.xlsx",
+          "bytes": 65052
+        },
+        {
+          "path": "20260623 Annotated Table Layout  AMLA 4.3 AML_RAAMLA 4.3.xlsx",
+          "bytes": 214732
+        }
+      ]
+    }
+  }
+}
