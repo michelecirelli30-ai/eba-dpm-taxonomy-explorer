@@ -56,6 +56,22 @@ var html='<span class="pill">'+esc(r.type)+' · official Access database</span><
 if(explanation){
   html+='<div class="map-warn" style="margin:14px 0"><b>EBA Rule Translator · '+(isSupported?'Deterministic interpretation':'Requires technical review')+'</b>'+
   '<p class="fine">Explanations use the imported EBA DPM labels. The original EBA expression is the authoritative source.</p></div>';
+  if(isSupported&&structured&&!structured.long&&structured.termCount<=6){
+    var names={
+      "Capital instruments and share premium eligible as CET1 Capital":"CET1-eligible instruments & share premium",
+      "Fully paid up capital instruments":"Fully paid-up capital",
+      "(-) Actual or contingent obligations to purchase own CET1 instruments":"(-) Own CET1 purchase obligations",
+      "Previous years retained earnings":"Previous years' retained earnings",
+      "Profit or loss eligible":"Eligible profit or loss"
+    };
+    var shorten=function(x){return Object.prototype.hasOwnProperty.call(names,x)?names[x]:x};
+    var quick=shorten(structured.lhs.label)+" = "+structured.terms.map(function(t,i){
+      return (i===0?(t.coefficient<0?"− ":""):(t.coefficient<0?" − ":" + "))+shorten(t.label);
+    }).join("");
+    html+='<div class="odpm-quick"><h3>Quick formula</h3><p class="odpm-equation">'+esc(quick)+'</p>'+
+      '<p class="fine">Concise editorial labels based on official EBA rows. Original formula below is authoritative.</p>'+
+      (structured.caution?'<p class="fine">'+esc(structured.caution)+'</p>':'')+'</div>';
+  }
   if(isSupported&&structured&&structured.long){
     html+='<h3>Business summary</h3><p class="lead" style="font-weight:650">'+esc(structured.shortPlain)+'</p>'+
     '<p class="fine">Target: '+esc(structured.lhs.label)+' · r'+esc(structured.lhs.row)+' · CellID '+esc(structured.lhs.cellId)+'</p>';
