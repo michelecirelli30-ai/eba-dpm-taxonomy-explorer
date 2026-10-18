@@ -1,0 +1,57 @@
+{
+  "provenance": "EBA DPM 4.3 release, COREP_OF official Access database",
+  "generated_at_utc": "2026-10-18T18:31:07.429352+00:00",
+  "status": "validated",
+  "source": {
+    "release_code": "4.3",
+    "zip_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac",
+    "reporting_family": "COREP_OF"
+  },
+  "byte_size": 1830101,
+  "number_of_template_variants": 6,
+  "total_cells": 471,
+  "excluded_cells_without_variable": 31,
+  "reportable_cells_with_variable": 440,
+  "validation_expressions": 59,
+  "cells_missing_row_or_column": {},
+  "table_versions": [
+    {
+      "code": "C_02.00.a",
+      "name": "Capital Adequacy - Risk Exposure Amounts",
+      "table_vid": 6874,
+      "cell_count": 109
+    },
+    {
+      "code": "C_03.00",
+      "name": "Capital Adequacy - Ratios",
+      "table_vid": 6881,
+      "cell_count": 28
+    },
+    {
+      "code": "C_04.00",
+      "name": "Capital Adequacy - Memorandum Items",
+      "table_vid": 6886,
+      "cell_count": 117
+    },
+    {
+      "code": "C_02.00.b",
+      "name": "OWN FUNDS REQUIREMENTS",
+      "table_vid": 7177,
+      "cell_count": 107
+    },
+    {
+      "code": "C_01.00",
+      "name": "Capital Adequacy - Own funds definition",
+      "table_vid": 6871,
+      "cell_count": 110
+    },
+    {
+      "code": "C_02.00",
+      "name": "Capital Adequacy - Risk Exposure Amounts",
+      "table_vid": 5950,
+      "cell_count": 0
+    }
+  ],
+  "scope_note": "Validation expression list is still limited to formulas referencing C_01.00; other-template rule imports are pending.",
+  "source_file": "docs/data/corep_of_multitemplate.json"
+}
