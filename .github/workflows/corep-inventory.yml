@@ -1,0 +1,34 @@
+name: Inventory official COREP template scope
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/inventory_corep_modules.py'
+      - '.github/workflows/corep-inventory.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install database reader
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mdbtools
+      - name: Inventory active COREP modules and template versions
+        run: python scripts/inventory_corep_modules.py
+      - name: Save verifiable source inventory
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/corep_official_inventory.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: inventory EBA COREP OF missing template versions"
+            git push
+          fi
