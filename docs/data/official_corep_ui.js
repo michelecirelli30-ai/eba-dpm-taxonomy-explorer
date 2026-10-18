@@ -21,7 +21,7 @@ function updateTemplate(){
  el("officialRuleCount").textContent="52 (C 01.00)";
  el("officialRulesPanel").style.display=selectedTemplate==="C_01.00"?"":"none";
  el("officialTemplateNotice").textContent=table?
-  table.name+" · TableVID "+table.table_vid+" · "+rs.length+" verified cells"+
+  table.name+" · TableVID "+table.table_vid+" · "+rs.length+" source cell positions ("+rs.filter(function(c){return c.is_excluded===1}).length+" excluded)"+
    (selectedTemplate==="C_01.00"?" · 52 C 01.00 validation rules loaded":" · rule import for this template not yet included"):
   "No matching official table version in this extract.";
  el("officialOrigin").textContent=db.source.reporting_family+" · "+selectedTemplate+
@@ -46,14 +46,14 @@ var v=c.variable||{}, dimensions=c.context_dimensions||[];
 var related=selectedTemplate==="C_01.00"?rules().filter(function(r){return r.type==="validation"&&new RegExp("\\br"+c.row+"\\b","i").test(r.expression||"")}):[];
 var memberHtml=dimensions.map(function(d){var sig=(d.item_categories||[]).map(function(x){return x.signature}).filter(Boolean).join(", ");return '<div class="odpm-member"><b>'+esc(d.member&&d.member.name||"Unnamed member")+'</b><small>PropertyID '+esc(d.property_id)+' · ItemID '+esc(d.item_id)+'</small><small>Member signature: '+esc(sig||"Not available")+'</small></div>'}).join("");
 var editorial=selectedTemplate==="C_01.00"&&COREP_IFRS.rows.some(function(x){return x.r===c.row});
-el("officialDetail").innerHTML='<span class="pill">Official EBA source cell</span><h2 style="font-size:21px;margin:13px 0 5px">'+esc(c.cell_code)+'</h2><p class="lead">'+esc(rowLabel(c))+'</p>'+
-'<div class="odpm-stats"><div><small>CellID</small><strong>'+esc(c.cell_id)+'</strong></div><div><small>VariableVID</small><strong>'+esc(c.variable_vid)+'</strong></div><div><small>TableVID</small><strong>'+esc(c.table_vid)+'</strong></div></div>'+
-'<h3>Actual DPM metric</h3><p class="lead">'+esc(c.metric_item_name||"Metric name unavailable")+'</p><p class="fine">Metric PropertyID '+esc(v.property_id)+' · VariableID '+esc(v.variable_id)+' · ContextID '+esc(v.context_id)+'</p>'+
+el("officialDetail").innerHTML='<span class="pill">'+(c.is_excluded===1?'Excluded template position · non-reportable':'Official EBA source cell')+'</span><h2 style="font-size:21px;margin:13px 0 5px">'+esc(c.cell_code)+'</h2><p class="lead">'+esc(rowLabel(c))+'</p>'+
+'<div class="odpm-stats"><div><small>CellID</small><strong>'+esc(c.cell_id)+'</strong></div><div><small>VariableVID</small><strong>'+esc(c.variable_vid==null?'Not assigned':c.variable_vid)+'</strong></div><div><small>TableVID</small><strong>'+esc(c.table_vid)+'</strong></div></div>'+
+'<h3>Actual DPM metric</h3><p class="lead">'+esc(c.is_excluded===1?"Excluded cell (no reportable metric)":c.metric_item_name||"Metric name unavailable")+'</p><p class="fine">Metric PropertyID '+esc(v.property_id)+' · VariableID '+esc(v.variable_id)+' · ContextID '+esc(v.context_id)+'</p>'+
 '<h3>Actual dimensional members ('+dimensions.length+')</h3>'+(memberHtml||'<p class="fine">No ContextComposition members found for this cell.</p>')+
 '<h3>Template coordinate</h3><p class="fine">Row r'+esc(c.row)+' · Column c'+esc(c.column)+' · Row HeaderVID '+esc(c.headers&&c.headers.row_header_id&&c.headers.row_header_id[0]&&c.headers.row_header_id[0].header_vid)+' · Column HeaderVID '+esc(c.headers&&c.headers.column_header_id&&c.headers.column_header_id[0]&&c.headers.column_header_id[0].header_vid)+'</p>'+
 '<h3>Validation formulas referencing this row: '+related.length+'</h3><div class="odpm-inline">'+related.slice(0,16).map(function(r){return '<button type="button" class="odpm-link" data-rule="'+esc(r.operation_vid)+'">'+esc(r.code)+'</button>'}).join("")+'</div>'+
 (editorial?'<button type="button" id="openIFRS" class="btn">Open IFRS accounting bridge ↗</button>':'<p class="fine">No curated IFRS bridge for this row.</p>')+
-'<p class="fine" style="margin-top:14px">Native DPM identifiers are not XBRL QNames. Additional key/subcategory qualifiers may exist outside the ContextComposition mapping shown. Imported C 01.00 rules do not establish rule coverage for other templates.</p>';
+'<p class="fine" style="margin-top:14px">Native DPM identifiers are not XBRL QNames. Excluded template positions with no VariableVID are not reportable data points. Other key/subcategory qualifiers may exist. C 01.00 rules are not evidence of validation coverage for the other templates.</p>';
 if(editorial)el("openIFRS").onclick=function(){openIFRS(c.row)};
 el("officialDetail").querySelectorAll("[data-rule]").forEach(function(b){b.onclick=function(){selectedRule=Number(b.dataset.rule);el("officialRuleSearch").value="";el("officialRuleType").value="all";renderRules();el("officialRuleDetail").scrollIntoView({behavior:"smooth",block:"start"})}});
 }
@@ -186,7 +186,7 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
  db=data;
  var byVid=Object.fromEntries(data.table_versions.map(function(t){return [t.table_vid,t.code]}));
  data.cells.forEach(function(c){if(!c.table_code)c.table_code=byVid[c.table_vid]||"C_01.00"});
- var templates=data.table_versions.slice().sort(function(a,b){return a.code.localeCompare(b.code)});
+ var templates=data.table_versions.filter(function(t){return data.cells.some(function(c){return c.table_vid===t.table_vid})}).sort(function(a,b){return a.code.localeCompare(b.code)});
  el("officialTemplateSelect").innerHTML=templates.map(function(t){
    return '<option value="'+esc(t.code)+'">'+esc(t.code.replace("_"," "))+' — '+esc(t.name||"COREP")+'</option>'
  }).join("");
