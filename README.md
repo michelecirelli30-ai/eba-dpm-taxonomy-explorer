@@ -52,3 +52,23 @@ A syntax-aware JavaScript parser is available at `docs/data/eba_rule_translator.
 Run `node tests/test_rule_translator.cjs` to test known fixtures and assess the 52-rule corpus. CI: `.github/workflows/test-rule-translator.yml`.
 
 **Limitations:** This is a deterministic *explanation aid*, not a full EBA validation execution engine. Cross-template formulas are not falsely translated against missing DPM modules; true current rule status must be verified from the official status package. Scope defaults and interval handling are described, not simulated. Technical parser coverage must be checked from the CI output before claiming broader support. Track completion in [Issue #1](../../issues/1).
+
+
+## Official COREP Capital Adequacy Explorer (C 01–04)
+
+The **Official COREP DPM Data** screen now loads the authentic EBA 4.3 `COREP_OF` Access dataset from `docs/data/corep_of_multitemplate.json`. Use the **Reporting template** selector to navigate:
+
+| EBA table version | Imported source cell positions |
+| --- | ---: |
+| C_01.00 — Own Funds | 110 |
+| C_02.00.a — Risk Exposure Amounts | 109 |
+| C_02.00.b — Own Funds Requirements | 107 |
+| C_03.00 — Capital Ratios | 28 |
+| C_04.00 — Memorandum Items | 117 |
+| **Total** | **471** |
+
+Of the 471 template positions, **31 are marked excluded** by the original database and have no reportable `VariableVID`; the other **440** have source variable identifiers. The technical `C_02.00` table version with no cells is excluded from the selector.
+
+Regenerate the dataset with `scripts/extract_corep_of_multitemplate.py` using `mdbtools` on GitHub Actions (`.github/workflows/corep-multitemplate.yml`). The accompanying `docs/data/corep_of_multitemplate_manifest.json` documents its verified versions and record counts.
+
+**Current limitation:** The integrated 52 validation formulas and 7 preconditions are the curated **C 01.00** source corpus only. Other-template rules and cross-template translator support are not yet imported; no XBRL QName, current rule activation state, institution mapping or live filing is claimed.
