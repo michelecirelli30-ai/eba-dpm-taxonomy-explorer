@@ -1,0 +1,34 @@
+{
+  "url": "https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/reporting-framework-43",
+  "checked_utc": "2026-10-18T00:20:45.532581+00:00",
+  "status": "html_accessible",
+  "http_status": 200,
+  "html_bytes": 1017352,
+  "links_count": 1159,
+  "candidate_links": [
+    {
+      "href": "/risk-and-data-analysis/reporting/dpm-data-dictionary",
+      "label": "DPM data dictionary"
+    },
+    {
+      "href": "/risk-and-data-analysis/reporting/dpm-data-dictionary",
+      "label": "DPM data dictionary"
+    },
+    {
+      "href": "https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/DPM2%20Database_v%204_3.zip",
+      "label": "DPM database 2.0"
+    },
+    {
+      "href": "https://www.eba.europa.eu/sites/default/files/2026-07/71f710c3-111a-4976-9731-bc9bdaa2036c/c.%20DPM%20Table%20Layouts%20and%20data%20point%20categorisation.zip",
+      "label": "DPM table layout and data point categorization"
+    },
+    {
+      "href": "https://www.eba.europa.eu/sites/default/files/2026-02/29587443-7e93-4500-9196-4fd3dc8c427e/DPM%202.0%20and%20DPM_XL%20Technical%20Documentation.zip",
+      "label": "DMP 2.0 and DPM_XL technical documentation"
+    }
+  ],
+  "mentions": [
+    " financial information</em> and <em>Risk assessment methodologies pursuant to draft RTS under Article 12(7) AMLAR and draft RTS under Article 40(2) AMLD</em> are part of the technical package, these are not collected by the EBA (FC and FINREP9DP modules, respectively).</span></p><p><span style=\"color:#888888;\"><sup>2</sup>Reporting from NCAs/NRAs to the EBA only</span></p><p>&nbsp;</p><p>2.&nbsp;<a href=\"https://www.eba.europa.eu/risk-and-data-analysis/reporting/reporting-frameworks/validation-rules-packages\" title=\"Validation rules packages\">Validation Rules and Scope</a></p><p><a>3.A DPM 4.3.1&nbsp;</a></p><p>&nbsp; &nbsp; a.&nbsp;<a href=\"https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/DPM2%20Database_v%204_3.zip\">DPM database 2.0</a></p><p>&nbsp; &nbsp;&nbsp;b.&nbsp;DPM dictionary - <a href=\"/sites/default/files/2026-07/57ebb6a1-bfdc-4e90-93fe-639bab0d3994/glossary_-_full_export.xlsx\" data-entity-type=\"media\" data-entity-uuid=\"57ebb6a1-bfdc-4e90-93fe-639bab0d3994\" data-entity-substitution=\"media\" title=\"glossary_-_full_export.xlsx\">full export</a> | <a href=\"/sites/default/files/2026-07/beaa1b02-5ba4-48d6-932a-c4acb5b7a099/glossary_usage_exploration.xlsx\" data-entity-type=\"media\" data-entity-uuid=\"beaa1b02-5ba4-48d6-932a-c4acb5b7a099\" data-entity-substitution=\"media\" title=\"glossary_usage_exploration.xlsx\">usage exploration</a></p><p>&nbsp; &nbsp; c.&nbsp;<a href=\"https://www.eba.europa.eu/sites/default/files/2026-07/71f710c3-111a-4976-9731-bc9bdaa2036c/c.%20DPM%20Table%20Layouts%20and%20data%20point%20categorisation.zip\">DPM table layout and data point categorization</a></p><p>&nbsp; &nbsp; d.&n",
+    "b.&nbsp;DPM dictionary - <a href=\"/sites/default/files/2026-07/57ebb6a1-bfdc-4e90-93fe-639bab0d3994/glossary_-_full_export.xlsx\" data-entity-type=\"media\" data-entity-uuid=\"57ebb6a1-bfdc-4e90-93fe-639bab0d3994\" data-entity-substitution=\"media\" title=\"glossary_-_full_export.xlsx\">full export</a> | <a href=\"/sites/default/files/2026-07/beaa1b02-5ba4-48d6-932a-c4acb5b7a099/glossary_usage_exploration.xlsx\" data-entity-type=\"media\" data-entity-uuid=\"beaa1b02-5ba4-48d6-932a-c4acb5b7a099\" data-entity-substitution=\"media\" title=\"glossary_usage_exploration.xlsx\">usage exploration</a></p><p>&nbsp; &nbsp; c.&nbsp;<a href=\"https://www.eba.europa.eu/sites/default/files/2026-07/71f710c3-111a-4976-9731-bc9bdaa2036c/c.%20DPM%20Table%20Layouts%20and%20data%20point%20categorisation.zip\">DPM table layout and data point categorization</a></p><p>&nbsp; &nbsp; d.&nbsp;<a href=\"/sites/default/files/2026-07/05527a8a-70cb-46ee-841e-9d32702929db/identity_cells_same_vid.xlsx\" data-entity-type=\"media\" data-entity-uuid=\"05527a8a-70cb-46ee-841e-9d32702929db\" data-entity-substitution=\"media\" title=\"identity_cells_same_vid.xlsx\">Identical cells</a></p><p>&nbsp; &nbsp; e.&nbsp;<a href=\"https://www.eba.europa.eu/sites/default/files/2026-02/29587443-7e93-4500-9196-4fd3dc8c427e/DPM%202.0%20and%20DPM_XL%20Technical%20Documentation.zip\">DMP 2.0 and DPM_XL technical documentation</a></p><p>4. EBA XBRL&nbsp;</p><p>&nbsp; &nbsp; a.&nbsp;<a href=\"https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/Full%20taxonomy.zip\">Full taxonomy</a></p><p>&nbsp; &nbsp; b.&nbsp;<a href=\"https://www.eba.europa.eu/sites/default/files/2026-07/855cbf85-0715-463e-a3"
+  ]
+}
