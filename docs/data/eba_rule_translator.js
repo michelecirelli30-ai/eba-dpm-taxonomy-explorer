@@ -234,6 +234,44 @@ function readableStructure(interpretation){
     sourceOperator:"=",signedMarkedCount:signedCount};
 }
 
+/**
+ * Compact, lossless rendering of an already-resolved AST using official row codes.
+ * Scoped to the imported C_01.00 cells and column only: never invent XBRL IDs.
+ * The source EBA expression remains authoritative for evaluation semantics.
+ */
+function simpleFormula(interpretation){
+  if(!interpretation||interpretation.status!=="supported"||!interpretation.ast)return null;
+  const refs=refsOf(interpretation.ast);
+  if(!refs.length||refs.some(r=>!r.cellId||!r.row||!r.column||!r.table))return null;
+  const tables=[...new Set(refs.map(r=>r.table))];
+  const columns=[...new Set(refs.map(r=>r.column))];
+  if(tables.length!==1||columns.length!==1)return null;
+  function draw(node,parentPrec=0,side=""){
+    if(node.type==="ref")return "r"+node.row;
+    if(node.type==="number")return node.value;
+    if(node.type==="unary"){
+      const inner=draw(node.value,6);
+      return node.op==="not"?"not "+inner:node.op+inner;
+    }
+    if(node.type==="call")return node.name+"("+node.args.map(v=>draw(v)).join(", ")+")";
+    if(node.type==="conditional")return "if "+draw(node.condition)+" then "+draw(node.outcome)+" endif";
+    if(node.type==="binary"){
+      const prec=PREC[node.op];
+      if(!prec)return null;
+      const l=draw(node.left,prec,"left"),r=draw(node.right,prec,"right");
+      if(l===null||r===null)return null;
+      const parens=prec<parentPrec||(side==="right"&&prec===parentPrec);
+      const text=l+" "+node.op+" "+r;
+      return parens?"("+text+")":text;
+    }
+    return null;
+  }
+  const formula=draw(interpretation.ast);
+  if(!formula)return null;
+  return {formula,table:tables[0],column:columns[0],originalAvailable:true,
+    note:"Cell amounts use the original EBA arithmetic signs. Rows marked (-) are not automatically subtracted again."};
+}
+
 function summary(expressions,cells){
   const result={supported:0,requires_review:0,total:0,review_codes:[]};
   (expressions||[]).filter(r=>r.type==="validation").forEach(r=>{
@@ -242,7 +280,7 @@ function summary(expressions,cells){
   });
   return result;
 }
-const api={tokenize,parse,interpret,summary,refsOf,readableStructure,version:"1.1.0"};
+const api={tokenize,parse,interpret,summary,refsOf,readableStructure,simpleFormula,version:"1.2.0"};
 if(typeof module==="object"&&module.exports)module.exports=api;
 if(root)root.EbaRuleTranslator=api;
 })(typeof window!=="undefined"?window:null);
