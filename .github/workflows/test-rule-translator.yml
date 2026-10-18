@@ -1,0 +1,22 @@
+name: Test EBA Rule Translator
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/data/eba_rule_translator.js'
+      - 'docs/data/corep_c0100_official.json'
+      - 'tests/test_rule_translator.cjs'
+      - '.github/workflows/test-rule-translator.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test parser against official 52-rule corpus
+        run: node tests/test_rule_translator.cjs
