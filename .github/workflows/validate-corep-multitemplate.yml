@@ -1,0 +1,31 @@
+name: Validate COREP OF multitemplate data
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/data/corep_of_multitemplate.json'
+      - 'scripts/validate_corep_multitemplate.py'
+      - '.github/workflows/validate-corep-multitemplate.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit actual COREP_OF template family and EBA identities
+        run: python scripts/validate_corep_multitemplate.py
+      - name: Commit small verified table manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/corep_of_multitemplate_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: verified COREP OF multitemplate manifest"
+            git push
+          fi
