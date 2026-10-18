@@ -1,0 +1,269 @@
+{
+  "checked_utc": "2026-10-18T00:32:17.033990+00:00",
+  "source": "Official EBA DPM 4.3.1 Access archive",
+  "source_url": "https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/DPM2%20Database_v%204_3.zip",
+  "status": "schema_extracted",
+  "full_database_not_published": true,
+  "zip_bytes": 199891835,
+  "zip_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac",
+  "database_name": "DPM2 Database_v 4_3_20260622.accdb",
+  "database_bytes": 681115648,
+  "mdb_tables": {
+    "exit_status": 0,
+    "stderr": ""
+  },
+  "table_count": 72,
+  "table_names": [
+    "Aux_CellMapping",
+    "Aux_CellStatus",
+    "Category",
+    "Cell",
+    "ChangeLog",
+    "ChangeLogAttribute",
+    "CompoundItemContext",
+    "CompoundKey",
+    "Concept",
+    "ConceptRelation",
+    "Context",
+    "ContextComposition",
+    "DataType",
+    "Document",
+    "DocumentVersion",
+    "DPMAttribute",
+    "DPMClass",
+    "Framework",
+    "Header",
+    "HeaderVersion",
+    "Item",
+    "ItemCategory",
+    "KeyComposition",
+    "KeyHeaderMapping",
+    "Language",
+    "Module",
+    "ModuleParameters",
+    "ModuleVersion",
+    "ModuleVersionComposition",
+    "OperandReference",
+    "OperandReferenceLocation",
+    "Operation",
+    "OperationCodePrefix",
+    "OperationNode",
+    "OperationScope",
+    "OperationScopeComposition",
+    "Operator",
+    "OperatorArgument",
+    "Organisation",
+    "Property",
+    "PropertyCategory",
+    "Reference",
+    "RelatedConcept",
+    "Release",
+    "Role",
+    "SubCategory",
+    "SubCategoryItem",
+    "SubCategoryVersion",
+    "Subdivision",
+    "SubdivisionType",
+    "SuperCategoryComposition",
+    "Table",
+    "TableAssociation",
+    "TableGroup",
+    "TableGroupComposition",
+    "TableVersion",
+    "TableVersionCell",
+    "TableVersionHeader",
+    "Translation",
+    "User",
+    "UserRole",
+    "VarGeneration_Detail",
+    "VarGeneration_Summary",
+    "Variable",
+    "VariableCalculation",
+    "VariableGeneration",
+    "VariableVersion",
+    "OperationVersionData",
+    "OperationVersion",
+    "~TMPCLP571251",
+    "~TMPCLP531411",
+    "ModelViolations"
+  ],
+  "relevant_table_names": [
+    "Aux_CellMapping",
+    "Aux_CellStatus",
+    "Cell",
+    "CompoundItemContext",
+    "DocumentVersion",
+    "Framework",
+    "HeaderVersion",
+    "Item",
+    "ItemCategory",
+    "Module",
+    "ModuleParameters",
+    "ModuleVersion",
+    "ModuleVersionComposition",
+    "Release",
+    "SubCategoryItem",
+    "SubCategoryVersion",
+    "Table",
+    "TableAssociation",
+    "TableGroup",
+    "TableGroupComposition",
+    "TableVersion",
+    "TableVersionCell",
+    "TableVersionHeader",
+    "Variable",
+    "VariableCalculation",
+    "VariableGeneration",
+    "VariableVersion",
+    "OperationVersionData",
+    "OperationVersion"
+  ],
+  "schema_inspected": {
+    "Aux_CellMapping": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Aux_CellStatus": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Cell": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "CompoundItemContext": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "DocumentVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Framework": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "HeaderVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Item": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "ItemCategory": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Module": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "ModuleParameters": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "ModuleVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "ModuleVersionComposition": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Release": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "SubCategoryItem": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "SubCategoryVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Table": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "TableAssociation": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "TableGroup": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "TableGroupComposition": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "TableVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "TableVersionCell": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "TableVersionHeader": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "Variable": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "VariableCalculation": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "VariableGeneration": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "VariableVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "OperationVersionData": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    },
+    "OperationVersion": {
+      "exit_status": 1,
+      "ddl": "",
+      "stderr": "Wrong number of arguments.\n\nUsage:\n  mdb-schema [OPTION…] <file> [<backend>] - Dump schema\n\nHelp Options:\n  -h, --help                    Show help options\n\nApplication Options:\n  -T, --table=table             Only create schema for named table\n  -N, --namespace=namespace     Prefix identifiers with"
+    }
+  },
+  "schema_inspected_count": 29
+}
