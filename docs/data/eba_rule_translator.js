@@ -191,6 +191,49 @@ function interpret(expression,cells){
   }catch(err){result.reason.push(err.message)}
   return result;
 }
+
+/**
+ * Presentation metadata for long, fully-resolved additive EBA equations.
+ * An algebraic plus sign means adding the REPORTED cell amount, even for rows
+ * officially marked (-); never invert a term merely because of its label.
+ */
+function readableStructure(interpretation){
+  const ast=interpretation&&interpretation.ast;
+  if(!interpretation||interpretation.status!=="supported"||!ast)return null;
+  if(ast.type!=="binary"||!["=","=="].includes(ast.op)||ast.left.type!=="ref")return null;
+  const terms=[];
+  function flatten(node,sign){
+    if(node.type==="binary"&&node.op==="+"){return flatten(node.left,sign)&&flatten(node.right,sign)}
+    if(node.type==="binary"&&node.op==="-"){return flatten(node.left,sign)&&flatten(node.right,-sign)}
+    if(node.type==="unary"&&node.op==="-")return flatten(node.value,-sign);
+    if(node.type==="ref"&&node.label&&node.cellId!=null){
+      terms.push({row:node.row,column:node.column,table:node.table,
+        label:node.label,cellId:node.cellId,variableVid:node.variableVid,coefficient:sign,
+        markedDeduction:/^\s*\(-\)/.test(node.label)});
+      return true;
+    }
+    return false;
+  }
+  if(!flatten(ast.right,1)||terms.length<2)return null;
+  const long=terms.length>=7;
+  const lhs=ast.left;
+  const name=lhs.label===lhs.label.toUpperCase()?
+    lhs.label.toLowerCase().replace(/^./,c=>c.toUpperCase()):lhs.label;
+  const hasSigned=terms.some(x=>x.markedDeduction);
+  const signedCount=terms.filter(x=>x.markedDeduction).length;
+  const simple=terms.length<=6;
+  const shortPlain=long?
+    name+" (r"+lhs.row+") must equal the algebraic sum of "+terms.length+
+      " reported line items in "+lhs.table+", column c"+lhs.column+".":
+    interpretation.plainEnglish;
+  const caution=hasSigned?
+    "The "+signedCount+" row(s) labelled (-) identify deduction items. This formula adds each REPORTED value with its algebraic sign; do not automatically subtract those rows again.":"";
+  return {kind:"additive",long:long,termCount:terms.length,terms:terms,
+    lhs:{row:lhs.row,column:lhs.column,label:lhs.label,cellId:lhs.cellId,
+      variableVid:lhs.variableVid},shortPlain:shortPlain,caution:caution,
+    sourceOperator:"=",signedMarkedCount:signedCount};
+}
+
 function summary(expressions,cells){
   const result={supported:0,requires_review:0,total:0,review_codes:[]};
   (expressions||[]).filter(r=>r.type==="validation").forEach(r=>{
@@ -199,7 +242,7 @@ function summary(expressions,cells){
   });
   return result;
 }
-const api={tokenize,parse,interpret,summary,refsOf,version:"1.0.0"};
+const api={tokenize,parse,interpret,summary,refsOf,readableStructure,version:"1.1.0"};
 if(typeof module==="object"&&module.exports)module.exports=api;
 if(root)root.EbaRuleTranslator=api;
 })(typeof window!=="undefined"?window:null);
