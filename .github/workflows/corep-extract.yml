@@ -1,0 +1,34 @@
+name: Extract official COREP C 01.00 DPM cells
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/extract_corep_c0100.py'
+      - '.github/workflows/corep-extract.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Microsoft Access reader
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mdbtools
+      - name: Parse official EBA DPM 4.3.1 data
+        run: python scripts/extract_corep_c0100.py
+      - name: Publish curated official data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/corep_c0100_official.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: import official COREP C 01.00 DPM cell mappings"
+            git push
+          fi
