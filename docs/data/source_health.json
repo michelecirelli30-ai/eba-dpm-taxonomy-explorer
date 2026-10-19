@@ -1,7 +1,118 @@
 {
-  "last_run_utc": null,
-  "note": "Automated monitoring has not run yet. Curated framework data is sourced as of 2026-10-18.",
-  "sources": {},
+  "last_run_utc": "2026-10-19T08:52:12+00:00",
+  "note": "Source availability does not guarantee exhaustive coverage or import of taxonomy packages.",
+  "sources": {
+    "SMAIN": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "S42": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "S421": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "S43": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "S44": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "S44PR": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.2",
+        "4.4"
+      ]
+    },
+    "SDPM": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": []
+    },
+    "SMM": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": []
+    },
+    "SVR": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0"
+      ]
+    },
+    "SXBRL": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": [
+        "4.0",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ]
+    },
+    "SPDF": {
+      "state": "reachable",
+      "http_status": 200,
+      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "possible_versions_in_page": []
+    }
+  },
   "curated_release_count": 4,
-  "new_release_candidates_for_manual_review": []
+  "new_release_candidates_for_manual_review": [
+    "4.0",
+    "4.1"
+  ]
 }
