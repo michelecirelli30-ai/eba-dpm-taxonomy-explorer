@@ -1,11 +1,11 @@
 {
-  "last_run_utc": "2026-10-19T08:52:12+00:00",
+  "last_run_utc": "2026-10-26T08:56:01+00:00",
   "note": "Source availability does not guarantee exhaustive coverage or import of taxonomy packages.",
   "sources": {
     "SMAIN": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0",
         "4.1",
@@ -17,7 +17,7 @@
     "S42": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0",
         "4.1",
@@ -29,7 +29,7 @@
     "S421": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0",
         "4.1",
@@ -41,7 +41,7 @@
     "S43": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0",
         "4.1",
@@ -53,7 +53,7 @@
     "S44": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0",
         "4.1",
@@ -65,7 +65,7 @@
     "S44PR": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.2",
         "4.4"
@@ -74,19 +74,19 @@
     "SDPM": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": []
     },
     "SMM": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": []
     },
     "SVR": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0"
       ]
@@ -94,7 +94,7 @@
     "SXBRL": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": [
         "4.0",
         "4.1",
@@ -106,7 +106,7 @@
     "SPDF": {
       "state": "reachable",
       "http_status": 200,
-      "checked_utc": "2026-10-19T08:52:12+00:00",
+      "checked_utc": "2026-10-26T08:56:01+00:00",
       "possible_versions_in_page": []
     }
   },
