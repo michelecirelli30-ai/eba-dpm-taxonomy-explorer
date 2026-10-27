@@ -1,6 +1,6 @@
 (function(){
 "use strict";
-var db=null,baseDb=null,creditManifest=null,creditCache={},loadSequence=0,selectedCell=null,selectedRule=null,selectedTemplate="C_01.00",multiTemplateLoaded=false;
+var db=null,baseDb=null,creditManifest=null,creditCache={},loadSequence=0,selectedCell=null,selectedRule=null,selectedTemplate="C_01.00",expandedRow=null,multiTemplateLoaded=false;
 function el(id){return document.getElementById(id)}
 function esc(value){return String(value==null?"":value).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function rows(){return db?db.cells.filter(function(c){return (c.table_code||"C_01.00")===selectedTemplate}):[]}
@@ -29,6 +29,8 @@ function showTemplate(){
   (multiTemplateLoaded?"data/corep_of_multitemplate.json":"data/corep_c0100_official.json"):
   creditManifest.templates.find(function(e){return e.code===selectedTemplate}).file;
  selectedCell=rs.length?rs[0].cell_id:null;
+ expandedRow=null;
+ el("officialViewMode").value=rs.length>150?"rows":"cells";
  el("officialSearch").value="";
  renderCells();
  if(selectedTemplate==="C_01.00")renderRules();
@@ -74,16 +76,98 @@ function updateTemplate(){
  });
 }
 el("officialTemplateSelect").onchange=updateTemplate;
-function renderCells(){
-if(!db)return;
-var q=el("officialSearch").value.trim().toLowerCase();
-var found=rows().filter(function(c){if(!q)return true;return [c.row,c.column,c.cell_id,c.variable_vid,c.cell_code,c.metric_item_name,rowLabel(c)].concat((c.context_dimensions||[]).flatMap(function(d){return [d.member&&d.member.name].concat((d.item_categories||[]).map(function(x){return x.signature}))})).join(" ").toLowerCase().includes(q)});
-var renderLimit=250;
-el("officialMatches").textContent=found.length+" / "+rows().length+" source positions for "+selectedTemplate+(found.length>renderLimit?" · displaying first "+renderLimit+"; use search to narrow":"");
-el("officialCellList").innerHTML=found.slice(0,renderLimit).map(function(c){return '<button type="button" class="odpm-row '+(selectedCell===c.cell_id?'selected':'')+'" data-cell="'+esc(c.cell_id)+'"><strong>'+esc(c.row?'r'+c.row:'Cell '+c.cell_id)+'</strong><span>'+esc(rowLabel(c))+'<small>c'+esc(c.column)+' · CellID '+esc(c.cell_id)+' · VariableVID '+esc(c.variable_vid==null?'Excluded':c.variable_vid)+'</small></span></button>'}).join("")||'<p class="fine">No matching official cell.</p>';
-el("officialCellList").querySelectorAll("[data-cell]").forEach(function(b){b.onclick=function(){selectedCell=Number(b.dataset.cell);renderCells()}});
-var c=rows().find(function(x){return x.cell_id===selectedCell})||rows()[0];if(c){selectedCell=c.cell_id;renderCellDetail(c)}
+function matchingCells(){
+ var q=el("officialSearch").value.trim().toLowerCase();
+ return rows().filter(function(c){
+  if(!q)return true;
+  var head=c.headers&&c.headers.column_header_id||[];
+  var label=head.length&&head[0].label||"";
+  return [c.row,c.column,c.cell_id,c.variable_vid,c.cell_code,c.metric_item_name,
+    rowLabel(c),label].concat((c.context_dimensions||[]).flatMap(function(d){
+     return [d.member&&d.member.name].concat((d.item_categories||[]).map(function(x){return x.signature}))
+    })).join(" ").toLowerCase().includes(q)
+ });
 }
+function rowGroupKey(c){
+ // A parametric r* has no fixed row identifier; don't merge unrelated cells into a fabricated row.
+ return c.row?"r"+c.row:"open:"+c.cell_code;
+}
+function columnLabel(c){
+ var h=c.headers&&c.headers.column_header_id||[];
+ return h.length&&h[0].label||c.metric_item_name||c.cell_code||"Column "+(c.column||"open");
+}
+function renderCells(){
+ if(!db)return;
+ var found=matchingCells(),source=rows();
+ var mode=el("officialViewMode").value;
+ var list=el("officialCellList"),count=el("officialMatches");
+ if(mode==="rows"){
+  var groups=new Map();
+  found.forEach(function(c){
+   var key=rowGroupKey(c);
+   if(!groups.has(key))groups.set(key,{key:key,label:rowLabel(c),row:c.row,cells:[]});
+   groups.get(key).cells.push(c);
+  });
+  var items=Array.from(groups.values());
+  var groupLimit=180;
+  count.textContent=items.length+" regulatory row groups · "+found.length+" / "+source.length+
+   " matching DPM positions"+(items.length>groupLimit?" · first "+groupLimit+" rows shown; refine search":"");
+  list.innerHTML='<div class="odpm-intro">Choose a reporting row to inspect its columns and then select a source cell. Repeated row IDs reflect different columns, not duplicated records.</div>'+
+   (items.length?items.slice(0,groupLimit).map(function(group){
+    var opened=expandedRow===group.key;
+    var excluded=group.cells.filter(function(c){return c.is_excluded===1}).length;
+    var groupLabel=group.row?"r"+group.row:"r*";
+    return '<div class="odpm-row-group '+(opened?'is-expanded':'')+'">'+
+     '<button type="button" data-group="'+esc(group.key)+'" aria-expanded="'+opened+'">'+
+     '<span class="odpm-group-code">'+esc(groupLabel)+'</span>'+
+     '<span class="odpm-group-info">'+esc(group.label)+
+      '<small>'+group.cells.length+' matching column '+(group.cells.length===1?'position':'positions')+
+      (excluded?' · '+excluded+' excluded':'')+'</small></span>'+
+     '<span class="odpm-group-chevron" aria-hidden="true">'+(opened?'▾':'▸')+'</span></button>'+
+     (opened?'<div class="odpm-columns">'+group.cells.map(function(c){
+       return '<button type="button" class="odpm-column '+(selectedCell===c.cell_id?'selected':'')+
+        '" data-cell="'+esc(c.cell_id)+'"><strong>'+esc(c.column?'c'+c.column:'Dynamic column')+
+        '</strong> · '+esc(columnLabel(c))+
+        '<small>CellID '+esc(c.cell_id)+(c.is_excluded===1?' · Excluded / non-reportable':
+         ' · VariableVID '+esc(c.variable_vid))+
+        (/(?:,\s*[rcs]\*)/.test(c.cell_code||"")?' · Open DPM coordinate':'')+'</small></button>';
+      }).join("")+'</div>':'')+'</div>';
+    }).join(""):'<p class="fine" style="padding:12px">No matching regulatory row.</p>');
+  list.querySelectorAll("[data-group]").forEach(function(b){
+   b.onclick=function(){
+    expandedRow=expandedRow===b.dataset.group?null:b.dataset.group;
+    var group=groups.get(b.dataset.group);
+    if(expandedRow&&group&&group.cells.length)selectedCell=group.cells[0].cell_id;
+    renderCells();
+   }
+  });
+ }else{
+  var limit=250;
+  count.textContent=found.length+" / "+source.length+" matching DPM positions"+(found.length>limit?
+   " · displaying first "+limit+"; refine search":"");
+  list.innerHTML=found.slice(0,limit).map(function(c){
+    return '<button type="button" class="odpm-row '+(selectedCell===c.cell_id?'selected':'')+
+      '" data-cell="'+esc(c.cell_id)+'"><strong>'+esc(c.row?'r'+c.row:'Open row')+'</strong>'+
+      '<span>'+esc(rowLabel(c))+'<small>'+esc(c.column?'c'+c.column:'Open column')+
+      ' · '+esc(columnLabel(c))+' · CellID '+esc(c.cell_id)+
+      ' · VariableVID '+esc(c.variable_vid==null?'Excluded':c.variable_vid)+
+      '</small></span></button>';
+  }).join("")||'<p class="fine" style="padding:12px">No matching DPM cell.</p>';
+ }
+ list.querySelectorAll("[data-cell]").forEach(function(b){
+  b.onclick=function(){selectedCell=Number(b.dataset.cell);renderCells()}
+ });
+ if(!found.length){el("officialDetail").innerHTML='<p class="fine">No cell matches this search.</p>';return}
+ var selected=found.find(function(c){return c.cell_id===selectedCell})||found[0];
+ selectedCell=selected.cell_id;
+ renderCellDetail(selected);
+}
+el("officialViewMode").onchange=function(){
+ expandedRow=null;
+ var current=rows().find(function(c){return c.cell_id===selectedCell});
+ if(current&&el("officialViewMode").value==="rows")expandedRow=rowGroupKey(current);
+ renderCells();
+};
 function renderCellDetail(c){
 var v=c.variable||{}, dimensions=c.context_dimensions||[];
 var isParametric=/\b[rcs]\*/i.test(c.cell_code||"");
