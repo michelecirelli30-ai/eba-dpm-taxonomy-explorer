@@ -1,0 +1,286 @@
+{
+  "status": "validated",
+  "reporting_family": "COREP_OF",
+  "scope": "C_05 through C_10, including all linked active table variants",
+  "generated_at_utc": "2026-10-27T13:05:45.450889+00:00",
+  "source": {
+    "release_code": "4.3",
+    "release_id": 1010000050,
+    "zip_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac"
+  },
+  "official_inventory_variant_count": 30,
+  "table_variants_with_cells": 26,
+  "empty_technical_versions": [
+    "C_07.00",
+    "C_08.01",
+    "C_08.05.1",
+    "C_09.01"
+  ],
+  "total_cells": 4879,
+  "total_excluded": 902,
+  "total_reportable": 3977,
+  "templates": [
+    {
+      "code": "C_05.01",
+      "name": "Capital Adequacy - Transitional provisions: Summary",
+      "table_vid": 6891,
+      "cell_count": 132,
+      "excluded_count": 68,
+      "reportable_count": 64,
+      "file": "data/corep_creditrisk/C_05.01.json",
+      "bytes": 223673
+    },
+    {
+      "code": "C_05.02",
+      "name": "Capital Adequacy - Transitional provisions: Grandfathered instruments not constituting State aid",
+      "table_vid": 6892,
+      "cell_count": 90,
+      "excluded_count": 60,
+      "reportable_count": 30,
+      "file": "data/corep_creditrisk/C_05.02.json",
+      "bytes": 119483
+    },
+    {
+      "code": "C_06.01",
+      "name": "Group Solvency - Total",
+      "table_vid": 6918,
+      "cell_count": 23,
+      "excluded_count": 0,
+      "reportable_count": 23,
+      "file": "data/corep_creditrisk/C_06.01.json",
+      "bytes": 43142
+    },
+    {
+      "code": "C_06.02",
+      "name": "Group Solvency",
+      "table_vid": 6924,
+      "cell_count": 50,
+      "excluded_count": 0,
+      "reportable_count": 50,
+      "file": "data/corep_creditrisk/C_06.02.json",
+      "bytes": 68119
+    },
+    {
+      "code": "C_07.00.a",
+      "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements",
+      "table_vid": 6927,
+      "cell_count": 1316,
+      "excluded_count": 429,
+      "reportable_count": 887,
+      "file": "data/corep_creditrisk/C_07.00.a.json",
+      "bytes": 2887079
+    },
+    {
+      "code": "C_07.00.b",
+      "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Of which: Arising from Counterparty Credit Risk",
+      "table_vid": 6929,
+      "cell_count": 94,
+      "excluded_count": 21,
+      "reportable_count": 73,
+      "file": "data/corep_creditrisk/C_07.00.b.json",
+      "bytes": 213844
+    },
+    {
+      "code": "C_07.00.c",
+      "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Memorandum items - Secured on Property",
+      "table_vid": 6930,
+      "cell_count": 87,
+      "excluded_count": 36,
+      "reportable_count": 51,
+      "file": "data/corep_creditrisk/C_07.00.c.json",
+      "bytes": 172244
+    },
+    {
+      "code": "C_07.00.d",
+      "name": "Credit and counterparty credit risks and free deliveries: Standardised Approach to capital requirements - Memorandum items - in default",
+      "table_vid": 6931,
+      "cell_count": 58,
+      "excluded_count": 26,
+      "reportable_count": 32,
+      "file": "data/corep_creditrisk/C_07.00.d.json",
+      "bytes": 119450
+    },
+    {
+      "code": "C_08.01.a",
+      "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL",
+      "table_vid": 6933,
+      "cell_count": 840,
+      "excluded_count": 179,
+      "reportable_count": 661,
+      "file": "data/corep_creditrisk/C_08.01.a.json",
+      "bytes": 2060901
+    },
+    {
+      "code": "C_08.01.b",
+      "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL - Of which arising from counterparty credit risk and off balance sheet",
+      "table_vid": 6940,
+      "cell_count": 32,
+      "excluded_count": 2,
+      "reportable_count": 30,
+      "file": "data/corep_creditrisk/C_08.01.b.json",
+      "bytes": 88790
+    },
+    {
+      "code": "C_08.01.c",
+      "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - TOTAL - Of which arising from counterparty credit risk and off balance sheet",
+      "table_vid": 6941,
+      "cell_count": 16,
+      "excluded_count": 0,
+      "reportable_count": 16,
+      "file": "data/corep_creditrisk/C_08.01.c.json",
+      "bytes": 43507
+    },
+    {
+      "code": "C_08.02",
+      "name": "Credit and counterparty credit risks and free deliveries: IRB Approach to capital requirements - Breakdown of exposures assigned to obligor grades or pools by obligor grades",
+      "table_vid": 6962,
+      "cell_count": 43,
+      "excluded_count": 1,
+      "reportable_count": 42,
+      "file": "data/corep_creditrisk/C_08.02.json",
+      "bytes": 93901
+    },
+    {
+      "code": "C_08.03",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: breakdown by PD ranges  (CR IRB 3)",
+      "table_vid": 6963,
+      "cell_count": 187,
+      "excluded_count": 0,
+      "reportable_count": 187,
+      "file": "data/corep_creditrisk/C_08.03.json",
+      "bytes": 547602
+    },
+    {
+      "code": "C_08.04",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: RWEA flow statements (CR IRB 4)",
+      "table_vid": 6964,
+      "cell_count": 9,
+      "excluded_count": 0,
+      "reportable_count": 9,
+      "file": "data/corep_creditrisk/C_08.04.json",
+      "bytes": 24500
+    },
+    {
+      "code": "C_08.05",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD (CR IRB 5)",
+      "table_vid": 6965,
+      "cell_count": 85,
+      "excluded_count": 0,
+      "reportable_count": 85,
+      "file": "data/corep_creditrisk/C_08.05.json",
+      "bytes": 218591
+    },
+    {
+      "code": "C_08.05.1.a",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD in accordance with Article 180(1), point (f) of Regulation (EU) No 575/2013 (CR IRB 5B) (I)",
+      "table_vid": 6966,
+      "cell_count": 5,
+      "excluded_count": 0,
+      "reportable_count": 5,
+      "file": "data/corep_creditrisk/C_08.05.1.a.json",
+      "bytes": 10823
+    },
+    {
+      "code": "C_08.05.1.b",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: back-testing of PD in accordance with Article 180(1), point (f) of Regulation (EU) No 575/2013 (CR IRB 5B (II)",
+      "table_vid": 6967,
+      "cell_count": 1,
+      "excluded_count": 0,
+      "reportable_count": 1,
+      "file": "data/corep_creditrisk/C_08.05.1.b.json",
+      "bytes": 2514
+    },
+    {
+      "code": "C_08.06",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: specialised lending slotting approach (CR IRB 6)",
+      "table_vid": 6968,
+      "cell_count": 108,
+      "excluded_count": 0,
+      "reportable_count": 108,
+      "file": "data/corep_creditrisk/C_08.06.json",
+      "bytes": 352936
+    },
+    {
+      "code": "C_08.07",
+      "name": "Credit risk and free deliveries: IRB approach to capital requirements: scope of use of IRB and SA approaches (CR IRB 7)",
+      "table_vid": 6969,
+      "cell_count": 110,
+      "excluded_count": 0,
+      "reportable_count": 110,
+      "file": "data/corep_creditrisk/C_08.07.json",
+      "bytes": 317399
+    },
+    {
+      "code": "C_09.01.a",
+      "name": "Geographical breakdown of exposures by residence of the obligor (SA exposures)",
+      "table_vid": 6970,
+      "cell_count": 350,
+      "excluded_count": 0,
+      "reportable_count": 350,
+      "file": "data/corep_creditrisk/C_09.01.a.json",
+      "bytes": 1042438
+    },
+    {
+      "code": "C_09.01.b",
+      "name": "Geographical breakdown of exposures by residence of the obligor (SA exposures) - Exposures in default",
+      "table_vid": 6971,
+      "cell_count": 102,
+      "excluded_count": 0,
+      "reportable_count": 102,
+      "file": "data/corep_creditrisk/C_09.01.b.json",
+      "bytes": 319358
+    },
+    {
+      "code": "C_09.02",
+      "name": "Geographical breakdown of exposures by residence of the obligor (IRB exposures)",
+      "table_vid": 6972,
+      "cell_count": 527,
+      "excluded_count": 5,
+      "reportable_count": 522,
+      "file": "data/corep_creditrisk/C_09.02.json",
+      "bytes": 1641204
+    },
+    {
+      "code": "C_09.04",
+      "name": "Breakdown of credit exposures relevant for the calculation of the countercyclical buffer by country and institution-specific countercyclical buffer rate",
+      "table_vid": 6973,
+      "cell_count": 45,
+      "excluded_count": 30,
+      "reportable_count": 15,
+      "file": "data/corep_creditrisk/C_09.04.json",
+      "bytes": 50989
+    },
+    {
+      "code": "C_10.00",
+      "name": "CREDIT AND COUNTERPARTY CREDIT RISKS AND FREE DELIVERIES: IRB EXPOSURES SUBJECT TO OUTPUT FLOOR",
+      "table_vid": 7045,
+      "cell_count": 480,
+      "excluded_count": 11,
+      "reportable_count": 469,
+      "file": "data/corep_creditrisk/C_10.00.json",
+      "bytes": 1382927
+    },
+    {
+      "code": "C_10.01",
+      "name": "Credit risk: Equity - IRB approaches to capital requirements - TOTAL",
+      "table_vid": 7048,
+      "cell_count": 80,
+      "excluded_count": 34,
+      "reportable_count": 46,
+      "file": "data/corep_creditrisk/C_10.01.json",
+      "bytes": 165170
+    },
+    {
+      "code": "C_10.02",
+      "name": "Credit risk: Equity - IRB approaches to capital requirements - Breakdown of total exposures under the PD/LGD Approach by obligor grades",
+      "table_vid": 7051,
+      "cell_count": 9,
+      "excluded_count": 0,
+      "reportable_count": 9,
+      "file": "data/corep_creditrisk/C_10.02.json",
+      "bytes": 25704
+    }
+  ],
+  "rule_import_status": "not_imported",
+  "note": "Original EBA C05-C10 DPM source cells only; not an executable rule engine."
+}
