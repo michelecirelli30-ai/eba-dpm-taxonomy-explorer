@@ -381,7 +381,7 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
      manifest.source?.release_code!=="4.3"||manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
      !Array.isArray(manifest.templates))throw Error("Incompatible C32-C36 source manifest");
   var entries=manifest.templates.filter(function(e){
-    return /^C_3[2-6]\\./.test(e.code)&&Number(e.cell_count)>0&&e.table_vid!=null&&
+    return ["C_32.","C_33.","C_34.","C_35.","C_36."].some(function(prefix){return e.code.startsWith(prefix)})&&Number(e.cell_count)>0&&e.table_vid!=null&&
       e.file==="data/corep_extended/"+e.code+".json";
   });
   if(entries.length!==manifest.templates.length||!entries.length)throw Error("Invalid C32-C36 entries");
