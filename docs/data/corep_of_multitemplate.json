@@ -1,6 +1,6 @@
 {
   "dataset": "EBA official DPM 2.0 COREP_OF C_01.00 through C_04.00",
-  "generated_at_utc": "2026-10-18T18:23:25.889704+00:00",
+  "generated_at_utc": "2026-10-27T13:04:02.570101+00:00",
   "source": {
     "source_url": "https://ebprstaewspublic01.blob.core.windows.net/public/tools-prod/documents/Big_Files/files/Reporting%20framework%204.3/DPM2%20Database_v%204_3.zip",
     "zip_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac",
