@@ -1,0 +1,295 @@
+{
+  "status": "validated",
+  "reporting_family": "COREP_OF",
+  "scope": "Official C32-C36 COREP_OF variants",
+  "generated_at_utc": "2026-10-27T22:25:16.367216+00:00",
+  "source": {
+    "release_code": "4.3",
+    "zip_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac"
+  },
+  "official_inventory_variant_count": 33,
+  "table_variants_with_cells": 27,
+  "empty_technical_versions": [
+    "C_32.02",
+    "C_33.00",
+    "C_34.01",
+    "C_34.02",
+    "C_34.08",
+    "C_36.00"
+  ],
+  "total_cells": 3673,
+  "templates": [
+    {
+      "code": "C_32.01",
+      "name": "Prudent valuation. Fair-Valued assets and liabilities",
+      "table_vid": 6997,
+      "cell_count": 225,
+      "excluded_count": 22,
+      "reportable_count": 203,
+      "file": "data/corep_extended/C_32.01.json",
+      "bytes": 595283
+    },
+    {
+      "code": "C_32.02.a",
+      "name": "Prudent valuation: Core approach – Pre and post diversification",
+      "table_vid": 6996,
+      "cell_count": 133,
+      "excluded_count": 25,
+      "reportable_count": 108,
+      "file": "data/corep_extended/C_32.02.a.json",
+      "bytes": 254393
+    },
+    {
+      "code": "C_32.02.b",
+      "name": "Prudent valuation: Core approach - AVAs assessed to have zero value",
+      "table_vid": 6994,
+      "cell_count": 4,
+      "excluded_count": 0,
+      "reportable_count": 4,
+      "file": "data/corep_extended/C_32.02.b.json",
+      "bytes": 11327
+    },
+    {
+      "code": "C_32.02.c",
+      "name": "Prudent valuation: Core approach – Other",
+      "table_vid": 6993,
+      "cell_count": 220,
+      "excluded_count": 61,
+      "reportable_count": 159,
+      "file": "data/corep_extended/C_32.02.c.json",
+      "bytes": 339723
+    },
+    {
+      "code": "C_32.03",
+      "name": "Prudent valuation. Model risk AVA",
+      "table_vid": 6991,
+      "cell_count": 15,
+      "excluded_count": 0,
+      "reportable_count": 15,
+      "file": "data/corep_extended/C_32.03.json",
+      "bytes": 23495
+    },
+    {
+      "code": "C_32.04",
+      "name": "Prudent valuation. Concentrated positions AVA",
+      "table_vid": 6990,
+      "cell_count": 10,
+      "excluded_count": 0,
+      "reportable_count": 10,
+      "file": "data/corep_extended/C_32.04.json",
+      "bytes": 13616
+    },
+    {
+      "code": "C_33.00.a",
+      "name": "General governments exposures by country of the counterparty and regulatory approach (Gov)",
+      "table_vid": 6989,
+      "cell_count": 672,
+      "excluded_count": 16,
+      "reportable_count": 656,
+      "file": "data/corep_extended/C_33.00.a.json",
+      "bytes": 2093246
+    },
+    {
+      "code": "C_33.00.b",
+      "name": "General governments exposures by country of the counterparty and regulatory approach (Gov)",
+      "table_vid": 6987,
+      "cell_count": 16,
+      "excluded_count": 0,
+      "reportable_count": 16,
+      "file": "data/corep_extended/C_33.00.b.json",
+      "bytes": 71576
+    },
+    {
+      "code": "C_34.01.a",
+      "name": "Size of the derivative business (CCR 1) (I)",
+      "table_vid": 6985,
+      "cell_count": 45,
+      "excluded_count": 12,
+      "reportable_count": 33,
+      "file": "data/corep_extended/C_34.01.a.json",
+      "bytes": 107739
+    },
+    {
+      "code": "C_34.01.b",
+      "name": "Size of the derivative business (CCR 1) (II)",
+      "table_vid": 6984,
+      "cell_count": 2,
+      "excluded_count": 0,
+      "reportable_count": 2,
+      "file": "data/corep_extended/C_34.01.b.json",
+      "bytes": 4654
+    },
+    {
+      "code": "C_34.02.a",
+      "name": "CCR exposures by approach (CCR 2) .a",
+      "table_vid": 7163,
+      "cell_count": 150,
+      "excluded_count": 37,
+      "reportable_count": 113,
+      "file": "data/corep_extended/C_34.02.a.json",
+      "bytes": 484767
+    },
+    {
+      "code": "C_34.02.b",
+      "name": "CCR exposures by approach (CCR 2) .b",
+      "table_vid": 7059,
+      "cell_count": 418,
+      "excluded_count": 111,
+      "reportable_count": 307,
+      "file": "data/corep_extended/C_34.02.b.json",
+      "bytes": 1060016
+    },
+    {
+      "code": "C_34.03",
+      "name": "CCR exposures treated with standardised approaches: SA-CCR or simplified SA-CCR (CCR 3)",
+      "table_vid": 6981,
+      "cell_count": 476,
+      "excluded_count": 130,
+      "reportable_count": 346,
+      "file": "data/corep_extended/C_34.03.json",
+      "bytes": 1036170
+    },
+    {
+      "code": "C_34.04",
+      "name": "CCR exposures treated with the original exposure method (OEM) (CCR 4)",
+      "table_vid": 6980,
+      "cell_count": 35,
+      "excluded_count": 0,
+      "reportable_count": 35,
+      "file": "data/corep_extended/C_34.04.json",
+      "bytes": 85711
+    },
+    {
+      "code": "C_34.05",
+      "name": "CCR exposures treated with the internal model method (IMM) (CCR 5)",
+      "table_vid": 6954,
+      "cell_count": 391,
+      "excluded_count": 165,
+      "reportable_count": 226,
+      "file": "data/corep_extended/C_34.05.json",
+      "bytes": 926317
+    },
+    {
+      "code": "C_34.06",
+      "name": "Top twenty counterparties  (CCR 6)",
+      "table_vid": 6947,
+      "cell_count": 12,
+      "excluded_count": 0,
+      "reportable_count": 12,
+      "file": "data/corep_extended/C_34.06.json",
+      "bytes": 21591
+    },
+    {
+      "code": "C_34.07",
+      "name": "IRB approach – CCR exposures by exposure class and PD scale  (CCR 7)",
+      "table_vid": 6946,
+      "cell_count": 126,
+      "excluded_count": 0,
+      "reportable_count": 126,
+      "file": "data/corep_extended/C_34.07.json",
+      "bytes": 386499
+    },
+    {
+      "code": "C_34.08.a",
+      "name": "Composition of collateral for CCR exposures (CCR 8) (I)",
+      "table_vid": 6944,
+      "cell_count": 81,
+      "excluded_count": 0,
+      "reportable_count": 81,
+      "file": "data/corep_extended/C_34.08.a.json",
+      "bytes": 281060
+    },
+    {
+      "code": "C_34.08.b",
+      "name": "Composition of collateral for CCR exposures (CCR 8) (II)",
+      "table_vid": 6938,
+      "cell_count": 81,
+      "excluded_count": 0,
+      "reportable_count": 81,
+      "file": "data/corep_extended/C_34.08.b.json",
+      "bytes": 280818
+    },
+    {
+      "code": "C_34.09",
+      "name": "Credit derivatives exposures  (CCR 9)",
+      "table_vid": 6937,
+      "cell_count": 32,
+      "excluded_count": 4,
+      "reportable_count": 28,
+      "file": "data/corep_extended/C_34.09.json",
+      "bytes": 73445
+    },
+    {
+      "code": "C_34.10",
+      "name": "Exposures to CCPs  (CCR 10)",
+      "table_vid": 6935,
+      "cell_count": 40,
+      "excluded_count": 4,
+      "reportable_count": 36,
+      "file": "data/corep_extended/C_34.10.json",
+      "bytes": 129361
+    },
+    {
+      "code": "C_34.11",
+      "name": "RWEA flow statements of CCR exposures under the IMM (CCR 11)",
+      "table_vid": 6932,
+      "cell_count": 18,
+      "excluded_count": 0,
+      "reportable_count": 18,
+      "file": "data/corep_extended/C_34.11.json",
+      "bytes": 57740
+    },
+    {
+      "code": "C_35.01",
+      "name": "NPE loss coverage: Calculation of deductions for non-performing exposures (NPE LC1)",
+      "table_vid": 6922,
+      "cell_count": 165,
+      "excluded_count": 11,
+      "reportable_count": 154,
+      "file": "data/corep_extended/C_35.01.json",
+      "bytes": 524111
+    },
+    {
+      "code": "C_35.02",
+      "name": "NPE loss coverage: Minimum coverage requirements and exposure values of non-performing exposure excluding forborne exposures that fall under article 47c (6) CRR (NPE LC2)",
+      "table_vid": 6913,
+      "cell_count": 121,
+      "excluded_count": 24,
+      "reportable_count": 97,
+      "file": "data/corep_extended/C_35.02.json",
+      "bytes": 447252
+    },
+    {
+      "code": "C_35.03",
+      "name": "NPE loss coverage: Minimum coverage requirements and exposure values of non-performing forborne exposures that fall under article 47c (6) CRR (NPE LC3)",
+      "table_vid": 6883,
+      "cell_count": 176,
+      "excluded_count": 46,
+      "reportable_count": 130,
+      "file": "data/corep_extended/C_35.03.json",
+      "bytes": 651412
+    },
+    {
+      "code": "C_36.00.a",
+      "name": "EXPOSURES TO CRYPTO-ASSETS",
+      "table_vid": 5983,
+      "cell_count": 8,
+      "excluded_count": 0,
+      "reportable_count": 8,
+      "file": "data/corep_extended/C_36.00.a.json",
+      "bytes": 16875
+    },
+    {
+      "code": "C_36.00.b",
+      "name": "EXPOSURES TO CRYPTO-ASSETS",
+      "table_vid": 6061,
+      "cell_count": 1,
+      "excluded_count": 0,
+      "reportable_count": 1,
+      "file": "data/corep_extended/C_36.00.b.json",
+      "bytes": 3151
+    }
+  ],
+  "rule_import_status": "not_imported",
+  "note": "Counterparty credit risk also appears in existing C07-C10 templates. Only official cells are displayed."
+}
