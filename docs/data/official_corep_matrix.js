@@ -30,8 +30,8 @@ async function render(){
    if(!response.ok)throw Error("HTTP "+response.status);
    cache[file]=await response.json();
   }
-  if(id!==token||!body.hidden===false)return;
-  var raw=cache[file],cells=(raw.cells||[]).filter(function(c){return (c.table_code||code)===code});
+  if(id!==token||body.hidden)return;
+  var raw=cache[file],vidToCode=Object.fromEntries((raw.table_versions||[]).map(function(t){return [t.table_vid,t.code]})),cells=(raw.cells||[]).filter(function(c){return (c.table_code||vidToCode[c.table_vid])===code});
   if(!cells.length)throw Error("No source coordinates for this template");
   var rmap=new Map(),cmap=new Map(),grid=new Map();
   cells.forEach(function(c){
