@@ -1,0 +1,242 @@
+{
+  "status": "validated",
+  "reporting_family": "COREP_OF",
+  "scope": "Official C11-C25 COREP_OF variants",
+  "generated_at_utc": "2026-10-27T15:15:29.657064+00:00",
+  "source": {
+    "release_code": "4.3",
+    "zip_sha256": "f2d802f1430879cf085d21e2279630d7a10e1207e2a100ab01188136cf0b2cac"
+  },
+  "official_inventory_variant_count": 25,
+  "table_variants_with_cells": 22,
+  "empty_technical_versions": [
+    "C_16.01",
+    "C_17.01",
+    "C_25.01"
+  ],
+  "total_cells": 21865,
+  "templates": [
+    {
+      "code": "C_11.00",
+      "name": "Settlement/Delivery risk",
+      "table_vid": 6974,
+      "cell_count": 48,
+      "excluded_count": 10,
+      "reportable_count": 38,
+      "file": "data/corep_risks/C_11.00.json",
+      "bytes": 85459
+    },
+    {
+      "code": "C_13.01",
+      "name": "(CR SEC) Credit risk: Securitisations",
+      "table_vid": 7052,
+      "cell_count": 8262,
+      "excluded_count": 1423,
+      "reportable_count": 6839,
+      "file": "data/corep_risks/C_13.01.json",
+      "bytes": 34098388
+    },
+    {
+      "code": "C_14.00",
+      "name": "Detailed information on securitisations",
+      "table_vid": 7066,
+      "cell_count": 61,
+      "excluded_count": 0,
+      "reportable_count": 61,
+      "file": "data/corep_risks/C_14.00.json",
+      "bytes": 97811
+    },
+    {
+      "code": "C_14.01",
+      "name": "(CR SEC Details) Detailed information on securitisations by approach",
+      "table_vid": 7065,
+      "cell_count": 186,
+      "excluded_count": 0,
+      "reportable_count": 186,
+      "file": "data/corep_risks/C_14.01.json",
+      "bytes": 488508
+    },
+    {
+      "code": "C_15.00",
+      "name": "Exposures and losses from lending collateralised immovable property",
+      "table_vid": 7064,
+      "cell_count": 6,
+      "excluded_count": 0,
+      "reportable_count": 6,
+      "file": "data/corep_risks/C_15.00.json",
+      "bytes": 17699
+    },
+    {
+      "code": "C_16.01.a",
+      "name": "OPERATIONAL RISK - Own Funds Requirements (OPR OF)",
+      "table_vid": 7029,
+      "cell_count": 50,
+      "excluded_count": 31,
+      "reportable_count": 19,
+      "file": "data/corep_risks/C_16.01.a.json",
+      "bytes": 68248
+    },
+    {
+      "code": "C_16.01.b",
+      "name": " OPERATIONAL RISK - OWN Funds Requirements (OPR OF) (cont.)",
+      "table_vid": 7198,
+      "cell_count": 1,
+      "excluded_count": 0,
+      "reportable_count": 1,
+      "file": "data/corep_risks/C_16.01.b.json",
+      "bytes": 2024
+    },
+    {
+      "code": "C_16.02",
+      "name": "OPERATIONAL RISK - Business Indicator Component (OPR BIC)",
+      "table_vid": 7191,
+      "cell_count": 336,
+      "excluded_count": 180,
+      "reportable_count": 156,
+      "file": "data/corep_risks/C_16.02.json",
+      "bytes": 607383
+    },
+    {
+      "code": "C_16.03",
+      "name": "OPERATIONAL RISK BREAKDOWN - Losses, expenses, provisions and other financial impacts resulting from operational risk events (OPR BD)",
+      "table_vid": 6915,
+      "cell_count": 24,
+      "excluded_count": 0,
+      "reportable_count": 24,
+      "file": "data/corep_risks/C_16.03.json",
+      "bytes": 66061
+    },
+    {
+      "code": "C_16.04",
+      "name": "OPERATIONAL RISK - Information on subsidiaries subject to Article 314(3) CRR (OPR ILDC)",
+      "table_vid": 6914,
+      "cell_count": 4,
+      "excluded_count": 0,
+      "reportable_count": 4,
+      "file": "data/corep_risks/C_16.04.json",
+      "bytes": 9761
+    },
+    {
+      "code": "C_17.01.a",
+      "name": "OPERATIONAL RISK - Losses and recoveries by business lines and event types in the last year (OPR Details 1)",
+      "table_vid": 7027,
+      "cell_count": 736,
+      "excluded_count": 0,
+      "reportable_count": 736,
+      "file": "data/corep_risks/C_17.01.a.json",
+      "bytes": 1667255
+    },
+    {
+      "code": "C_17.01.b",
+      "name": "OPERATIONAL RISK - Thresholds applied in data collections (OPR Details 1)",
+      "table_vid": 7026,
+      "cell_count": 18,
+      "excluded_count": 0,
+      "reportable_count": 18,
+      "file": "data/corep_risks/C_17.01.b.json",
+      "bytes": 33689
+    },
+    {
+      "code": "C_17.02",
+      "name": "OPERATIONAL RISK - Large loss events (OPR Details 2)",
+      "table_vid": 7024,
+      "cell_count": 20,
+      "excluded_count": 0,
+      "reportable_count": 20,
+      "file": "data/corep_risks/C_17.02.json",
+      "bytes": 26849
+    },
+    {
+      "code": "C_18.00",
+      "name": "Market risk: Standardised Approach for traded debt instruments",
+      "table_vid": 7020,
+      "cell_count": 7245,
+      "excluded_count": 4001,
+      "reportable_count": 3244,
+      "file": "data/corep_risks/C_18.00.json",
+      "bytes": 12589211
+    },
+    {
+      "code": "C_19.00",
+      "name": "Market risk: Standardised Approach for specific risk in securitisations",
+      "table_vid": 7017,
+      "cell_count": 728,
+      "excluded_count": 14,
+      "reportable_count": 714,
+      "file": "data/corep_risks/C_19.00.json",
+      "bytes": 2658307
+    },
+    {
+      "code": "C_20.00",
+      "name": "Market risk: Standardised Approach for specific risk in the correlation trading portfolio",
+      "table_vid": 7013,
+      "cell_count": 468,
+      "excluded_count": 11,
+      "reportable_count": 457,
+      "file": "data/corep_risks/C_20.00.json",
+      "bytes": 1573246
+    },
+    {
+      "code": "C_21.00",
+      "name": "Market risk: Standardised Approach for position risk in equities",
+      "table_vid": 7012,
+      "cell_count": 2275,
+      "excluded_count": 1475,
+      "reportable_count": 800,
+      "file": "data/corep_risks/C_21.00.json",
+      "bytes": 3327533
+    },
+    {
+      "code": "C_22.00",
+      "name": "Market risk: Standardised Approaches for foreign exchange risk",
+      "table_vid": 7011,
+      "cell_count": 432,
+      "excluded_count": 252,
+      "reportable_count": 180,
+      "file": "data/corep_risks/C_22.00.json",
+      "bytes": 626817
+    },
+    {
+      "code": "C_23.00",
+      "name": "Market risk: Standardised Approach for position risk in commodities",
+      "table_vid": 7007,
+      "cell_count": 105,
+      "excluded_count": 44,
+      "reportable_count": 61,
+      "file": "data/corep_risks/C_23.00.json",
+      "bytes": 178590
+    },
+    {
+      "code": "C_24.00",
+      "name": "Market risk: Internal models - Total",
+      "table_vid": 7006,
+      "cell_count": 176,
+      "excluded_count": 110,
+      "reportable_count": 66,
+      "file": "data/corep_risks/C_24.00.json",
+      "bytes": 230979
+    },
+    {
+      "code": "C_25.01.a",
+      "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)",
+      "table_vid": 6999,
+      "cell_count": 672,
+      "excluded_count": 399,
+      "reportable_count": 273,
+      "file": "data/corep_risks/C_25.01.a.json",
+      "bytes": 1092437
+    },
+    {
+      "code": "C_25.01.b",
+      "name": "CREDIT VALUATION ADJUSTMENT RISK (CVA)",
+      "table_vid": 6998,
+      "cell_count": 12,
+      "excluded_count": 0,
+      "reportable_count": 12,
+      "file": "data/corep_risks/C_25.01.b.json",
+      "bytes": 52186
+    }
+  ],
+  "rule_import_status": "not_imported",
+  "note": "Counterparty credit risk also appears in existing C07-C10 templates. Only official cells are displayed."
+}
