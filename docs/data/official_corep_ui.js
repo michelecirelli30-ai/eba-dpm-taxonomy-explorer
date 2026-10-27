@@ -351,18 +351,31 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
  });
  loadSource("data/corep_risks_manifest.json").then(function(manifest){
   if(!manifest||manifest.status!=="validated"||manifest.reporting_family!=="COREP_OF"||
-  manifest.source?.release_code!=="4.3"||manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
-  !Array.isArray(manifest.templates))throw Error("Incompatible official C11-C25 manifest");
-  var extra=manifest.templates.filter(function(e){return /^C_(?:1[1-9]|2[0-5])\.[0-9]{2}(?:\.[0-9]+)?(?:\.[a-z])?$/.test(e.code)&&e.cell_count>0&&
-    e.table_vid!=null&&e.file==="data/corep_risks/"+e.code+".json"});
-  if(extra.length!==manifest.templates.length)throw Error("Unexpected official C11-C25 entries");
-  riskManifest=manifest;
-  extra.forEach(function(e){if(Array.from(el("officialTemplateSelect").options).some(function(o){return o.value===e.code}))return;
-   var opt=document.createElement("option");opt.value=e.code;opt.textContent=e.code.replace("_"," ")+" — "+e.name+" ("+e.cell_count+" cells)";
-   el("officialTemplateSelect").appendChild(opt);
+    manifest.source?.release_code!=="4.3"||manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
+    !Array.isArray(manifest.templates))throw Error("Incompatible or missing official C11-C25 manifest");
+  var extra=manifest.templates.filter(function(e){
+    return typeof e.code==="string"&&e.code.startsWith("C_")&&
+      Number(e.cell_count)>0&&e.table_vid!=null&&
+      e.file==="data/corep_risks/"+e.code+".json";
   });
-  el("officialStatus").textContent="EBA DPM 4.3 · "+el("officialTemplateSelect").options.length+" templates available";
- }).catch(function(err){console.info("C11-C25 not yet imported or source unavailable",err)});
+  if(extra.length!==manifest.templates.length||extra.length<20)
+    throw Error("Invalid C11-C25 manifest entries: "+extra.length+"/"+manifest.templates.length);
+  riskManifest=manifest;
+  var selector=el("officialTemplateSelect");
+  extra.forEach(function(e){
+    if(Array.from(selector.options).some(function(o){return o.value===e.code}))return;
+    var opt=document.createElement("option");
+    opt.value=e.code;
+    opt.textContent=e.code.replace("_"," ")+" — "+e.name+" ("+e.cell_count+" cells)";
+    selector.appendChild(opt);
+  });
+  el("officialStatus").textContent="EBA DPM 4.3 · "+selector.options.length+" templates available";
+  el("officialTemplateNotice").textContent+=" · "+extra.length+" verified C11–C25 templates loaded";
+ }).catch(function(err){
+  console.error("COREP C11-C25 source manifest could not be loaded",err);
+  el("officialTemplateNotice").textContent+=" · C11–C25 IMPORT ERROR: "+err.message+
+    " (check GitHub Pages deployment and corep_risks_manifest.json)";
+ });
  if(selectedTemplate==="C_01.00"){var retained=getCell("0130");if(retained){selectedCell=retained.cell_id;renderCells()}}
 }).catch(function(err){
  el("officialStatus").textContent="Official extract unavailable";
