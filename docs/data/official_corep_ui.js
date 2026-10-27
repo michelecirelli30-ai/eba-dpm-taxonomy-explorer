@@ -1,6 +1,6 @@
 (function(){
 "use strict";
-var db=null,baseDb=null,creditManifest=null,riskManifest=null,creditCache={},loadSequence=0,selectedCell=null,selectedRule=null,selectedTemplate="C_01.00",expandedRow=null,multiTemplateLoaded=false;
+var db=null,baseDb=null,creditManifest=null,riskManifest=null,extendedManifest=null,creditCache={},loadSequence=0,selectedCell=null,selectedRule=null,selectedTemplate="C_01.00",expandedRow=null,multiTemplateLoaded=false;
 function el(id){return document.getElementById(id)}
 function esc(value){return String(value==null?"":value).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function rows(){return db?db.cells.filter(function(c){return (c.table_code||"C_01.00")===selectedTemplate}):[]}
@@ -24,9 +24,9 @@ function showTemplate(){
   "No verified cells for this template.";
  el("officialOrigin").textContent=db.source.reporting_family+" · "+selectedTemplate+
   " · TableVID "+(table?table.table_vid:"—")+" · ZIP SHA-256 "+db.source.zip_sha256.slice(0,16)+"…";
- el("officialDatasetLink").href=selectedTemplate==="C_01.00"||!([].concat(creditManifest&&creditManifest.templates||[],riskManifest&&riskManifest.templates||[])).some(function(e){return e.code===selectedTemplate})?
+ el("officialDatasetLink").href=selectedTemplate==="C_01.00"||!([].concat(creditManifest&&creditManifest.templates||[],riskManifest&&riskManifest.templates||[],extendedManifest&&extendedManifest.templates||[])).some(function(e){return e.code===selectedTemplate})?
   (multiTemplateLoaded?"data/corep_of_multitemplate.json":"data/corep_c0100_official.json"):
-  ([].concat(creditManifest&&creditManifest.templates||[],riskManifest&&riskManifest.templates||[])).find(function(e){return e.code===selectedTemplate}).file;
+  ([].concat(creditManifest&&creditManifest.templates||[],riskManifest&&riskManifest.templates||[],extendedManifest&&extendedManifest.templates||[])).find(function(e){return e.code===selectedTemplate}).file;
  selectedCell=rs.length?rs[0].cell_id:null;
  expandedRow=null;
  el("officialViewMode").value=rs.length>150?"rows":"cells";
@@ -39,7 +39,7 @@ function updateTemplate(){
  var option=el("officialTemplateSelect").selectedOptions[0];
  selectedTemplate=option?option.value:"C_01.00";
  var ticket=++loadSequence;
- var entry=([].concat(creditManifest&&creditManifest.templates||[],riskManifest&&riskManifest.templates||[])).find(function(e){return e.code===selectedTemplate});
+ var entry=([].concat(creditManifest&&creditManifest.templates||[],riskManifest&&riskManifest.templates||[],extendedManifest&&extendedManifest.templates||[])).find(function(e){return e.code===selectedTemplate});
  if(!entry){
   db=baseDb;showTemplate();return;
  }
@@ -56,7 +56,7 @@ function updateTemplate(){
  loadSource(entry.file).then(function(data){
   if(ticket!==loadSequence)return;
   if(!data||data.source?.reporting_family!=="COREP_OF"||
-   data.source?.zip_sha256!==(entry.file.indexOf("corep_risks/")>=0?riskManifest:creditManifest).source.zip_sha256||
+   data.source?.zip_sha256!==(entry.file.indexOf("corep_extended/")>=0?extendedManifest:entry.file.indexOf("corep_risks/")>=0?riskManifest:creditManifest).source.zip_sha256||
    data.table_versions?.length!==1||
    data.table_versions[0].code!==entry.code||
    data.table_versions[0].table_vid!==entry.table_vid||
@@ -375,6 +375,28 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
   console.error("COREP C11-C25 source manifest could not be loaded",err);
   el("officialTemplateNotice").textContent+=" · C11–C25 IMPORT ERROR: "+err.message+
     " (check GitHub Pages deployment and corep_risks_manifest.json)";
+ });
+ loadSource("data/corep_extended_manifest.json").then(function(manifest){
+  if(!manifest||manifest.status!=="validated"||manifest.reporting_family!=="COREP_OF"||
+     manifest.source?.release_code!=="4.3"||manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
+     !Array.isArray(manifest.templates))throw Error("Incompatible C32-C36 source manifest");
+  var entries=manifest.templates.filter(function(e){
+    return /^C_3[2-6]\\./.test(e.code)&&Number(e.cell_count)>0&&e.table_vid!=null&&
+      e.file==="data/corep_extended/"+e.code+".json";
+  });
+  if(entries.length!==manifest.templates.length||!entries.length)throw Error("Invalid C32-C36 entries");
+  extendedManifest=manifest;
+  var selector=el("officialTemplateSelect");
+  entries.forEach(function(e){
+    if(Array.from(selector.options).some(function(o){return o.value===e.code}))return;
+    var opt=document.createElement("option");opt.value=e.code;
+    opt.textContent=e.code.replace("_"," ")+" — "+e.name+" ("+e.cell_count+" cells)";
+    selector.appendChild(opt);
+  });
+  el("officialStatus").textContent="EBA DPM 4.3 · "+selector.options.length+" templates available";
+  el("officialTemplateNotice").textContent+=" · "+entries.length+" C32–C36 templates loaded";
+ }).catch(function(err){
+  console.info("C32-C36 official import pending",err);
  });
  if(selectedTemplate==="C_01.00"){var retained=getCell("0130");if(retained){selectedCell=retained.cell_id;renderCells()}}
 }).catch(function(err){
