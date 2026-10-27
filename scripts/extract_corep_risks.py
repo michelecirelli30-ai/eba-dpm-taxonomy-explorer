@@ -16,7 +16,7 @@ OUT=ROOT/"docs/data/corep_risks"
 MANIFEST=ROOT/"docs/data/corep_risks_manifest.json"
 SOURCE_MANIFEST=ROOT/"docs/data/corep_creditrisk_manifest.json"
 INVENTORY=ROOT/"docs/data/corep_official_inventory.json"
-RX=re.compile(r"^C_(?:1[1-9]|2[0-5])\\.\\d{2}(?:\\.\\d+)?(?:\\.[a-z])?$",re.I)
+RX=re.compile(r"^C_(?:1[1-9]|2[0-5])\.\d{2}(?:\.\d+)?(?:\.[a-z])?$",re.I)
 def main():
  inv=json.loads(INVENTORY.read_text())
  m=next(m for m in inv["modules"] if m["module_code"]=="COREP_OF")
@@ -47,7 +47,7 @@ def main():
     "cells":subset,"validation_rules":[],
     "limitations":["Official DPM source coordinates; not complete Excel layout.","Validation expressions and current rule status not imported.","No filing engine."]}
   file=OUT/(code+".json")
-  file.write_text(json.dumps(content,ensure_ascii=False,separators=(",",":"))+"\\n")
+  file.write_text(json.dumps(content,ensure_ascii=False,separators=(",",":"))+"\n")
   entries.append({"code":code,"name":t["name"],"table_vid":t["table_vid"],"cell_count":len(subset),
                   "excluded_count":excluded,"reportable_count":len(subset)-excluded,
                   "file":"data/corep_risks/"+code+".json","bytes":file.stat().st_size})
@@ -60,6 +60,6 @@ def main():
   "total_cells":sum(x["cell_count"] for x in entries),"templates":entries,
   "rule_import_status":"not_imported",
   "note":"Counterparty credit risk also appears in existing C07-C10 templates. Only official cells are displayed."}
- MANIFEST.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+"\\n")
+ MANIFEST.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+"\n")
  print("Imported",len(entries),"table variants;",manifest["total_cells"],"source positions")
 if __name__=="__main__":main()
