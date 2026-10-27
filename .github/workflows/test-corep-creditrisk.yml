@@ -1,0 +1,22 @@
+name: Test C05-C10 COREP DPM data integrity
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/data/corep_creditrisk/**'
+      - 'docs/data/corep_creditrisk_manifest.json'
+      - 'tests/test_corep_creditrisk_data.py'
+      - '.github/workflows/test-corep-creditrisk.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify all official COREP C05-C10 source files
+        run: python tests/test_corep_creditrisk_data.py
