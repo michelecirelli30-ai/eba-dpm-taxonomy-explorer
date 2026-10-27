@@ -87,4 +87,12 @@ Regenerate and audit the import through:
 
 **Total navigable across C 01–10: 31 table variants and 5,350 original DPM positions**, not 5,350 necessarily reportable instantiated facts. These values refer to EBA DPM 4.3, not every newer or upcoming EBA release.
 
+### Browsing wide regulatory tables
+
+The official COREP DPM view offers **Browse by: Regulatory rows (grouped) / Individual DPM cells**. For large templates, rows are grouped to prevent dozens of near-identical records appearing as independent regulatory rows. Expand a row to see the authentic column labels, CellID and VariableVID for every underlying source position. This UI-only view is lossless: CSV/JSON export still includes all positions in the selected template.
+
+For example, EBA C_07.00.a contains **47 distinct regulatory row codes × 28 column positions = 1,316** original cell positions. The `r0010` row "TOTAL EXPOSURES" has 28 different columns; they are not duplicates. The EBA sheet coordinate `s*` remains a parametric dimension and is not silently instantiated. Empty technical versions and excluded/non-reportable positions are identified separately.
+
+A dedicated browser regression fixture in `tests/test_corep_row_browser.cjs` checks grouped and individual modes against the original source, including search, expanding rows, selecting columns and navigation back to C 01.00. CI: `.github/workflows/test-corep-row-browser.yml`.
+
 **Validation limitation:** The integrated **52 validation rules plus 7 preconditions** are still the curated C 01.00 source corpus; they are intentionally *not* represented as complete coverage for C 05–10. Cross-template rule imports, manual interpretations, current EBA rule status and rule execution remain separate future work. IFRS bridges are editorial learning examples, not official EBA fields.
