@@ -353,7 +353,7 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
   if(!manifest||manifest.status!=="validated"||manifest.reporting_family!=="COREP_OF"||
   manifest.source?.release_code!=="4.3"||manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
   !Array.isArray(manifest.templates))throw Error("Incompatible official C11-C25 manifest");
-  var extra=manifest.templates.filter(function(e){return /^C_(?:1[1-9]|2[0-5])\\.\\d{2}(?:\\.\\d+)?(?:\\.[a-z])?$/.test(e.code)&&e.cell_count>0&&
+  var extra=manifest.templates.filter(function(e){return /^C_(?:1[1-9]|2[0-5])\.[0-9]{2}(?:\.[0-9]+)?(?:\.[a-z])?$/.test(e.code)&&e.cell_count>0&&
     e.table_vid!=null&&e.file==="data/corep_risks/"+e.code+".json"});
   if(extra.length!==manifest.templates.length)throw Error("Unexpected official C11-C25 entries");
   riskManifest=manifest;
