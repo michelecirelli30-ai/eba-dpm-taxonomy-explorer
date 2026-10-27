@@ -246,7 +246,7 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
    manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
    !Array.isArray(manifest.templates))throw Error("Unverified or incompatible C05-C10 manifest");
   var extra=manifest.templates.filter(function(e){
-   return /^C_(?:0[5-9]|10)\\.\\d{2}(?:\\.\\d+)?(?:\\.[a-z])?$/.test(e.code)&&
+   return /^C_(?:0[5-9]|10)\.\d{2}(?:\.\d+)?(?:\.[a-z])?$/.test(e.code)&&
     e.cell_count>0&&
     e.reportable_count>=0&&
     e.table_vid!=null&&
