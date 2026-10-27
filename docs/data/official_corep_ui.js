@@ -1,6 +1,6 @@
 (function(){
 "use strict";
-var db=null,selectedCell=null,selectedRule=null,selectedTemplate="C_01.00",multiTemplateLoaded=false;
+var db=null,baseDb=null,creditManifest=null,creditCache={},loadSequence=0,selectedCell=null,selectedRule=null,selectedTemplate="C_01.00",multiTemplateLoaded=false;
 function el(id){return document.getElementById(id)}
 function esc(value){return String(value==null?"":value).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function rows(){return db?db.cells.filter(function(c){return (c.table_code||"C_01.00")===selectedTemplate}):[]}
@@ -10,34 +10,77 @@ function getCell(row){return rows().find(function(c){return c.row===row&&c.colum
 function openOfficial(row){if(db){selectedTemplate="C_01.00";el("officialTemplateSelect").value=selectedTemplate;updateTemplate();var c=getCell(row);if(c)selectedCell=c.cell_id;el("officialSearch").value="";renderCells()}show("official")}
 window.openOfficialRow=openOfficial;
 function openIFRS(row){if(!COREP_IFRS.rows.some(function(x){return x.r===row}))return;activeMapRow=row;el("mapSearch").value="";renderMap();show("cellmap")}
-function updateTemplate(){
+function showTemplate(){
  if(!db)return;
- var option=el("officialTemplateSelect").selectedOptions[0];
- selectedTemplate=option?option.value:selectedTemplate;
  var rs=rows(),table=db.table_versions.find(function(t){return t.code===selectedTemplate});
  el("officialCountCells").textContent=String(rs.length);
  el("officialTemplateCode").textContent=selectedTemplate;
  el("officialListTitle").textContent="Actual "+selectedTemplate.replace("_"," ")+" cells";
- el("officialRuleCount").textContent="52 (C 01.00)";
  el("officialRulesPanel").style.display=selectedTemplate==="C_01.00"?"":"none";
  el("officialTemplateNotice").textContent=table?
-  table.name+" · TableVID "+table.table_vid+" · "+rs.length+" source cell positions ("+rs.filter(function(c){return c.is_excluded===1}).length+" excluded)"+
-   (selectedTemplate==="C_01.00"?" · 52 C 01.00 validation rules loaded":" · rule import for this template not yet included"):
-  "No matching official table version in this extract.";
+  table.name+" · TableVID "+table.table_vid+" · "+rs.length+" authentic DPM positions ("+
+  rs.filter(function(c){return c.is_excluded===1}).length+" excluded)"+
+  (selectedTemplate==="C_01.00"?" · 52 source validation rules":" · validation rule corpus not yet imported"):
+  "No verified cells for this template.";
  el("officialOrigin").textContent=db.source.reporting_family+" · "+selectedTemplate+
   " · TableVID "+(table?table.table_vid:"—")+" · ZIP SHA-256 "+db.source.zip_sha256.slice(0,16)+"…";
+ el("officialDatasetLink").href=selectedTemplate==="C_01.00"||!creditManifest||
+  !creditManifest.templates.some(function(e){return e.code===selectedTemplate})?
+  (multiTemplateLoaded?"data/corep_of_multitemplate.json":"data/corep_c0100_official.json"):
+  creditManifest.templates.find(function(e){return e.code===selectedTemplate}).file;
  selectedCell=rs.length?rs[0].cell_id:null;
  el("officialSearch").value="";
  renderCells();
  if(selectedTemplate==="C_01.00")renderRules();
+}
+function updateTemplate(){
+ if(!baseDb)return;
+ var option=el("officialTemplateSelect").selectedOptions[0];
+ selectedTemplate=option?option.value:"C_01.00";
+ var ticket=++loadSequence;
+ var entry=creditManifest&&creditManifest.templates.find(function(e){return e.code===selectedTemplate});
+ if(!entry){
+  db=baseDb;showTemplate();return;
+ }
+ if(creditCache[entry.code]){
+  db=creditCache[entry.code];showTemplate();return;
+ }
+ el("officialTemplateCode").textContent=selectedTemplate;
+ el("officialListTitle").textContent="Loading "+selectedTemplate+" source cells…";
+ el("officialMatches").textContent="";
+ el("officialCellList").innerHTML='<p class="fine">Loading verified EBA DPM data for '+esc(selectedTemplate)+'…</p>';
+ el("officialDetail").innerHTML='<p class="fine">Template information will appear once the official source file is loaded.</p>';
+ el("officialRulesPanel").style.display="none";
+ el("officialTemplateNotice").textContent="Loading "+entry.cell_count+" imported positions for "+selectedTemplate+"…";
+ loadSource(entry.file).then(function(data){
+  if(ticket!==loadSequence)return;
+  if(!data||data.source?.reporting_family!=="COREP_OF"||
+   data.source?.zip_sha256!==creditManifest.source.zip_sha256||
+   data.table_versions?.length!==1||
+   data.table_versions[0].code!==entry.code||
+   data.table_versions[0].table_vid!==entry.table_vid||
+   !Array.isArray(data.cells)||data.cells.length!==entry.cell_count||
+   !Array.isArray(data.validation_rules)||data.validation_rules.length!==0||
+   data.cells.some(function(c){return c.table_code!==entry.code||c.table_vid!==entry.table_vid||
+     c.cell_id==null||(c.variable_vid==null&&c.is_excluded!==1)}))
+    throw Error("Unexpected official template source or provenance; file not displayed");
+  creditCache[entry.code]=data;
+  db=data;showTemplate();
+ }).catch(function(err){
+  if(ticket!==loadSequence)return;
+  el("officialTemplateNotice").textContent="Could not verify "+selectedTemplate+": "+err.message;
+  el("officialCellList").textContent="The selected COREP template is temporarily unavailable. Other templates remain accessible.";
+  el("officialStatus").textContent="Template loading error";
+ });
 }
 el("officialTemplateSelect").onchange=updateTemplate;
 function renderCells(){
 if(!db)return;
 var q=el("officialSearch").value.trim().toLowerCase();
 var found=rows().filter(function(c){if(!q)return true;return [c.row,c.column,c.cell_id,c.variable_vid,c.cell_code,c.metric_item_name,rowLabel(c)].concat((c.context_dimensions||[]).flatMap(function(d){return [d.member&&d.member.name].concat((d.item_categories||[]).map(function(x){return x.signature}))})).join(" ").toLowerCase().includes(q)});
-el("officialMatches").textContent=found.length+" / "+rows().length+" authentic "+selectedTemplate+" cells";
-el("officialCellList").innerHTML=found.map(function(c){return '<button type="button" class="odpm-row '+(selectedCell===c.cell_id?'selected':'')+'" data-cell="'+esc(c.cell_id)+'"><strong>'+esc(c.row?'r'+c.row:'Cell '+c.cell_id)+'</strong><span>'+esc(rowLabel(c))+'<small>c'+esc(c.column)+' · CellID '+esc(c.cell_id)+' · VariableVID '+esc(c.variable_vid)+'</small></span></button>'}).join("")||'<p class="fine">No matching official cell.</p>';
+var renderLimit=250;
+el("officialMatches").textContent=found.length+" / "+rows().length+" source positions for "+selectedTemplate+(found.length>renderLimit?" · displaying first "+renderLimit+"; use search to narrow":"");
+el("officialCellList").innerHTML=found.slice(0,renderLimit).map(function(c){return '<button type="button" class="odpm-row '+(selectedCell===c.cell_id?'selected':'')+'" data-cell="'+esc(c.cell_id)+'"><strong>'+esc(c.row?'r'+c.row:'Cell '+c.cell_id)+'</strong><span>'+esc(rowLabel(c))+'<small>c'+esc(c.column)+' · CellID '+esc(c.cell_id)+' · VariableVID '+esc(c.variable_vid==null?'Excluded':c.variable_vid)+'</small></span></button>'}).join("")||'<p class="fine">No matching official cell.</p>';
 el("officialCellList").querySelectorAll("[data-cell]").forEach(function(b){b.onclick=function(){selectedCell=Number(b.dataset.cell);renderCells()}});
 var c=rows().find(function(x){return x.cell_id===selectedCell})||rows()[0];if(c){selectedCell=c.cell_id;renderCellDetail(c)}
 }
@@ -183,7 +226,7 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
  if(!data||!data.source||data.source.reporting_family!=="COREP_OF"||!Array.isArray(data.cells)||
  !data.cells.length||!Array.isArray(data.table_versions)||!Array.isArray(data.validation_rules))
  throw Error("Unexpected EBA data structure");
- db=data;
+ db=baseDb=data;
  var byVid=Object.fromEntries(data.table_versions.map(function(t){return [t.table_vid,t.code]}));
  data.cells.forEach(function(c){if(!c.table_code)c.table_code=byVid[c.table_vid]||"C_01.00"});
  var templates=data.table_versions.filter(function(t){return data.cells.some(function(c){return c.table_vid===t.table_vid})}).sort(function(a,b){return a.code.localeCompare(b.code)});
@@ -197,6 +240,31 @@ loadSource("data/corep_of_multitemplate.json").then(function(d){multiTemplateLoa
   "EBA DPM 4.3 · "+templates.length+" template versions imported":"C 01.00 only · expanded extract pending";
  el("officialDatasetLink").href=multiTemplateLoaded?"data/corep_of_multitemplate.json":"data/corep_c0100_official.json";
  updateTemplate();
+ loadSource("data/corep_creditrisk_manifest.json").then(function(manifest){
+  if(!manifest||manifest.status!=="validated"||
+   manifest.reporting_family!=="COREP_OF"||
+   manifest.source?.zip_sha256!==baseDb.source.zip_sha256||
+   !Array.isArray(manifest.templates))throw Error("Unverified or incompatible C05-C10 manifest");
+  var extra=manifest.templates.filter(function(e){
+   return /^C_(?:0[5-9]|10)\\.\\d{2}(?:\\.\\d+)?(?:\\.[a-z])?$/.test(e.code)&&
+    e.cell_count>0&&
+    e.reportable_count>=0&&
+    e.table_vid!=null&&
+    e.file==="data/corep_creditrisk/"+e.code+".json";
+  });
+  if(extra.length!==manifest.templates.length)throw Error("C05-C10 manifest contains invalid template entries");
+  creditManifest=manifest;
+  extra.forEach(function(e){
+   var opt=document.createElement("option");
+   opt.value=e.code;
+   opt.textContent=e.code.replace("_"," ")+" — "+e.name+" ("+e.cell_count+" cells)";
+   el("officialTemplateSelect").appendChild(opt);
+  });
+  el("officialStatus").textContent="EBA DPM 4.3 · "+el("officialTemplateSelect").options.length+" templates available";
+  el("officialTemplateNotice").textContent+=" · Plus "+extra.length+" C05–C10 templates available in selector";
+ }).catch(function(err){
+  console.warn("COREP C05-C10 manifest unavailable; only verified C01-C04 templates shown",err);
+ });
  if(selectedTemplate==="C_01.00"){var retained=getCell("0130");if(retained){selectedCell=retained.cell_id;renderCells()}}
 }).catch(function(err){
  el("officialStatus").textContent="Official extract unavailable";
