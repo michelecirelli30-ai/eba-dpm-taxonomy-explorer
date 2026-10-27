@@ -52,7 +52,7 @@ async function render(){
  table.innerHTML="";
  status.textContent="Loading "+code+" official source coordinates…";preview.hidden=true;
  try{
-  var file=/^C_(?:0[5-9]|10)\./.test(code)?"data/corep_creditrisk/"+code+".json":"data/corep_of_multitemplate.json";
+  var file=/^C_(?:1[1-9]|2[0-5])\./.test(code)?"data/corep_risks/"+code+".json":/^C_(?:0[5-9]|10)\./.test(code)?"data/corep_creditrisk/"+code+".json":"data/corep_of_multitemplate.json";
   if(!cache[file]){
    var response=await fetch(file,{cache:"no-cache"});
    if(!response.ok)throw Error("HTTP "+response.status);
