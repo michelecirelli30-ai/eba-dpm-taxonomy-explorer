@@ -1,0 +1,59 @@
+name: Extract official COREP OF C05-C10
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/extract_corep_creditrisk.py'
+      - 'scripts/extract_corep_of_multitemplate.py'
+      - '.github/workflows/corep-creditrisk.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: official-corep-creditrisk-4-3
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Access reader
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mdbtools
+      - name: Extract and validate C05-C10 official EBA cells
+        run: python scripts/extract_corep_creditrisk.py
+      - name: Verify manifest against all exported files
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          base=pathlib.Path('docs')
+          manifest=json.loads((base/'data/corep_creditrisk_manifest.json').read_text())
+          assert manifest['status']=='validated'
+          total=0
+          for item in manifest['templates']:
+              file=base/item['file']
+              obj=json.loads(file.read_text(encoding='utf-8'))
+              assert obj['table_versions'][0]['code']==item['code']
+              assert len(obj['cells'])==item['cell_count']
+              assert all(c['table_vid']==item['table_vid'] for c in obj['cells'])
+              assert obj['validation_rules']==[]
+              total+=len(obj['cells'])
+          assert total==manifest['total_cells']
+          assert manifest['total_excluded']+manifest['total_reportable']==total
+          print('Verified:',len(manifest['templates']),'non-empty templates /',total,'source cell positions')
+          PY
+      - name: Publish official data to GitHub Pages source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/corep_creditrisk/ docs/data/corep_creditrisk_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: publish verified EBA C05-C10 COREP risk templates"
+            git pull --rebase origin main
+            git push
+          fi
