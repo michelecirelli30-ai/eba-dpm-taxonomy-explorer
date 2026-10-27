@@ -1,0 +1,24 @@
+name: Test COREP row-group browser
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/data/official_corep_ui.js'
+      - 'docs/data/corep_of_multitemplate.json'
+      - 'docs/data/corep_creditrisk/C_07.00.a.json'
+      - 'docs/data/corep_creditrisk_manifest.json'
+      - 'tests/test_corep_row_browser.cjs'
+      - '.github/workflows/test-corep-row-browser.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ensure large COREP templates group rows without losing cell data
+        run: node tests/test_corep_row_browser.cjs
