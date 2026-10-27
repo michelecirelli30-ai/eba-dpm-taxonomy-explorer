@@ -77,7 +77,7 @@ def download_archive(folder):
   with bundle.open(members[0]) as src,db.open("wb") as out:shutil.copyfileobj(src,out)
  return db,{"source_url":URL,"zip_sha256":digest.hexdigest(),"zip_bytes":size,"access_filename":members[0].filename}
 
-def build(db,provenance):
+def build(db,provenance, *, target_table_re=TABLE_RE, required_prefixes=("C_01.00","C_02.00","C_03.00","C_04.00"), include_c0100_rules=True):
  releases=list(rows(db,"Release"))
  version=[r for r in releases if (r.get("Code") or "").startswith("4.3")]
  if not version:
@@ -90,10 +90,10 @@ def build(db,provenance):
  selected_modules=active_modules if active_modules else []
  modvids={number(m.get("ModuleVID")) for m in selected_modules}
  print("COREP_OF module versions:",len(module_versions),"active:",len(active_modules))
- table_versions=[t for t in rows(db,"TableVersion") if TABLE_RE.search(t.get("Code") or "")]
+ table_versions=[t for t in rows(db,"TableVersion") if target_table_re.search(t.get("Code") or "")]
  active_tables=[t for t in table_versions if current(t,rid)]
  print("COREP capital adequacy table versions:",len(table_versions),"active:",len(active_tables))
- if not active_tables:raise RuntimeError("No COREP C 01-04 TableVersion active in selected EBA release")
+ if not active_tables:raise RuntimeError("No target COREP TableVersion active in selected EBA release")
  active_vids={number(t["TableVID"]) for t in active_tables}
  composition=[r for r in rows(db,"ModuleVersionComposition")
               if number(r.get("ModuleVID")) in modvids and number(r.get("TableVID")) in active_vids]
@@ -102,7 +102,7 @@ def build(db,provenance):
  if not linked_vids:
   raise RuntimeError("No active capital adequacy table linked to COREP_OF in this release")
  # Fail closed if any target template is not actually linked to COREP_OF.
- for prefix in ("C_01.00","C_02.00","C_03.00","C_04.00"):
+ for prefix in required_prefixes:
   if not any((t.get("Code") or "")==prefix or (t.get("Code") or "").startswith(prefix+".")
              for t in active_tables if number(t.get("TableVID")) in linked_vids):
    raise RuntimeError("Expected COREP_OF template absent from DPM 4.3: "+prefix)
@@ -176,18 +176,18 @@ def build(db,provenance):
  # Find official validation operations which actually contain tC_01.00.
  # Version state is read from DPM, NOT interpreted as EBA active/disabled filing status.
  ops=[]
- for v in rows(db,"OperationVersion"):
+ for v in (rows(db,"OperationVersion") if include_c0100_rules else ()):
   expr=v.get("Expression") or ""
-  if "C_01.00" in expr and current(v,rid):
+  if include_c0100_rules and "C_01.00" in expr and current(v,rid):
    ops.append({"operation_id":number(v.get("OperationID")),"operation_vid":number(v.get("OperationVID")),
      "expression":expr[:18000],"description":(v.get("Description") or "")[:3000],
      "start_release_id":number(v.get("StartReleaseID")),"end_release_id":number(v.get("EndReleaseID")),
      "endorsement":v.get("Endorsement"),"variant_approved_flag":number(v.get("IsVariantApproved"))})
  opids={o["operation_id"] for o in ops}
  op_codes={}
- for o in rows(db,"Operation"):
+ for o in (rows(db,"Operation") if include_c0100_rules else ()):
   oid=number(o.get("OperationID"))
-  if oid in opids:
+  if include_c0100_rules and oid in opids:
    op_codes[oid]={"code":o.get("Code"),"type":o.get("Type"),"source":o.get("Source")}
  for o in ops:o.update(op_codes.get(o["operation_id"],{}))
  ops=sorted(ops,key=lambda x:x.get("code") or "")
